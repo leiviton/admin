@@ -1,0 +1,559 @@
+<prx-page-header
+    pre="Form Controls"
+    title="Select"
+    sub="Lightweight all in one UI Select, Multiselect and Autocomplete"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Simple Selection Selects">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label">Zero Config</label>
+                            <ng-select
+                                [items]="users"
+                                bindLabel="name"
+                                bindValue="email"
+                                placeholder="Select user"
+                            >
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Disable items</label>
+                            <ng-select
+                                [items]="usersDisabled"
+                                bindLabel="name"
+                                bindValue="email"
+                                placeholder="Select user"
+                            >
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="yesno" class="control-label"
+                                >Not searchable</label
+                            >
+                            <ng-select
+                                [items]="users"
+                                bindLabel="name"
+                                bindValue="email"
+                                labelForId="yesno"
+                                [searchable]="false"
+                                placeholder="Select user"
+                            >
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Custom Template</label>
+                            <ng-select
+                                [items]="users"
+                                bindLabel="name"
+                                bindValue="email"
+                                placeholder="Select user"
+                            >
+                                <ng-template
+                                    ng-label-tmp
+                                    let-item="item"
+                                    let-clear="clear"
+                                >
+                                    <span
+                                        class="ng-value-icon left"
+                                        (click)="clear(item)"
+                                        aria-hidden="true"
+                                        >×</span
+                                    >
+                                    <span class="ng-value-label"
+                                        ><img
+                                            [src]="item.picture.thumbnail"
+                                            class="rounded-circle mr-1"
+                                            width="20px"
+                                            height="20px"
+                                        />
+                                        {{ item.name }}</span
+                                    >
+                                </ng-template>
+
+                                <ng-template
+                                    ng-option-tmp
+                                    let-item="item"
+                                    let-search="searchTerm"
+                                >
+                                    <div class="media">
+                                        <img
+                                            [src]="item.picture.thumbnail"
+                                            class="rounded-circle mr-2"
+                                            width="40px"
+                                            height="40px"
+                                        />
+                                        <div class="media-body">
+                                            <p
+                                                class="my-0"
+                                                [ngOptionHighlight]="search"
+                                            >
+                                                {{ item.name }}
+                                            </p>
+                                            <p class="text-muted my-0">
+                                                {{ item.email }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Custom Search Input</label
+                            >
+
+                            <ng-select
+                                #customSearchSelect
+                                [items]="users"
+                                [searchable]="false"
+                                bindLabel="name"
+                                bindValue="email"
+                                placeholder="Select user"
+                            >
+                                <ng-template ng-header-tmp>
+                                    <div
+                                        class="form-group mb-0 has-icon icon-left"
+                                    >
+                                        <input
+                                            class="form-control"
+                                            type="text"
+                                            (input)="
+                                                customSearchSelect.filter(
+                                                    $event.target.value
+                                                )
+                                            "
+                                            placeholder="Search user"
+                                        />
+                                        <prx-icon
+                                            [icon]="icons.search"
+                                            class="icon"
+                                        ></prx-icon>
+                                    </div>
+                                </ng-template>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Select / Unselect all</label
+                            >
+
+                            <ng-select
+                                [items]="users"
+                                [multiple]="true"
+                                name="users"
+                                [(ngModel)]="selectedAll"
+                                placeholder="Select users"
+                                [closeOnSelect]="false"
+                                bindLabel="name"
+                                bindValue="email"
+                            >
+                                <ng-template ng-header-tmp>
+                                    <button
+                                        (click)="selectAll()"
+                                        class="btn btn-primary"
+                                    >
+                                        Select all
+                                    </button>
+                                    <button
+                                        (click)="unselectAll()"
+                                        class="btn btn-light"
+                                    >
+                                        Unselect all
+                                    </button>
+                                </ng-template>
+                                <ng-template ng-footer-tmp>
+                                    Selected users: {{ selectedAll.length }}
+                                </ng-template>
+                            </ng-select>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Advanced features">
+                <prx-card-body>
+                    <form class="cozy">
+                        <fieldset>
+                            <legend class="small bold text-primary">
+                                Advanced Search
+
+                                <p class="my-0 font-base text-muted">
+                                    Use search term and filter on custom fields.
+                                    Type <b>female</b> to see only females.
+                                </p>
+                            </legend>
+
+                            <div class="form-group">
+                                <ng-select
+                                    [items]="users"
+                                    bindLabel="name"
+                                    [loading]="isLoading"
+                                    [searchFn]="customSearchFn"
+                                >
+                                    <ng-template ng-option-tmp let-item="item">
+                                        {{ item.name }} <br />
+                                        <small>{{ item.gender }}</small>
+                                    </ng-template>
+                                </ng-select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="small bold text-primary">
+                                Tags
+                                <p class="my-0 font-base text-muted">
+                                    Append new tag if it doesn't exist. Type
+                                    'Facebook' to test.
+                                </p>
+                            </legend>
+
+                            <div class="form-group">
+                                <ng-select
+                                    [items]="companies"
+                                    [addTag]="addTagFn"
+                                    [hideSelected]="true"
+                                    multiple="true"
+                                    bindLabel="name"
+                                >
+                                </ng-select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Multiple Select">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Default multi select
+                            </label>
+                            <ng-select
+                                [items]="users"
+                                [multiple]="true"
+                                bindLabel="name"
+                                placeholder="Select user"
+                            >
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Multi select keep opened</label
+                            >
+                            <ng-select
+                                [items]="users"
+                                [multiple]="true"
+                                [closeOnSelect]="false"
+                                bindLabel="name"
+                                placeholder="Select user"
+                            >
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Hidden selected items
+                                <small class="form-text text-muted"
+                                    >Selected items won't appear among dropdown
+                                    options</small
+                                >
+                            </label>
+
+                            <ng-select
+                                [items]="users"
+                                [multiple]="true"
+                                [closeOnSelect]="false"
+                                [hideSelected]="true"
+                                bindLabel="name"
+                                placeholder="Select user"
+                            >
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Limited number of selections
+                                <small class="form-text text-muted"
+                                    >You can't select more than 3 users from
+                                    this list</small
+                                >
+                                <small
+                                    *ngIf="
+                                        selectedUsers.length === 3 &&
+                                        select.focused
+                                    "
+                                    class="form-text text-danger"
+                                    >You've reached the maximum users
+                                    allowed</small
+                                >
+                            </label>
+                            <ng-select
+                                #select
+                                [items]="users"
+                                [multiple]="true"
+                                [closeOnSelect]="false"
+                                [maxSelectedItems]="3"
+                                bindLabel="name"
+                                name="users"
+                                [(ngModel)]="selectedUsers"
+                                placeholder="Select user"
+                            >
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Custom template</label>
+
+                            <ng-select
+                                [items]="users"
+                                [multiple]="true"
+                                bindLabel="name"
+                                bindValue="email"
+                                placeholder="Select user"
+                            >
+                                <ng-template
+                                    ng-label-tmp
+                                    let-item="item"
+                                    let-clear="clear"
+                                >
+                                    <span
+                                        class="ng-value-icon left"
+                                        (click)="clear(item)"
+                                        aria-hidden="true"
+                                        >×</span
+                                    >
+                                    <span class="ng-value-label"
+                                        ><img
+                                            [src]="item.picture.thumbnail"
+                                            class="rounded-circle mr-1"
+                                            width="20px"
+                                            height="20px"
+                                        />
+                                        {{ item.name }}</span
+                                    >
+                                </ng-template>
+
+                                <ng-template ng-option-tmp let-item="item">
+                                    <div class="d-flex align-items-center">
+                                        <img
+                                            [src]="item.picture.thumbnail"
+                                            class="rounded-circle mr-1"
+                                            width="20px"
+                                            height="20px"
+                                        />
+                                        {{ item.name }}
+                                    </div>
+                                </ng-template>
+                            </ng-select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Placeholder for selected items
+                                <small class="form-text text-muted"
+                                    >Select 3 or more items to show a
+                                    placeholder for the remaining items</small
+                                >
+                            </label>
+
+                            <ng-select
+                                [items]="users"
+                                [multiple]="true"
+                                bindLabel="name"
+                                bindValue="email"
+                                placeholder="Select users"
+                            >
+                                <ng-template
+                                    ng-multi-label-tmp
+                                    let-items="items"
+                                    let-clear="clear"
+                                >
+                                    <div
+                                        class="ng-value"
+                                        *ngFor="let item of items | slice: 0:2"
+                                    >
+                                        <span class="ng-value-label">
+                                            <img
+                                                [src]="item.picture.thumbnail"
+                                                class="rounded-circle mr-1"
+                                                width="20px"
+                                                height="20px"
+                                            />
+                                            {{ item.name }}
+                                        </span>
+
+                                        <span
+                                            class="ng-value-icon right"
+                                            (click)="clear(item)"
+                                            aria-hidden="true"
+                                            >×</span
+                                        >
+                                    </div>
+
+                                    <div
+                                        class="ng-value"
+                                        *ngIf="items.length > 2"
+                                    >
+                                        <span class="ng-value-label"
+                                            >{{
+                                                items.length - 2
+                                            }}
+                                            more...</span
+                                        >
+                                    </div>
+                                </ng-template>
+                            </ng-select>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Grouping">
+                <prx-card-body>
+                    <form class="cozy">
+                        <fieldset>
+                            <legend class="small bold text-primary">
+                                Default Grouping
+
+                                <p class="my-0 font-base text-muted">
+                                    You can group by item key providing key name
+                                    as a string
+                                </p>
+                            </legend>
+
+                            <div class="form-group">
+                                <ng-select
+                                    [items]="users"
+                                    bindLabel="name"
+                                    bindValue="email"
+                                    groupBy="gender"
+                                    multiple="true"
+                                    placeholder="Select user"
+                                >
+                                    <ng-template
+                                        ng-optgroup-tmp
+                                        let-item="item"
+                                    >
+                                        <span class="text-capitalize">
+                                            {{ item.gender || 'Unnamed group' }}
+                                        </span>
+                                    </ng-template>
+                                </ng-select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="small bold text-primary">
+                                Complex grouping
+
+                                <p class="my-0 font-base text-muted">
+                                    This example uses a function expression to
+                                    group by country and display the total items
+                                    as well
+                                </p>
+                            </legend>
+
+                            <div class="form-group">
+                                <ng-select
+                                    [items]="users"
+                                    bindLabel="name"
+                                    bindValue="email"
+                                    [groupBy]="groupByCountry"
+                                    [groupValue]="groupValueCountry"
+                                    multiple="true"
+                                    placeholder="Select users"
+                                >
+                                    <ng-template
+                                        ng-optgroup-tmp
+                                        let-item="item"
+                                    >
+                                        <span>{{ item.name }}</span>
+                                        <span
+                                            class="ml-1 badge badge-secondary"
+                                            >{{ item.total }}</span
+                                        >
+                                    </ng-template>
+                                </ng-select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="small bold text-primary">
+                                Selectable groups
+                                <p class="my-0 font-base text-muted">
+                                    Groups can be made selectable. By default
+                                    group acts as a separate option
+                                </p>
+                            </legend>
+
+                            <div class="form-group">
+                                <ng-select
+                                    [items]="users"
+                                    bindLabel="name"
+                                    groupBy="gender"
+                                    [multiple]="true"
+                                    [selectableGroup]="true"
+                                    placeholder="Select users or gender"
+                                >
+                                    <ng-template
+                                        ng-optgroup-tmp
+                                        let-item="item"
+                                    >
+                                        <span class="text-capitalize">
+                                            {{ item.gender || 'Unnamed group' }}
+                                        </span>
+                                    </ng-template>
+                                </ng-select>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="small bold text-primary">
+                                Selectable groups
+                                <p class="my-0 font-base text-muted">
+                                    Configure it to select all of its children
+                                    but not group itself
+                                </p>
+                            </legend>
+
+                            <div class="form-group">
+                                <ng-select
+                                    [items]="users"
+                                    bindLabel="name"
+                                    groupBy="gender"
+                                    [multiple]="true"
+                                    [closeOnSelect]="false"
+                                    [selectableGroup]="true"
+                                    [selectableGroupAsModel]="false"
+                                    placeholder="Select users"
+                                >
+                                    <ng-template
+                                        ng-optgroup-tmp
+                                        let-item="item"
+                                    >
+                                        <span class="text-capitalize">
+                                            {{ item.gender || 'Unnamed group' }}
+                                        </span>
+                                    </ng-template>
+                                </ng-select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<prx-card>
+    <prx-card-header [border]="false" title="Referral Traffic">
+    </prx-card-header>
+
+    <prx-card-body>
+        <div class="chart chart-appended">
+            <canvas id="main-chart"></canvas>
+        </div>
+
+        <div class="chart-legend" [innerHTML]="legend | unsanitize"></div>
+
+        <prx-loader template="spinner" *ngIf="isLoading"></prx-loader>
+    </prx-card-body>
+</prx-card>

@@ -1,0 +1,26 @@
+<table class="table table-clean table-responsive">
+    <thead>
+        <tr>
+            <th class="small">Video</th>
+            <th class="small">Uploaded on</th>
+            <th class="small w-25">Views</th>
+            <th class="small">Likes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let video of ytbVideos">
+            <td data-title="Video">{{ video.name }}</td>
+            <td data-title="Uploaded on">{{ video.uploaded }}</td>
+            <td data-title="Views">
+                <prx-progress-solid
+                    size="xs"
+                    [value]="(video.views.actual / video.views.goal) * 100"
+                    color="danger"
+                    [label]="video.views.actual"
+                    suffix="%"
+                ></prx-progress-solid>
+            </td>
+            <td data-title="Likes">{{ video.likes }}</td>
+        </tr>
+    </tbody>
+</table>

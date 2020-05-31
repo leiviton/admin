@@ -1,0 +1,190 @@
+<prx-page-header
+    title="UI Elements"
+    pre="Accordions"
+    sub="Displays collapsible content panels for presenting information in a limited amount of space"
+>
+</prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Default Accordion">
+                <prx-card-body>
+                    <prx-accordion>
+                        <prx-accordion-group
+                            heading="Heading {{ group }}"
+                            *ngFor="let group of [1, 2, 3]"
+                        >
+                            <p class="bold">Accordion Content {{ group }}</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Accusamus quam nihil possimus,
+                                quaerat itaque similique unde aliquid! Molestias
+                                architecto itaque culpa sed cupiditate.
+                                Suscipit, magnam voluptas! Accusamus harum iure
+                                ratione.
+                            </p>
+                        </prx-accordion-group>
+                    </prx-accordion>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Initially Open">
+                <prx-card-body>
+                    <prx-accordion class="accordion-collapsed">
+                        <prx-accordion-group
+                            heading="Heading {{ group }}"
+                            *ngFor="let group of [1, 2, 3]"
+                            [isOpen]="group === 2"
+                        >
+                            <p class="lead bold">Group {{ group }}</p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Beatae amet incidunt voluptas totam sunt velit
+                            facilis eligendi, rem error tempore at praesentium
+                            atque unde autem ipsam enim a? Consectetur, eaque.
+                        </prx-accordion-group>
+                    </prx-accordion>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Collapsed Style">
+                <prx-card-body>
+                    <prx-accordion class="accordion-collapsed">
+                        <prx-accordion-group
+                            heading="Heading {{ group }}"
+                            *ngFor="let group of [1, 2, 3]"
+                        >
+                            <p class="bold">Group {{ group }}</p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Beatae amet incidunt voluptas totam sunt velit
+                            facilis eligendi, rem error tempore at praesentium
+                            atque unde autem ipsam enim a? Consectetur, eaque.
+                        </prx-accordion-group>
+                    </prx-accordion>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Clean Style">
+                <prx-card-body>
+                    <prx-accordion class="accordion-collapsed accordion-clean">
+                        <prx-accordion-group
+                            heading="Heading {{ group }}"
+                            *ngFor="let group of [1, 2, 3]"
+                        >
+                            <p class="bold">Group {{ group }}</p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Beatae amet incidunt voluptas totam sunt velit
+                            facilis eligendi, rem error tempore at praesentium
+                            atque unde autem ipsam enim a? Consectetur, eaque.
+                        </prx-accordion-group>
+                    </prx-accordion>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Custom Heading">
+                <prx-card-body>
+                    <prx-accordion>
+                        <prx-accordion-group *ngFor="let group of [1, 2, 3]">
+                            <ng-container accordion-heading>
+                                <prx-icon
+                                    [icon]="icons[group - 1]"
+                                    class="mr-3"
+                                ></prx-icon>
+                                Heading {{ group }}
+                            </ng-container>
+
+                            <p class="bold">Accordion Content {{ group }}</p>
+                            <p>
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Accusamus quam nihil possimus,
+                                quaerat itaque similique unde aliquid! Molestias
+                                architecto itaque culpa sed cupiditate.
+                                Suscipit, magnam voluptas! Accusamus harum iure
+                                ratione.
+                            </p>
+                        </prx-accordion-group>
+                    </prx-accordion>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Themed Accordion">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        <p class="mt-0">
+                            <span class="bold">Try it!!!</span>
+                            Change the accordion style
+                        </p>
+
+                        <div class="row gap-y">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Color</label>
+                                    <prx-theme-color-picker
+                                        (change)="applyColor($event)"
+                                    ></prx-theme-color-picker>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label"
+                                        >Collapsed</label
+                                    >
+                                    <prx-toggle
+                                        [(ngModel)]="styleCollapsed"
+                                    ></prx-toggle>
+                                </div>
+                            </div>
+                        </div>
+                    </prx-alert>
+
+                    <prx-accordion
+                        class="accordion-{{ currentColor.value }}"
+                        [class.accordion-collapsed]="styleCollapsed"
+                    >
+                        <prx-accordion-group
+                            heading="Heading {{ group }}"
+                            *ngFor="let group of [1, 2, 3]"
+                        >
+                            <p class="bold">Group {{ group }}</p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Beatae amet incidunt voluptas totam sunt velit
+                            facilis eligendi, rem error tempore at praesentium
+                            atque unde autem ipsam enim a? Consectetur, eaque.
+                        </prx-accordion-group>
+                    </prx-accordion>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Close Others">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        <p class="mt-0">
+                            By default the accordion close others panels when
+                            openning one, you can change it to keep all panels
+                            opened as long as you interact
+                        </p>
+                    </prx-alert>
+
+                    <prx-accordion
+                        class="accordion-collapsed"
+                        [closeOthers]="false"
+                    >
+                        <prx-accordion-group
+                            heading="Heading {{ group }}"
+                            *ngFor="let group of [1, 2, 3]"
+                        >
+                            <p class="bold">Group {{ group }}</p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Beatae amet incidunt voluptas totam sunt velit
+                            facilis eligendi, rem error tempore at praesentium
+                            atque unde autem ipsam enim a? Consectetur, eaque.
+                        </prx-accordion-group>
+                    </prx-accordion>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

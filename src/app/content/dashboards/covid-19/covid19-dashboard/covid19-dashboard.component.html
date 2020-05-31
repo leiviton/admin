@@ -1,0 +1,78 @@
+<prx-page-header
+    title="COVID-19 Latest Stats"
+    pre="Novel Corona Virus Stats"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-alert
+        class="bg-contrast"
+        [scheme]="ColorScheme.Light"
+        [background]="ColorScheme.Contrast"
+        [style]="AlertStyle.Outline"
+        [dismissible]="true"
+        [withIcon]="true"
+    >
+        <p class="bold mb-0">Track COVID-19</p>
+        <p class="mb-0">
+            This is a fully functional COVID-19 Dashboard with Real Data from
+            the JHU CSSE github repository, this is updated daily and includes
+            reported cases at the country level and province/state starting from
+            Jan 22nd.
+        </p>
+        <p class="mb-0">
+            You can find full information on the datasources used
+            <a
+                href="https://systems.jhu.edu/research/public-health/ncov/"
+                target="_blank"
+                class="bold"
+                >here</a
+            >.
+        </p>
+    </prx-alert>
+
+    <div class="row">
+        <div class="col-lg-4 col-xl-3">
+            <ng-container *ngIf="metrics; else loading">
+                <prx-covid19-cases-worldwide
+                    [metrics]="metrics"
+                ></prx-covid19-cases-worldwide>
+
+                <prx-covid19-percentage-of-cases
+                    [metrics]="metrics"
+                ></prx-covid19-percentage-of-cases>
+
+                <prx-covid19-recovery-ratio
+                    [metrics]="metrics"
+                ></prx-covid19-recovery-ratio>
+
+                <prx-covid19-precautions></prx-covid19-precautions>
+            </ng-container>
+
+            <ng-template #loading>
+                <prx-card>
+                    <prx-card-body>
+                        <prx-loader
+                            template="table"
+                            [isLoading]="isLoading"
+                            [count]="3"
+                        ></prx-loader>
+                    </prx-card-body>
+                </prx-card>
+
+                <prx-card>
+                    <prx-card-body>
+                        <prx-loader
+                            template="table"
+                            [isLoading]="isLoading"
+                            [count]="3"
+                        ></prx-loader>
+                    </prx-card-body>
+                </prx-card>
+            </ng-template>
+        </div>
+
+        <div class="col-lg-8 col-xl-9">
+            <prx-covid19-cases-by-country></prx-covid19-cases-by-country>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<div class="row">
+    <div class="col-md-3">
+        <prx-stat-card
+            title="Earnings"
+            heading="$22,050"
+            badge="+2.8%"
+            type="icon"
+        >
+            <prx-icon icon="dollar-sign"></prx-icon>
+        </prx-stat-card>
+    </div>
+
+    <div class="col-md-3">
+        <prx-stat-card title="Task Completion" heading="84.5%" type="icon">
+            <prx-icon icon="clipboard"></prx-icon>
+            <prx-progress-solid value="84.5" progress></prx-progress-solid>
+        </prx-stat-card>
+    </div>
+
+    <div class="col-md-3">
+        <prx-stat-card title="Total Working Hours" heading="638.5" type="icon">
+            <prx-icon icon="briefcase"></prx-icon>
+        </prx-stat-card>
+    </div>
+
+    <div class="col-md-3">
+        <prx-stat-card title="Total Sales" heading="$5675" type="chart">
+            <ng-container mini-chart><canvas #miniChart></canvas></ng-container>
+        </prx-stat-card>
+    </div>
+
+    <div class="col-md-6">
+        <prx-card title="Most Viewed Youtube Videos">
+            <prx-card-body>
+                <table class="table table-clean table-responsive">
+                    <thead>
+                        <tr>
+                            <th class="small">Video</th>
+                            <th class="small">Uploaded on</th>
+                            <th class="small w-25">Views</th>
+                            <th class="small">Likes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let video of ytbVideos">
+                            <td data-title="Video">{{ video.name }}</td>
+                            <td data-title="Uploaded on">
+                                {{ video.uploaded }}
+                            </td>
+                            <td data-title="Views">
+                                <prx-progress-solid
+                                    size="xs"
+                                    [value]="
+                                        (video.views.actual /
+                                            video.views.goal) *
+                                        100
+                                    "
+                                    color="danger"
+                                    [label]="video.views.actual"
+                                    suffix="%"
+                                ></prx-progress-solid>
+                            </td>
+                            <td data-title="Likes">{{ video.likes }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </prx-card-body>
+        </prx-card>
+    </div>
+
+    <div class="col-md-6">
+        <prx-card title="Facebook Audience Growth">
+            <prx-card-body>
+                <div class="row gap-y">
+                    <div class="col-lg-8">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="small">
+                                        Audience growth metric
+                                    </th>
+                                    <th class="small">Totals</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let metric of fbAudienceGrowth">
+                                    <td>{{ metric.key }}</td>
+                                    <td>{{ metric.value }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-4 text-center">
+                        <p class="accent bold">Number of net Likes</p>
+                        <p class="color-2 alpha-5">Increased by</p>
+                        <p class="font-lg bold">
+                            <prx-icon [icon]="icons.angleUp"></prx-icon> 3.61
+                        </p>
+                        <p class="small text-info">Since last month</p>
+                    </div>
+                </div>
+            </prx-card-body>
+        </prx-card>
+    </div>
+</div>

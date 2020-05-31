@@ -1,0 +1,229 @@
+<prx-breadcrum [items]="breadcrum"></prx-breadcrum>
+
+<div class="container-fluid">
+    <prx-card class="mt-4">
+        <prx-card-body class="invoice p-3 p-sm-6">
+            <div class="row mb-5 align-items-center">
+                <div class="col-lg-8">
+                    <div class="company">
+                        <img
+                            class="logo img-responsive"
+                            src="assets/img/logo.svg"
+                            alt=""
+                        />
+                        <h5 class="bold text-capitalize">5Studios.net</h5>
+
+                        <prx-address
+                            url="www.5studios.net"
+                            email="support@5studios.net"
+                            phone="(123) 798-4567"
+                        ></prx-address>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 text-right">
+                    <div class="title">
+                        <h1 class="text-uppercase display-4">Invoice</h1>
+                        <h4 class="text-muted bold">{{ invoiceId }}</h4>
+                    </div>
+                </div>
+            </div>
+
+            <ng-container *ngIf="invoice !== null; else loading">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <p class="small text-darker">Invoice to</p>
+                        <h5 class="bold text-capitalize">
+                            {{ invoice.to.name }}
+                        </h5>
+                        <prx-address
+                            email="address@to.email"
+                            phone="+012 321-9876"
+                        >
+                            {{ invoice.to.location.street.name }} #{{
+                                invoice.to.location.street.number
+                            }},<br />
+                            {{ invoice.to.location.city }},
+                            {{ invoice.to.location.state }},
+                            {{ invoice.to.location.country }}
+                        </prx-address>
+                    </div>
+                    <div
+                        class="col-lg-4 d-flex align-items-end justify-content-between mb-3"
+                    >
+                        <div>
+                            <div class="regular text-capitalize">
+                                invoice no:
+                            </div>
+                            <div class="regular text-capitalize">
+                                invoice date:
+                            </div>
+                            <div class="regular text-capitalize">
+                                Total due:
+                            </div>
+                        </div>
+                        <div>
+                            <div>20200314</div>
+                            <div>
+                                {{ invoice.issueDate | date: 'mediumDate' }}
+                            </div>
+                            <div class="bold text-darker">
+                                ${{ totalDue | number: '1.2-2' }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br /><br /><br />
+
+                <table class="table table--responsive">
+                    <thead>
+                        <tr>
+                            <td
+                                class="border-top-0 small text-uppercase bold text-dark"
+                            >
+                                Task description
+                            </td>
+                            <td
+                                class="border-top-0 small text-uppercase bold text-dark text-center"
+                            >
+                                Quantity
+                            </td>
+                            <td
+                                class="border-top-0 small text-uppercase bold text-dark text-right"
+                            >
+                                Price
+                            </td>
+                            <td
+                                class="border-top-0 small text-uppercase bold text-dark text-right"
+                            >
+                                Total
+                            </td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let item of invoice.items">
+                            <td>
+                                <p class="bold text-capitalize mb-1">
+                                    {{ item.title }}
+                                </p>
+                                <div
+                                    [innerHTML]="item.description"
+                                    class="font-sm text-secondary"
+                                ></div>
+                            </td>
+                            <td class="text-center">
+                                {{ item.quantity | number }}
+                            </td>
+                            <td class="text-right">
+                                ${{ item.price | number: '1.2-2' }}
+                            </td>
+
+                            <td class="text-right">
+                                ${{
+                                    item.price * item.quantity | number: '1.2-2'
+                                }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="row sub-total">
+                    <div
+                        class="col-lg-6 ml-auto d-flex align-items-end justify-content-between"
+                    >
+                        <div>
+                            <div class="text-uppercase text-secondary">
+                                subtotal
+                            </div>
+                            <div class="text-uppercase text-secondary">
+                                discount -{{ invoice.discount }}%
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-right">
+                                ${{ invoice.amount | number: '1.2-2' }}
+                            </div>
+                            <div class="text-right">
+                                $-{{ discount | number: '1.2-2' }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row grand-total">
+                    <div
+                        class="col-lg-6 ml-auto d-flex align-items-center justify-content-between"
+                    >
+                        <div class="text-uppercase bold text-darker">total</div>
+                        <div class="text-right regular text-darker font-md">
+                            ${{ totalDue | number: '1.2-2' }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-end mt-9">
+                    <div class="col-12 col-md-6 mr-auto">
+                        <p class="font-md light text-secondary">
+                            Thank you <br />
+                            for your business.
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 ml-auto">
+                        <div class="text-right">
+                            <p class="signature">Jane Doe</p>
+                            <hr />
+                            <p class="bold mb-0">Jane Doe</p>
+                            <p class="small text-secondary">Account Manager</p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mt-7" />
+                <p class="regular mb-2">Terms and Conditions</p>
+                <p class="small text-secondary">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusantium aliquid aperiam asperiores delectus distinctio
+                    dolor, facilis hic impedit ipsum laudantium libero minima
+                    nam nesciunt numquam recusandae saepe similique sit vero.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Dolorem doloremque eaque eius eos explicabo quasi qui
+                    repudiandae, sequi sit vel. Accusantium aliquam ducimus,
+                    eligendi eos iure mollitia pariatur perferendis quo.
+                </p>
+                <p class="small text-secondary">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
+                    aliquam beatae consequuntur deserunt dicta dolores explicabo
+                    iure minima molestiae neque non, quam qui repellat
+                    repudiandae sapiente sequi sint, unde? Ipsam.
+                </p>
+
+                <hr class="mt-5" />
+                <div>
+                    <img
+                        src="assets/img/logo.svg"
+                        class="mr-3"
+                        style="max-width: 32px"
+                        alt=""
+                    />
+                    <a href="https://www.5studios.net" class="small"
+                        >5studios.net</a
+                    >
+                </div>
+            </ng-container>
+
+            <ng-template #loading>
+                <div class="row">
+                    <div class="col-md-6">
+                        <prx-loader
+                            [template]="'table'"
+                            [isLoading]="invoice === null"
+                            [count]="3"
+                        ></prx-loader>
+                    </div>
+                </div>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+</div>

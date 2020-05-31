@@ -1,0 +1,19 @@
+<prx-stat-card
+    [title]="metric.type"
+    [heading]="metric.today | number"
+    type="chart"
+>
+    <span
+        class="d-block badge badge-{{
+            metric.variation > 3 ? 'success' : 'danger'
+        }}"
+        badge
+    >
+        <prx-icon
+            [icon]="metric.variation > 3 ? icons.up : icons.dw"
+        ></prx-icon>
+        {{ metric.variation }}
+    </span>
+
+    <ng-container mini-chart><canvas #miniChart></canvas></ng-container>
+</prx-stat-card>

@@ -1,0 +1,32 @@
+<prx-page-header
+    pre="Scheduler"
+    title="Full Calendar"
+    sub="Seamlessly integration with the Angular"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Basic - List View">
+        <prx-card-body>
+            <ng-container *ngIf="events && events.length; else loading">
+                <full-calendar
+                    defaultView="dayGridMonth"
+                    [plugins]="calendar.plugins"
+                    [header]="calendar.header"
+                    themeSystem="proxima"
+                    [navLinks]="true"
+                    [editable]="true"
+                    [eventLimit]="true"
+                    [events]="events"
+                ></full-calendar>
+            </ng-container>
+
+            <ng-template #loading>
+                <prx-loader
+                    [template]="'table'"
+                    [isLoading]="isLoading"
+                    [count]="2"
+                ></prx-loader>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+</div>

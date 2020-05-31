@@ -1,0 +1,38 @@
+@import "import";
+
+:host {
+    overflow: hidden;
+}
+
+.free-delivery-box {
+    background-color: $color-6-light-4x;
+
+    .static {
+        &-shape {
+            position: absolute;
+
+            &.shape {
+                &-main {
+                    width: 65%;
+                    right: 0;
+                    bottom: 0;
+                    transform: translate3d(10%, 20%, 0);
+                }
+
+                &-circle {
+                    opacity: 0.25;
+
+                    &-1 {
+                        right: 0;
+                        top: 0;
+                        transform: translate3d(50%, -50%, 0);
+
+                        div {
+                            @include circle-variant(300px, $gray-200);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

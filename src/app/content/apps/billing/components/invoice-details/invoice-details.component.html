@@ -1,0 +1,116 @@
+<ng-container *ngIf="invoice.items; else loadingItems">
+    <div class="row">
+        <div class="col-md-5 col-xl-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="small text-info bold">Invoice to</p>
+                    <prx-avatar-info
+                        [name]="invoice.to.name"
+                        [info]="invoice.to.email"
+                        class="mb-4"
+                    >
+                        <prx-avatar [avatar]="avatar"></prx-avatar>
+                    </prx-avatar-info>
+
+                    <p class="small text-info bold">Address</p>
+                    <prx-address
+                        [email]="invoice.to.email"
+                        phone="+012 321-9876"
+                    >
+                        {{ invoice.to.location.street.name }} #{{
+                            invoice.to.location.street.number
+                        }},<br />
+                        {{ invoice.to.location.city }},
+                        {{ invoice.to.location.state }},
+                        {{ invoice.to.location.country }}
+                    </prx-address>
+                </div>
+                <div class="col-md-6 text-right">
+                    <p class="small bold text-info mb-0">Invoice Amount</p>
+                    <p class="h3 font-light mb-4">
+                        {{ invoice.amount | number: '1.2-2' }}
+                    </p>
+
+                    <p class="small bold text-info mb-0">Invoice Paid</p>
+                    <p class="h3 font-light mb-4">
+                        {{ invoice.paid | number: '1.2-2' }}
+                    </p>
+
+                    <prx-card>
+                        <prx-card-body>
+                            <p class="text-darker bold small">Amount Due</p>
+                            <div class="d-flex align-items-center">
+                                <span>$</span>
+                                <span
+                                    class="ml-auto h1 font-bold text-darker"
+                                    >{{
+                                        invoice.amount - invoice.paid
+                                            | number: '1.2-2'
+                                    }}</span
+                                >
+                            </div>
+                        </prx-card-body>
+                    </prx-card>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 col-xl-8">
+            <table class="table table-clean table-responsive">
+                <thead>
+                    <tr>
+                        <td
+                            class="border-top-0 small text-uppercase bold text-dark"
+                        >
+                            Task description
+                        </td>
+                        <td
+                            class="border-top-0 small text-uppercase bold text-dark"
+                        >
+                            Quantity
+                        </td>
+                        <td
+                            class="border-top-0 small text-uppercase bold text-dark"
+                        >
+                            Price
+                        </td>
+                        <td
+                            class="border-top-0 small text-uppercase bold text-dark"
+                        >
+                            Total
+                        </td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of invoice.items">
+                        <td>
+                            <p class="bold mb-2">{{ item.title }}</p>
+                            <div
+                                [innerHTML]="item.description"
+                                class="invoice-items-table font-sm text-muted"
+                            ></div>
+                        </td>
+                        <td>{{ item.quantity | number }}</td>
+                        <td>{{ item.price | number: '1.2-2' }}</td>
+                        <td>
+                            {{ item.price * item.quantity | number: '1.2-2' }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #loadingItems>
+    <div class="row">
+        <div class="col-md-6">
+            <prx-loader
+                [template]="'table'"
+                [isLoading]="!invoice.items"
+                [count]="3"
+            ></prx-loader>
+        </div>
+    </div>
+</ng-template>

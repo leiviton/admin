@@ -1,0 +1,11 @@
+@import "import";
+
+:host {
+    display: block;
+    background-color: $gray-700;
+}
+
+.container-fluid {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}

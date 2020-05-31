@@ -1,0 +1,204 @@
+<prx-page-header
+    pre="Management Utils"
+    title="User Idle"
+    sub="Easely lock (or whatever you like) the screen whenever the user is idle"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card>
+        <prx-card-body>
+            <p class="bold">
+                You can make the screen lock automatically whenever a user is
+                idle for some amount of time. This is useful if your users may
+                leave their computers unattended in public or unsecure
+                locations.
+            </p>
+
+            <p>
+                A user is considered idle if they stop interacting with your
+                app. We listen to the <code>mousemove</code>,
+                <code>window.resize</code> and
+                <code>document.keydown</code> events in order to determine the
+                user interaction
+            </p>
+        </prx-card-body>
+    </prx-card>
+
+    <prx-card>
+        <prx-card-body>
+            <div class="row">
+                <div class="col-md-5">
+                    <p class="text-accent">Try it</p>
+                    <h3 class="mb-5">
+                        Set the values in the boxes next and play with it.
+                    </h3>
+
+                    <p class="bold">Logic</p>
+                    <ul class="list-unstyled">
+                        <li>
+                            The script will wait for a user's inactivity for a
+                            period of
+                            <span class="badge badge-info badge-pill px-3">{{
+                                config.idle
+                            }}</span>
+                            seconds
+                        </li>
+                        <li>
+                            If no interaction is detected the timer is fired
+                            returning a countdown for
+                            <span class="badge badge-primary badge-pill px-3">{{
+                                config.timeout
+                            }}</span>
+                            seconds
+                        </li>
+                        <li>
+                            If the user did not stop the timer then the time is
+                            out
+                        </li>
+                    </ul>
+                    <p class="bold">About Ping</p>
+                    <p>
+                        Ping is usefull when you want to perfom some action
+                        periodically on the
+                        <span class="bold">countdown timer</span> lifecycle.
+                        This value should be lower than countdown.
+                    </p>
+                    <p>
+                        You could make a request to a refresh token every
+                        <span class="badge badge-secondary badge-pill px-3">{{
+                            config.ping
+                        }}</span>
+                        seconds. If you won't use it simply set it to and zero
+                        and ignore it.
+                    </p>
+                </div>
+
+                <div class="col-md-7">
+                    <form class="form cozy">
+                        <div class="form-group">
+                            <label>User's inactive period</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="idle"
+                                placeholder="Idle (Sec)"
+                                [(ngModel)]="config.idle"
+                                [disabled]="isWatching"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Countdown after inactive period</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="timeout"
+                                placeholder="Timeout (Sec)"
+                                [(ngModel)]="config.timeout"
+                                [disabled]="isWatching"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Perform an action every n-seconds</label>
+                            <input
+                                class="form-control"
+                                type="number"
+                                name="ping"
+                                placeholder="Ping (Sec)"
+                                [(ngModel)]="config.ping"
+                                [disabled]="isWatching"
+                            />
+                        </div>
+                    </form>
+
+                    <div *ngIf="lastPing" class="text-muted">
+                        ping {{ lastPing }}
+                    </div>
+                    <div *ngIf="timeIsUp" class="bold text-danger">
+                        Time is out
+                    </div>
+
+                    <div clas="btn-group">
+                        <button
+                            class="btn btn-primary"
+                            [disabled]="isWatching"
+                            (click)="startWatching()"
+                        >
+                            Start watching
+                        </button>
+                        <button
+                            class="btn btn-primary"
+                            [disabled]="!isWatching"
+                            (click)="stopWatching()"
+                        >
+                            Stop watching
+                        </button>
+                    </div>
+
+                    <p class="small mt-3">
+                        Click <span class="bold">Stop</span> to adjust the
+                        values and start watching for user interaction, stop
+                        interacting for the amount of second you defined and see
+                        how the script works
+                    </p>
+                </div>
+            </div>
+        </prx-card-body>
+    </prx-card>
+</div>
+
+<ng-template #idleModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Session timeout</h4>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="idleModalRef.hide()"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body p-5">
+        <prx-icon [icon]="icons.clock" size="5x"></prx-icon>
+        <h5>Your session is about to expire</h5>
+
+        <prx-progress-solid
+            [value]="config.timeout - timerCount"
+            [max]="config.timeout"
+            class="my-4"
+        ></prx-progress-solid>
+
+        <p *ngIf="!timeIsUp">
+            You will be logged-out in {{ config.timeout - timerCount }} seconds
+        </p>
+
+        <div class="mt-4 d-flex justify-content-center">
+            <button
+                *ngIf="isTimer && !timeIsUp"
+                class="btn btn-primary"
+                (click)="stopTimer()"
+            >
+                Stop timer (Keep you signed in)
+            </button>
+
+            <div *ngIf="timeIsUp">
+                <p class="text-danger bold text-center">Time is out</p>
+                <hr />
+
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="text-muted">
+                        When time is out you should redirect the user (or
+                        display) to the login page. For this demo we just
+                        display this message.
+                    </p>
+                    <button class="btn btn-primary" (click)="resetTimer()">
+                        Reset timer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

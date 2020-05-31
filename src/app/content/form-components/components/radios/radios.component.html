@@ -1,0 +1,388 @@
+<prx-page-header
+    pre="Form Controls"
+    title="Checkbox and Radios"
+    sub="Checkboxes and Radio button styles"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <!-- Unstyled radios -->
+            <prx-card title="Unstyled Radios">
+                <prx-card-body>
+                    <form action=";" class="cozy">
+                        <fieldset>
+                            <legend class="small bold text-uppercase">
+                                Default unstyle
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="form-check-list">
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="exampleRadios"
+                                            id="exampleRadios1"
+                                            value="option1"
+                                            checked
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="exampleRadios1"
+                                        >
+                                            Default radio
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="exampleRadios"
+                                            id="exampleRadios2"
+                                            value="option2"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="exampleRadios2"
+                                        >
+                                            Second default radio
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="exampleRadios"
+                                            id="exampleRadios3"
+                                            value="option3"
+                                            disabled
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="exampleRadios3"
+                                        >
+                                            Disabled radio
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="small bold text-uppercase">
+                                Inline
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="form-check-list">
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="inlineRadioOptions"
+                                            id="inlineRadio1"
+                                            value="option1"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="inlineRadio1"
+                                            >1</label
+                                        >
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="inlineRadioOptions"
+                                            id="inlineRadio2"
+                                            value="option2"
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="inlineRadio2"
+                                            >2</label
+                                        >
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="inlineRadioOptions"
+                                            id="inlineRadio3"
+                                            value="option3"
+                                            disabled
+                                        />
+                                        <label
+                                            class="form-check-label"
+                                            for="inlineRadio3"
+                                            >3 (disabled)</label
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Bootstrap custom
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="form-check-list">
+                                    <div
+                                        class="form-check custom-control custom-radio"
+                                    >
+                                        <input
+                                            type="radio"
+                                            id="customRadio1"
+                                            name="customRadio"
+                                            class="custom-control-input"
+                                        />
+                                        <label
+                                            class="custom-control-label"
+                                            for="customRadio1"
+                                            >Toggle this custom radio</label
+                                        >
+                                    </div>
+
+                                    <div
+                                        class="form-check custom-control custom-radio"
+                                    >
+                                        <input
+                                            type="radio"
+                                            id="customRadio2"
+                                            name="customRadio"
+                                            class="custom-control-input"
+                                        />
+                                        <label
+                                            class="custom-control-label"
+                                            for="customRadio2"
+                                            >Or toggle this other custom
+                                            radio</label
+                                        >
+                                    </div>
+
+                                    <div
+                                        class="form-check custom-control custom-radio"
+                                    >
+                                        <input
+                                            type="radio"
+                                            id="customRadioDisabled"
+                                            name="customRadio"
+                                            class="custom-control-input"
+                                            disabled
+                                        />
+                                        <label
+                                            class="custom-control-label"
+                                            for="customRadioDisabled"
+                                            >Toggle this (disabled) radio</label
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- Styled radios -->
+            <prx-card title="Styled Radios">
+                <prx-card-body>
+                    <form class="cozy">
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Default style
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="form-check-list">
+                                    <prx-radio
+                                        label="Check me out"
+                                        [id]="'exampleRadioStyled1'"
+                                        name="defaultStyleRadio"
+                                    ></prx-radio>
+                                    <prx-radio
+                                        label="Check me out"
+                                        [id]="'exampleRadioStyled2'"
+                                        name="defaultStyleRadio"
+                                    ></prx-radio>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Inline
+                            </legend>
+
+                            <div class="form-group">
+                                <div class="form-check-list">
+                                    <prx-radio-group
+                                        name="inlineStyleRadio"
+                                        inline="true"
+                                        [(ngModel)]="inlineModel"
+                                    >
+                                        <prx-radio
+                                            label="1"
+                                            [id]="'exampleRadioInlineStyled1'"
+                                            value="1"
+                                        ></prx-radio>
+
+                                        <prx-radio
+                                            label="2"
+                                            [id]="'exampleRadioInlineStyled2'"
+                                            value="2"
+                                        ></prx-radio>
+
+                                        <prx-radio
+                                            label="3"
+                                            [id]="'exampleRadioInlineStyled3'"
+                                            value="3"
+                                        ></prx-radio>
+                                    </prx-radio-group>
+
+                                    {{ inlineModel }}
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Checked color
+                            </legend>
+
+                            <div class="row form-group form-check-list">
+                                <div
+                                    class="col-md-6"
+                                    *ngFor="let color of colors; let i = index"
+                                >
+                                    <prx-radio
+                                        [id]="
+                                            'exampleRadioColorStyled' +
+                                            color.name
+                                        "
+                                        [label]="color.name"
+                                        name="colorCheckStyleRadio"
+                                        class="radio-{{ color.value }}"
+                                    ></prx-radio>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Outlined Style
+                            </legend>
+
+                            <div class="row form-group form-check-list">
+                                <div
+                                    class="col-md-6"
+                                    *ngFor="let color of colors; let i = index"
+                                >
+                                    <prx-radio
+                                        [id]="
+                                            'exampleRadioColorOutlined' +
+                                            color.name
+                                        "
+                                        [label]="color.name"
+                                        name="colorOutlineStyleRadio"
+                                        class="radio-outlined radio-{{
+                                            color.value
+                                        }}"
+                                    ></prx-radio>
+                                </div>
+                            </div>
+
+                            <legend class="bold small text-uppercase">
+                                Outlined Style - Border 2x
+                            </legend>
+
+                            <div class="row form-group form-check-list">
+                                <div
+                                    class="col-md-6"
+                                    *ngFor="let color of colors; let i = index"
+                                >
+                                    <prx-radio
+                                        [id]="
+                                            'exampleRadioColorOutlinedBw2' +
+                                            color.name
+                                        "
+                                        [label]="color.name"
+                                        name="colorOutlineStyleRadioBw2"
+                                        class="bw-2 radio-outlined radio-{{
+                                            color.value
+                                        }}"
+                                    ></prx-radio>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- Switch toggle -->
+            <prx-card title="Switch toggle">
+                <prx-card-body>
+                    <p>Default Theme Colors</p>
+
+                    <form class="cozy">
+                        <div class="row">
+                            <div class="col-md-5 mr-md-auto">
+                                <fieldset>
+                                    <legend class="small bold text-uppercase">
+                                        Light theme
+                                    </legend>
+
+                                    <div
+                                        class="mb-3 center-flex justify-content-between"
+                                        *ngFor="
+                                            let color of colors;
+                                            let i = index
+                                        "
+                                    >
+                                        <prx-toggle
+                                            [id]="
+                                                'toggleThemeLight' + color.name
+                                            "
+                                            class="tgl-{{ color.value }}"
+                                        ></prx-toggle>
+
+                                        <p class="mb-0">{{ color.name }}</p>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-5">
+                                <fieldset>
+                                    <legend class="small bold text-uppercase">
+                                        iOs theme
+                                    </legend>
+
+                                    <div
+                                        class="mb-3 center-flex justify-content-between"
+                                        *ngFor="
+                                            let color of colors;
+                                            let i = index
+                                        "
+                                    >
+                                        <prx-toggle
+                                            [id]="'toggleThemeIos' + color.name"
+                                            theme="ios"
+                                            class="tgl-{{ color.value }}"
+                                        ></prx-toggle>
+                                        <p class="mb-0">{{ color.name }}</p>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

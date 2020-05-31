@@ -1,0 +1,71 @@
+<prx-card class="recently-viewed-products">
+    <div class="card-body">
+        <div class="row gap-y">
+            <div class="col-lg-2 d-flex flex-column">
+                <h2><span class="bold">Recently Viewed</span> Products</h2>
+
+                <nav class="nav mt-4 mt-md-auto">
+                    <a
+                        class="btn btn-circle btn-contrast btn-prev mr-2"
+                        href="javascript:;"
+                    >
+                        <prx-icon [icon]="icons.chevLeft"></prx-icon>
+                    </a>
+
+                    <a
+                        class="btn btn-circle btn-contrast btn-next"
+                        href="javascript:;"
+                    >
+                        <prx-icon [icon]="icons.chevRight"></prx-icon>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="col-lg-10">
+                <div *ngIf="products && products.length; else loading">
+                    <swiper [config]="sliderConfig">
+                        <div
+                            class="swiper-slide"
+                            *ngFor="let product of products"
+                        >
+                            <prx-card class="mb-3 mb-lg-0">
+                                <a
+                                    class="card-img-top d-block overflow-hidden"
+                                    href="javascript:;"
+                                >
+                                    <img
+                                        [src]="product.img"
+                                        class="img-responsive mx-auto"
+                                        alt=""
+                                    />
+                                </a>
+
+                                <prx-card-body>
+                                    <prx-product-title
+                                        [product]="product"
+                                    ></prx-product-title>
+                                </prx-card-body>
+                            </prx-card>
+                        </div>
+                    </swiper>
+                </div>
+
+                <ng-template #loading>
+                    <div class="row">
+                        <div class="col-md-3" *ngFor="let item of [1, 2, 3, 4]">
+                            <prx-card>
+                                <prx-card-body>
+                                    <prx-loader
+                                        template="product"
+                                        [isLoading]="isLoading"
+                                        count="1"
+                                    ></prx-loader>
+                                </prx-card-body>
+                            </prx-card>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</prx-card>

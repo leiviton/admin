@@ -1,0 +1,65 @@
+<h5 class="bold mb-0">Countries Distribution</h5>
+<p class="text-muted">
+    How the disease is distributed accross all the countries
+</p>
+
+<ngx-datatable
+    class="ngx-datatable responsive table table-hover"
+    [rows]="countries"
+    [columnMode]="ColumnMode.force"
+    [scrollbarV]="true"
+    headerHeight="53"
+    [rowHeight]="60"
+    footerHeight="60"
+    [limit]="10"
+>
+    <!-- Column Definitions -->
+    <ngx-datatable-column name="Name">
+        <ng-template let-country="row" ngx-datatable-cell-template>
+            <small class="text-muted d-block d-md-none">Country</small>
+
+            <div class="media align-items-center">
+                <prx-flag
+                    [flag]="country.code ? country.code.toLowerCase() : 'unkn'"
+                    class="mr-2"
+                ></prx-flag>
+
+                <div class="media-body">{{ country.name }}</div>
+            </div>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Confirmed" prop="confirmed.today">
+        <ng-template let-country="row" ngx-datatable-cell-template>
+            <small class="text-muted d-block d-md-none">Confirmed</small>
+            {{ country.confirmed.today | number }}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Active" prop="" [comparator]="activeComparator">
+        <ng-template let-country="row" ngx-datatable-cell-template>
+            <small class="text-muted d-block d-md-none">Active</small>
+            {{
+                country.confirmed.today -
+                    country.recovered.today -
+                    country.deaths.today | number
+            }}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Recovered" prop="recovered.today">
+        <ng-template let-country="row" ngx-datatable-cell-template>
+            <small class="text-muted d-block d-md-none">Recovered</small>
+            {{ country.recovered.today | number }}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Deaths" prop="deaths.today">
+        <ng-template let-country="row" ngx-datatable-cell-template>
+            <small class="text-muted d-block d-md-none">Deaths</small>
+            {{ country.deaths.today | number }}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column> </ngx-datatable-column>
+</ngx-datatable>

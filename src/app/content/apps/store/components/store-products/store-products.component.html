@@ -1,0 +1,36 @@
+<div class="row" *ngIf="products && products.length; else loading">
+    <div
+        class="col-sm-6 col-md-4 col-lg-3 {{ xl ? 'col-xl-' + 12 / xl : '' }}"
+        *ngFor="let product of products"
+    >
+        <prx-store-product-card [product]="product"></prx-store-product-card>
+    </div>
+</div>
+
+<div class="d-flex justify-content-md-end">
+    <pagination
+        [totalItems]="77"
+        (pageChanged)="pageChanged($event)"
+        [hidden]="isFirstLoading"
+        [(ngModel)]="currentPage"
+    ></pagination>
+</div>
+
+<ng-template #loading>
+    <div class="row">
+        <div
+            class="col-sm-6 col-md-4 col-lg-3"
+            *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8]"
+        >
+            <prx-card>
+                <prx-card-body>
+                    <prx-loader
+                        template="product"
+                        [isLoading]="isLoading"
+                        count="1"
+                    ></prx-loader>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</ng-template>

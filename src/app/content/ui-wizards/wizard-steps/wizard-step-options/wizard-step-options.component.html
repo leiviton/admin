@@ -1,0 +1,16 @@
+<h2 class="mb-5">What is most important to you?</h2>
+
+<form class="form cozy" [formGroup]="form">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let item of topics">
+            <prx-radio-group formControlName="matters">
+                <prx-radio-card showMark="true" [value]="item.code">
+                    <div class="text-center">
+                        <prx-icon [icon]="item.icon" size="xl"></prx-icon>
+                        <p class="mb-0 mt-3">{{ item.name }}</p>
+                    </div>
+                </prx-radio-card>
+            </prx-radio-group>
+        </div>
+    </div>
+</form>

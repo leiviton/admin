@@ -1,0 +1,39 @@
+<prx-card>
+    <prx-card-header [border]="false">
+        <h5>Total Audience by Region</h5>
+        <p class="text-muted mb-0">Where your visitors are coming from</p>
+    </prx-card-header>
+
+    <prx-card-body>
+        <div class="row">
+            <div class="col-lg-5">
+                <table class="table table-responsive">
+                    <tbody>
+                        <tr *ngFor="let region of regions">
+                            <td data-title="">
+                                <prx-flag
+                                    [flag]="region.country.code.toLowerCase()"
+                                ></prx-flag>
+                            </td>
+                            <td data-title="Country">
+                                {{ region.country.name }}
+                            </td>
+                            <td data-title="Audience">
+                                <prx-progress-solid
+                                    [label]="region.audience.total"
+                                    [color]="color(region)"
+                                    suffix="%"
+                                    [value]="region.audience.percentage"
+                                ></prx-progress-solid>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-6 ml-lg-auto">
+                <div id="chartdiv" class="map-container"></div>
+            </div>
+        </div>
+    </prx-card-body>
+</prx-card>

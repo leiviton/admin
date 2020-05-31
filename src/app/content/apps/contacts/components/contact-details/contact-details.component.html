@@ -1,0 +1,131 @@
+<prx-breadcrum [items]="breadcrum" class="no-margin"></prx-breadcrum>
+
+<ng-container *ngIf="contact; else loading">
+    <div class="bg-contrast py-md-3">
+        <div
+            class="container-fluid d-flex justify-content-md-between align-items-center"
+        >
+            <h1 class="title h3 d-none d-md-flex">Contact Details</h1>
+
+            <prx-tabbar>
+                <prx-nav-link
+                    [routerLink]="['/contacts/grid']"
+                    tooltip="Back to grid view"
+                >
+                    <prx-icon [icon]="icons.back"></prx-icon>
+                </prx-nav-link>
+
+                <prx-nav-link tooltip="Open in new window">
+                    <prx-icon [icon]="icons.popup"></prx-icon>
+                </prx-nav-link>
+
+                <prx-nav-link tooltip="Export">
+                    <prx-icon [icon]="icons.export"></prx-icon>
+                </prx-nav-link>
+
+                <prx-nav-link tooltip="Edit">
+                    <prx-icon [icon]="icons.edit"></prx-icon>
+                </prx-nav-link>
+
+                <prx-nav-link tooltip="Remove" class="text-danger">
+                    <prx-icon [icon]="icons.delete"></prx-icon>
+                </prx-nav-link>
+
+                <prx-nav-link tooltip="New contact" class="text-primary">
+                    <prx-icon [icon]="icons.create"></prx-icon>
+                </prx-nav-link>
+            </prx-tabbar>
+        </div>
+    </div>
+
+    <div class="contact-header pt-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="media align-items-center">
+                        <prx-avatar
+                            [avatar]="avatar"
+                            size="xl"
+                            class="mr-3 shadow"
+                        ></prx-avatar>
+
+                        <div class="media-body">
+                            <h2 class="mb-0">{{ contact.name }}</h2>
+                            <p class="lead">Lead Software Developer</p>
+                            <a href="mailto:{{ contact.email }}">{{
+                                contact.email
+                            }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="nav nav-tabs tabs-clean mt-4">
+            <li class="nav-item" *ngFor="let item of navigation">
+                <a
+                    [routerLink]="[
+                        '/contacts',
+                        contactId,
+                        'details',
+                        item.path
+                    ]"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    class="nav-link text-capitalize"
+                >
+                    <prx-icon
+                        [icon]="item.icon"
+                        size="sm"
+                        class="icon mr-0 mr-md-2"
+                    ></prx-icon>
+                    <span class="d-none d-md-inline">{{ item.path }}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container-fluid">
+        <div class="pt-4 pb-5">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #loading>
+    <div class="container-flui">
+        <div class="row">
+            <div class="col-md-8">
+                <prx-card>
+                    <prx-card-body>
+                        <prx-loader
+                            template="user-messages"
+                            [isLoading]="isLoading"
+                            count="1"
+                        ></prx-loader>
+
+                        <br />
+                        <br />
+                        <br />
+                        <prx-loader
+                            template="table"
+                            [isLoading]="isLoading"
+                        ></prx-loader>
+                    </prx-card-body>
+                </prx-card>
+            </div>
+
+            <div class="col-md-4">
+                <prx-card>
+                    <prx-card-body>
+                        <prx-loader
+                            template="list"
+                            [isLoading]="isLoading"
+                            count="3"
+                        ></prx-loader>
+                    </prx-card-body>
+                </prx-card>
+            </div>
+        </div>
+    </div>
+</ng-template>

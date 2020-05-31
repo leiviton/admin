@@ -1,0 +1,240 @@
+<prx-store-header
+    title="Search Products"
+    subtitle="We've found the following products matching our criteria"
+    [breadcrum]="breadcrum"
+>
+</prx-store-header>
+
+<div class="container-fluid mt-md-n6">
+    <div class="row">
+        <aside class="col-lg-3 pt-4 pt-lg-0">
+            <div class="sticky-md">
+                <form
+                    [formGroup]="searchForm"
+                    (ngSubmit)="updateFilter(searchForm)"
+                >
+                    <prx-card>
+                        <prx-card-header
+                            [border]="false"
+                            title="Search Criteria"
+                        ></prx-card-header>
+
+                        <prx-card-body>
+                            <prx-accordion
+                                class="accordion-collapsed accordion-clean"
+                                [closeOthers]="false"
+                            >
+                                <prx-accordion-group
+                                    heading="Brands"
+                                    [isOpen]="false"
+                                >
+                                    <prx-fade-content>
+                                        <prx-radio-group
+                                            name="brand"
+                                            formControlName="brand"
+                                            (valueChanged)="
+                                                updateFilter(searchForm)
+                                            "
+                                        >
+                                            <div class="row">
+                                                <prx-radio-card
+                                                    *ngFor="
+                                                        let brand of criteria.brands
+                                                    "
+                                                    [id]="brand.slug"
+                                                    class="col-md-4"
+                                                    [value]="brand.slug"
+                                                    [theme]="
+                                                        ColorScheme.Primary
+                                                    "
+                                                >
+                                                    <div
+                                                        class="center-flex flex-column"
+                                                    >
+                                                        <img
+                                                            [src]="brand.logo"
+                                                            [alt]="brand.slug"
+                                                            class="icon brand img-responsive"
+                                                        />
+                                                    </div>
+                                                </prx-radio-card>
+                                            </div>
+                                        </prx-radio-group>
+                                    </prx-fade-content>
+                                </prx-accordion-group>
+
+                                <prx-accordion-group
+                                    heading="Price"
+                                    [isOpen]="true"
+                                >
+                                    <nouislider
+                                        [config]="priceSliderConfig"
+                                        [formControl]="
+                                            searchForm.controls.price
+                                        "
+                                        (change)="updateFilter(searchForm)"
+                                    ></nouislider>
+                                </prx-accordion-group>
+
+                                <prx-accordion-group
+                                    heading="Category"
+                                    [isOpen]="false"
+                                >
+                                    <prx-fade-content>
+                                        <prx-radio-group
+                                            name="category"
+                                            formControlName="category"
+                                            (valueChanged)="
+                                                updateFilter(searchForm)
+                                            "
+                                        >
+                                            <div class="row">
+                                                <prx-radio-card
+                                                    *ngFor="
+                                                        let category of criteria.categories
+                                                    "
+                                                    [id]="category.slug"
+                                                    [value]="category.slug"
+                                                    class="col-md-4"
+                                                    [theme]="
+                                                        ColorScheme.Primary
+                                                    "
+                                                >
+                                                    <div
+                                                        class="center-flex flex-column"
+                                                    >
+                                                        <img
+                                                            [src]="
+                                                                category.logo
+                                                            "
+                                                            [alt]="
+                                                                category.slug
+                                                            "
+                                                            class="icon category img-responsive"
+                                                        />
+
+                                                        <p
+                                                            class="font-sm mb-0 text-center"
+                                                        >
+                                                            {{ category.name }}
+                                                        </p>
+                                                    </div>
+                                                </prx-radio-card>
+                                            </div>
+                                        </prx-radio-group>
+                                    </prx-fade-content>
+                                </prx-accordion-group>
+
+                                <prx-accordion-group
+                                    heading="Size"
+                                    [isOpen]="false"
+                                >
+                                    <prx-radio-group
+                                        name="size"
+                                        formControlName="size"
+                                        (valueChanged)="
+                                            updateFilter(searchForm)
+                                        "
+                                    >
+                                        <div class="row">
+                                            <prx-radio-card
+                                                *ngFor="
+                                                    let size of criteria.sizes
+                                                "
+                                                [id]="size.letter"
+                                                [value]="size.letter"
+                                                class="col-md-6"
+                                                [theme]="ColorScheme.Primary"
+                                            >
+                                                <div class="text-center">
+                                                    <p class="bold font-md">
+                                                        {{ size.letter }}
+                                                    </p>
+                                                    <p class="font-sm mb-0">
+                                                        {{ size.name }}
+                                                    </p>
+                                                </div>
+                                            </prx-radio-card>
+                                        </div>
+                                    </prx-radio-group>
+                                </prx-accordion-group>
+
+                                <prx-accordion-group
+                                    heading="Colors"
+                                    [isOpen]="false"
+                                >
+                                    <prx-radio-group
+                                        name="color"
+                                        formControlName="color"
+                                        (valueChanged)="
+                                            updateFilter(searchForm)
+                                        "
+                                    >
+                                        <div class="row">
+                                            <prx-radio-card
+                                                *ngFor="
+                                                    let color of criteria.colors
+                                                "
+                                                [id]="color"
+                                                [value]="color"
+                                                showMark="true"
+                                                class="col-md-4"
+                                                [theme]="ColorScheme.Primary"
+                                            >
+                                                <div
+                                                    class="color-item"
+                                                    [style.backgroundColor]="
+                                                        '#' + color
+                                                    "
+                                                ></div>
+                                            </prx-radio-card>
+                                        </div>
+                                    </prx-radio-group>
+                                </prx-accordion-group>
+
+                                <prx-accordion-group
+                                    heading="Avg. Customer Review"
+                                    [isOpen]="false"
+                                >
+                                    <rating
+                                        formControlName="review"
+                                        [max]="5"
+                                        [readonly]="false"
+                                        [customTemplate]="star"
+                                        (click)="updateFilter(searchForm)"
+                                    ></rating>
+                                    & Up
+
+                                    <ng-template
+                                        #star
+                                        let-index="index"
+                                        let-value="value"
+                                    >
+                                        <prx-icon
+                                            [icon]="icons.starSelected"
+                                            *ngIf="index < value; else starFill"
+                                            size="2x"
+                                            class="text-warning"
+                                        ></prx-icon>
+
+                                        <ng-template #starFill>
+                                            <prx-icon
+                                                [icon]="icons.star"
+                                                size="2x"
+                                                class="text-warning"
+                                            ></prx-icon>
+                                        </ng-template>
+                                    </ng-template>
+                                </prx-accordion-group>
+                            </prx-accordion>
+                        </prx-card-body>
+                    </prx-card>
+                </form>
+            </div>
+        </aside>
+
+        <div class="col-lg-9 pt-md-8">
+            <prx-store-products [filter]="filter"></prx-store-products>
+        </div>
+    </div>
+</div>

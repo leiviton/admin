@@ -1,0 +1,157 @@
+<prx-card title="Latest Tickets">
+    <prx-card-body>
+        <ng-container *ngIf="tickets && tickets.length; else loading">
+            <prx-fade-content>
+                <ngx-datatable
+                    class="ngx-datatable responsive table table-hover"
+                    [rows]="tickets"
+                    [columnMode]="ColumnMode.force"
+                    headerHeight="auto"
+                    [rowHeight]="false"
+                    footerHeight="auto"
+                    [limit]="10"
+                >
+                    <!-- Column Definitions -->
+                    <ngx-datatable-column
+                        name="requestedBy"
+                        label="Requested By"
+                    >
+                        <ng-template
+                            let-ticket="row"
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <small class="text-muted d-block d-md-none"
+                                >Requested By</small
+                            >
+                            <prx-avatar-info
+                                [name]="value.name"
+                                [info]="value.email"
+                                size="md"
+                            >
+                                <prx-avatar
+                                    [avatar]="ticket.requestedByAvatar"
+                                    size="md"
+                                ></prx-avatar>
+                            </prx-avatar-info>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Id">
+                        <ng-template
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <small class="text-muted d-block d-md-none"
+                                >Project Id</small
+                            >
+                            {{ value }}
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Asignee">
+                        <ng-template
+                            let-asignee="value"
+                            ngx-datatable-cell-template
+                        >
+                            <small class="text-muted d-block d-md-none"
+                                >Requested By</small
+                            >
+                            <prx-avatar-list
+                                [avatars]="asigneeAvatars(asignee)"
+                                size="sm"
+                                [display]="
+                                    asignee.length > 3 ? 3 : asignee.length
+                                "
+                            ></prx-avatar-list>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Company">
+                        <ng-template
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <small class="text-muted d-block d-md-none"
+                                >Company</small
+                            >
+                            {{ value }}
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Priority">
+                        <ng-template
+                            let-ticket="row"
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <small class="text-muted d-block d-md-none"
+                                >Priority</small
+                            >
+                            <span
+                                class="text-capitalize text-{{
+                                    ticket.priorityClass
+                                }}"
+                            >
+                                <prx-icon
+                                    [icon]="getPriorityIcon(ticket.priority)"
+                                    size="sm"
+                                ></prx-icon>
+                                {{ ticket.priority }}
+                            </span>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Status">
+                        <ng-template
+                            let-ticket="row"
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <small class="text-muted d-block d-md-none"
+                                >Status</small
+                            >
+                            <span
+                                class="text-capitalize text-{{
+                                    ticket.statusClass
+                                }}"
+                            >
+                                <prx-icon
+                                    [icon]="icons.dot"
+                                    size="sm"
+                                ></prx-icon>
+                                {{ ticket.status }}
+                            </span>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Tags">
+                        <ng-template
+                            let-tags="value"
+                            ngx-datatable-cell-template
+                        >
+                            <small class="text-muted d-block d-md-none"
+                                >Tags</small
+                            >
+                            <div class="d-flex flex-wrap">
+                                <span
+                                    class="badge badge-light border rounded-pill text-truncate mr-1 mt-1"
+                                    *ngFor="let tag of tags"
+                                    >{{ tag }}</span
+                                >
+                            </div>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </prx-fade-content>
+        </ng-container>
+
+        <ng-template #loading>
+            <prx-loader
+                template="table"
+                [isLoading]="isLoading"
+                [count]="3"
+            ></prx-loader>
+        </ng-template>
+    </prx-card-body>
+</prx-card>

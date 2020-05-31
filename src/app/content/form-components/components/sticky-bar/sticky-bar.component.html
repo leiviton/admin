@@ -1,0 +1,225 @@
+<prx-page-header pre="Form Controls" title="Sticky toolbar">
+    <ng-container page-tools>
+        <prx-context-menu>
+            <ng-container menu-icon>
+                <prx-icon icon="settings"></prx-icon>
+            </ng-container>
+        </prx-context-menu>
+    </ng-container>
+</prx-page-header>
+
+<div class="container-fluid">
+    <prx-card>
+        <prx-card-header prxSticky>
+            <ng-container card-title>
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0">Fixed Card Header</h5>
+
+                    <div class="ml-auto">
+                        <button class="btn btn-primary mr-3" type="button">
+                            <prx-icon [icon]="icons.check"></prx-icon> Save
+                        </button>
+
+                        <button class="btn btn-light border" type="button">
+                            <prx-icon [icon]="icons.chevronLeft"></prx-icon>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </ng-container>
+        </prx-card-header>
+
+        <prx-card-body>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <form class="form cozy" autocomplete="off">
+                        <fieldset class="mb-4">
+                            <legend
+                                class="font-sm bold text-uppercase text-primary"
+                            >
+                                Create New Project
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Project Name</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control form-control-lg bg-light bold"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Description</label>
+                                <textarea
+                                    type="text"
+                                    class="form-control form-control-lg"
+                                ></textarea>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"
+                                            >Start date</label
+                                        >
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button
+                                                    class="btn btn-6 border"
+                                                    type="button"
+                                                    (click)="startDate.toggle()"
+                                                >
+                                                    <prx-icon
+                                                        [icon]="icons.calendar"
+                                                    ></prx-icon>
+                                                </button>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                #startDate="bsDatepicker"
+                                                bsDatepicker
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"
+                                            >End Date</label
+                                        >
+
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button
+                                                    class="btn btn-6 border"
+                                                    type="button"
+                                                    (click)="endDate.toggle()"
+                                                >
+                                                    <prx-icon
+                                                        [icon]="icons.calendar"
+                                                    ></prx-icon>
+                                                </button>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                #endDate="bsDatepicker"
+                                                bsDatepicker
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-4">
+                            <legend
+                                class="font-sm bold text-uppercase text-primary"
+                            >
+                                Attendant Information
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label">Fullname</label>
+                                <input type="text" class="form-control" />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"
+                                            >Email Address</label
+                                        >
+                                        <input
+                                            type="email"
+                                            class="form-control"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"
+                                            >Phone Number</label
+                                        >
+                                        <input
+                                            type="tel"
+                                            class="form-control"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >How did you know about the event?</label
+                                >
+                                <div>
+                                    <prx-radio-group inline="true">
+                                        <prx-radio-card
+                                            *ngFor="let channel of channels"
+                                            [value]="channel.name"
+                                        >
+                                            <div class="text-center">
+                                                <prx-icon
+                                                    [icon]="channel.icon"
+                                                ></prx-icon>
+                                                <p class="mb-0 mt-3">
+                                                    {{ channel.name }}
+                                                </p>
+                                            </div>
+                                        </prx-radio-card>
+                                    </prx-radio-group>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-4">
+                            <legend
+                                class="font-sm bold text-uppercase text-primary"
+                            >
+                                Account Details
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Personal Website</label
+                                >
+                                <input type="text" class="form-control" />
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"
+                                            >Username</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label"
+                                            >Password</label
+                                        >
+                                        <input
+                                            type="password"
+                                            class="form-control"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </prx-card-body>
+    </prx-card>
+</div>

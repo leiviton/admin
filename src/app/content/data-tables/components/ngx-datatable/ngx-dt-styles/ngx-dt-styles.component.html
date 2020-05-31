@@ -1,0 +1,70 @@
+<prx-page-header pre="Data Tables" title="Table Styles"></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Table Styles">
+        <prx-card-body>
+            <prx-alert [scheme]="ColorScheme.Light">
+                <p>
+                    You can choose between two main UI layouts:
+                    <span class="bold"> Table view and List view.</span>
+
+                    Additionally you can apply the pre-made variations you like
+                    such as: hover, striped and bordered
+                </p>
+
+                <div class="row gap-y">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label">Table Layout</label>
+
+                            <div class="d-flex align-items-center">
+                                <span class="mr-2">List</span>
+                                <prx-toggle
+                                    [(ngModel)]="isTableView"
+                                ></prx-toggle>
+                                <span class="ml-2">Table</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Variation</label>
+                            <ng-select
+                                [items]="styles"
+                                [multiple]="true"
+                                [closeOnSelect]="false"
+                                bindLabel="name"
+                                bindValue="style"
+                                [(ngModel)]="currentStyles"
+                                placeholder="Select styles"
+                            >
+                            </ng-select>
+                        </div>
+                    </div>
+                </div>
+            </prx-alert>
+
+            <ng-container *ngIf="users && users.length; else loadingList">
+                <ngx-datatable
+                    class="ngx-datatable {{ tableStyles }}"
+                    [class.table]="currentStyle !== 'listview'"
+                    [rows]="users"
+                    [columns]="columns"
+                    [columnMode]="ColumnMode.force"
+                    headerHeight="auto"
+                    [rowHeight]="false"
+                >
+                </ngx-datatable>
+            </ng-container>
+
+            <ng-template #loadingList>
+                <prx-loader
+                    [template]="'list'"
+                    [isLoading]="isLoading"
+                    [count]="2"
+                ></prx-loader>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+</div>

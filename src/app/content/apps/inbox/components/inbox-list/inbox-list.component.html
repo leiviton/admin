@@ -1,0 +1,83 @@
+<div class="emails-ws--messages">
+    <!-- Messages -->
+    <form class="form search-form border-bottom py-3">
+        <div class="form-group mb-0 d-flex align-items-center">
+            <button type="submit" class="btn btn-link text-gray">
+                <prx-icon icon="search"></prx-icon>
+            </button>
+            <input
+                type="text"
+                class="form-control border-0 shadow-none"
+                placeholder="Search email..."
+                name="criteria"
+            />
+        </div>
+    </form>
+
+    <div
+        class="emails-wrapper"
+        perfectScrollbar
+        *ngIf="messages && messages.length; else loading"
+    >
+        <!-- <div *ngFor="let group of messages"> You still can use it ... -->
+        <ng-template ngFor let-group [ngForOf]="messages">
+            <p
+                class="small semi-bold text-accent text-uppercase list-group-item border-0 my-3"
+            >
+                {{ group.group }}
+            </p>
+
+            <div class="list list-hover list-group-flush">
+                <a
+                    href="javascript:;"
+                    class="list-group-item list-group-item-action"
+                    *ngFor="let message of group.items"
+                    (click)="displayMessage(message)"
+                    [ngClass]="{
+                        'is-selected': message.id === selectedMessage?.id
+                    }"
+                >
+                    <div class="media">
+                        <prx-avatar
+                            [avatar]="fromMessage(message)"
+                            size="sm"
+                        ></prx-avatar>
+
+                        <div class="media-body position-relative pb-5">
+                            <p
+                                class="mb-0 text-muted d-flex justify-content-between"
+                            >
+                                <span class="text-capitalize">{{
+                                    message.from.name
+                                }}</span>
+                                <span class="small text-muted ml-auto">{{
+                                    message.time
+                                }}</span>
+                            </p>
+                            <div class="w-100 absolute">
+                                <p
+                                    class="bold text-truncate text-capitalize mb-2"
+                                >
+                                    {{ message.subject }}
+                                </p>
+                                <p class="small text-body text-truncate mb-0">
+                                    {{ message.body | htmlclean }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </ng-template>
+    </div>
+
+    <ng-template #loading>
+        <div class="p-4">
+            <prx-loader
+                [template]="'user-messages'"
+                [isLoading]="isLoading"
+                [count]="8"
+            ></prx-loader>
+        </div>
+    </ng-template>
+</div>

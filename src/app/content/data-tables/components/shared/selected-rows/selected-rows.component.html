@@ -1,0 +1,22 @@
+<p *ngIf="!rows?.length">No Selections</p>
+
+<prx-accordion class="accordion-clean accordion-collapsed">
+    <prx-accordion-group [heading]="row.name" *ngFor="let row of rows">
+        <prx-avatar-info [name]="row.name" [info]="row.email" size="md">
+            <prx-avatar
+                [avatar]="getAvatarFromUser(row)"
+                size="md"
+            ></prx-avatar>
+        </prx-avatar-info>
+
+        <hr />
+
+        <div class="media">
+            <prx-flag [flag]="row.nat" class="mr-2"></prx-flag>
+            <div class="media-body bold">{{ row.location.country }}</div>
+        </div>
+        <p class="text-muted small my-0">
+            {{ row.location.city }}, {{ row.location.state }}
+        </p>
+    </prx-accordion-group>
+</prx-accordion>

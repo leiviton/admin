@@ -1,0 +1,41 @@
+<prx-card>
+    <prx-card-body>
+        <h5 class="bold mb-3">
+            COVID-19 Cases <span class="font-sm text-muted">- Worldwide</span>
+        </h5>
+        <p class="text-uppercase mb-1 semi-bold">Global Confirmed Cases</p>
+        <p class="h1 bold mb-3">{{ confirmed.today | number }}</p>
+
+        <prx-progress-solid
+            [value]="stacked"
+            [max]="maxStacked"
+            class="mb-3"
+        ></prx-progress-solid>
+
+        <ul class="list-unstyled cases-summary">
+            <li
+                *ngFor="let metric of metricsToDisplay"
+                class="mb-2 d-flex align-items-center justify-content-between"
+            >
+                <div class="label">
+                    <prx-icon
+                        [icon]="icons.circle"
+                        [class]="'text-' + getClass(metric)"
+                        class="mr-2"
+                    ></prx-icon>
+                    <span class="text-capitalize">{{ metric.type }}</span>
+                </div>
+
+                <div class="cases d-flex align-items-center">
+                    <span class="value bold mr-2">{{
+                        metric.today | number
+                    }}</span>
+                    <span class=" badge badge-gray-light rounded-pill">
+                        <prx-icon [icon]="getVariationIcon(metric)"></prx-icon>
+                        {{ getVariation(metric) | number }}
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </prx-card-body>
+</prx-card>

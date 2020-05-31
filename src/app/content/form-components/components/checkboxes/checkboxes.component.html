@@ -1,0 +1,423 @@
+<prx-page-header
+    pre="Form Controls"
+    title="Checkbox and Radios"
+    sub="Checkboxes and Radio button styles"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card>
+        <prx-card-body>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <!-- Unstyled checkbox -->
+                    <prx-card title="Unstyled Checkboxes">
+                        <prx-card-body>
+                            <form class="cozy">
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Default unstyled
+                                    </legend>
+
+                                    <div class="form-group">
+                                        <div class="form-check-list">
+                                            <div class="form-check">
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    value=""
+                                                    id="defaultCheck1"
+                                                />
+                                                <label
+                                                    class="form-check-label"
+                                                    for="defaultCheck1"
+                                                >
+                                                    Default checkbox
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    value=""
+                                                    id="defaultCheck2"
+                                                />
+                                                <label
+                                                    class="form-check-label"
+                                                    for="defaultCheck2"
+                                                >
+                                                    Second Default checkbox
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check">
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    value=""
+                                                    id="defaultCheck3"
+                                                    disabled
+                                                />
+                                                <label
+                                                    class="form-check-label"
+                                                    for="defaultCheck3"
+                                                >
+                                                    Disabled checkbox
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Inline
+                                    </legend>
+
+                                    <div class="form-group">
+                                        <div class="form-check-list">
+                                            <div
+                                                class="form-check form-check-inline"
+                                            >
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    id="inlineCheckbox1"
+                                                    value="option1"
+                                                />
+                                                <label
+                                                    class="form-check-label"
+                                                    for="inlineCheckbox1"
+                                                    >1</label
+                                                >
+                                            </div>
+
+                                            <div
+                                                class="form-check form-check-inline"
+                                            >
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    id="inlineCheckbox2"
+                                                    value="option2"
+                                                />
+                                                <label
+                                                    class="form-check-label"
+                                                    for="inlineCheckbox2"
+                                                    >2</label
+                                                >
+                                            </div>
+
+                                            <div
+                                                class="form-check form-check-inline"
+                                            >
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    id="inlineCheckbox3"
+                                                    value="option3"
+                                                    disabled
+                                                />
+                                                <label
+                                                    class="form-check-label"
+                                                    for="inlineCheckbox3"
+                                                    >3 (disabled)</label
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Bootstrap custom
+                                    </legend>
+
+                                    <div class="form-group">
+                                        <div class="form-check-list">
+                                            <div
+                                                class="form-check custom-control custom-checkbox"
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    class="custom-control-input"
+                                                    id="customCheck1"
+                                                />
+                                                <label
+                                                    class="custom-control-label"
+                                                    for="customCheck1"
+                                                    >Check this custom
+                                                    checkbox</label
+                                                >
+                                            </div>
+
+                                            <div
+                                                class="form-check custom-control custom-checkbox"
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    class="custom-control-input"
+                                                    id="customCheck2"
+                                                />
+                                                <label
+                                                    class="custom-control-label"
+                                                    for="customCheck2"
+                                                    >Check this another custom
+                                                    checkbox</label
+                                                >
+                                            </div>
+
+                                            <div
+                                                class="form-check custom-control custom-checkbox"
+                                            >
+                                                <input
+                                                    type="checkbox"
+                                                    class="custom-control-input"
+                                                    id="customCheckDisabled"
+                                                    disabled
+                                                />
+                                                <label
+                                                    class="custom-control-label"
+                                                    for="customCheckDisabled"
+                                                    >Check this (disabled)
+                                                    checkbox</label
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </prx-card-body>
+                    </prx-card>
+
+                    <!-- Styled checkbox -->
+                    <prx-card title="Styled Checkboxes">
+                        <prx-card-body>
+                            <div class="bg-light border rounded p-4 form-group">
+                                <p class="mt-0">
+                                    Checkboxes are set to a solid background by
+                                    default when checked, you can change that
+                                    behavior by adding
+                                    <code>.inverted</code> css class to the main
+                                    <code>.checkbox</code> element, that way the
+                                    checkbox will remain outlined keeping the
+                                    color of your preference.
+                                </p>
+                                <p class="semi-bold text-info">
+                                    Make sure you have some elements checked and
+                                    give it a try
+                                </p>
+
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-0 semi-bold mr-3">
+                                        Toggle Inverted
+                                    </p>
+                                    <prx-toggle
+                                        [(ngModel)]="inverted"
+                                        [id]="'toggleInverted'"
+                                    ></prx-toggle>
+                                </div>
+                            </div>
+
+                            <form class="cozy">
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Default style
+                                    </legend>
+
+                                    <div class="form-group">
+                                        <div class="form-check-list">
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckStyledChecked'
+                                                "
+                                                label="Check me..."
+                                                checked="true"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+
+                                            <prx-checkbox
+                                                [id]="'exampleCheckStyled1'"
+                                                label="Check me out"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+
+                                            <prx-checkbox
+                                                [id]="'exampleCheckStyled2'"
+                                                label="Check me out"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+
+                                            <prx-checkbox
+                                                [id]="'exampleCheckStyled3'"
+                                                label="I'm checked"
+                                                [class.inverted]="inverted"
+                                                [checked]="true"
+                                            ></prx-checkbox>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Inline
+                                    </legend>
+
+                                    <div class="form-group">
+                                        <div class="form-check-list">
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckInlineStyled1'
+                                                "
+                                                label="1"
+                                                inline="true"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckInlineStyled2'
+                                                "
+                                                label="2"
+                                                inline="true"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckInlineStyled3'
+                                                "
+                                                label="3"
+                                                inline="true"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Checked color
+                                    </legend>
+
+                                    <div class="row form-group form-check-list">
+                                        <div
+                                            class="col-md-6"
+                                            *ngFor="
+                                                let color of colors;
+                                                let i = index
+                                            "
+                                        >
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckColor' +
+                                                    color.name
+                                                "
+                                                [label]="color.name"
+                                                class="checkbox-{{
+                                                    color.value
+                                                }}"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Outlined Style
+                                    </legend>
+
+                                    <div class="row form-group form-check-list">
+                                        <div
+                                            class="col-md-6"
+                                            *ngFor="
+                                                let color of colors;
+                                                let i = index
+                                            "
+                                        >
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckColorOutlined' +
+                                                    color.name
+                                                "
+                                                [label]="color.name"
+                                                class="checkbox-outlined checkbox-{{
+                                                    color.value
+                                                }}"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+                                        </div>
+                                    </div>
+
+                                    <legend class="bold small text-uppercase">
+                                        Outlined Style - Border 2x
+                                    </legend>
+                                    <div class="row form-group form-check-list">
+                                        <div
+                                            class="col-md-6"
+                                            *ngFor="
+                                                let color of colors;
+                                                let i = index
+                                            "
+                                        >
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckColorOutlinedBw2' +
+                                                    color.name
+                                                "
+                                                [label]="color.name"
+                                                class="checkbox-outlined bw-2 checkbox-{{
+                                                    color.value
+                                                }}"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend class="bold small text-uppercase">
+                                        Solid Style
+                                    </legend>
+
+                                    <div class="row form-group form-check-list">
+                                        <div
+                                            class="col-md-6"
+                                            *ngFor="
+                                                let color of colors;
+                                                let i = index
+                                            "
+                                        >
+                                            <prx-checkbox
+                                                [id]="
+                                                    'exampleCheckColorSolid' +
+                                                    color.name
+                                                "
+                                                [label]="color.name"
+                                                class="checkbox-solid checkbox-{{
+                                                    color.value
+                                                }}"
+                                                [class.inverted]="inverted"
+                                            ></prx-checkbox>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </prx-card-body>
+
+                        <prx-card-footer>
+                            <div class="d-flex align-items-center">
+                                <p class="mb-0 semi-bold mr-3">
+                                    Toggle Inverted
+                                </p>
+                                <prx-toggle
+                                    [(ngModel)]="inverted"
+                                    [id]="'toggleInvertedFooter'"
+                                ></prx-toggle>
+                            </div>
+                        </prx-card-footer>
+                    </prx-card>
+                </div>
+            </div>
+        </prx-card-body>
+    </prx-card>
+</div>

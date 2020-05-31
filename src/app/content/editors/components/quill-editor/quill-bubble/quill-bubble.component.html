@@ -1,0 +1,53 @@
+<prx-page-header
+    pre="Editors"
+    title="Quill Editor"
+    sub="Bubble is a simple tooltip based theme"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Quill - Default Editor">
+        <prx-card-body>
+            <quill-editor [styles]="{ height: '400px' }" theme="bubble">
+                <div quill-editor-toolbar>
+                    <span class="ql-formats">
+                        <button
+                            type="button"
+                            class="ql-bold"
+                            [title]="'Bold'"
+                        ></button>
+                        <button
+                            type="button"
+                            class="ql-italic"
+                            [title]="'Italic'"
+                        ></button>
+                        <button
+                            type="button"
+                            class="ql-underline"
+                            [title]="'Underline'"
+                        ></button>
+                        <button
+                            type="button"
+                            class="ql-link"
+                            [title]="'Strike'"
+                        ></button>
+                    </span>
+
+                    <span class="ql-formats">
+                        <button
+                            type="button"
+                            class="ql-header"
+                            value="1"
+                            [title]="'Header 1'"
+                        ></button>
+                        <button
+                            type="button"
+                            class="ql-header"
+                            value="2"
+                            [title]="'Header 2'"
+                        ></button>
+                    </span>
+                </div>
+            </quill-editor>
+        </prx-card-body>
+    </prx-card>
+</div>

@@ -1,0 +1,275 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Modals"
+    sub="ngx-bootstrap modals component"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Basic Modal">
+                <prx-card-body>
+                    <button
+                        class="btn btn-primary"
+                        (click)="openModal(basicModal)"
+                    >
+                        Launch demo modal
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Scrollable Long Content">
+                <prx-card-body>
+                    <div class="row gap-y">
+                        <div class="col">
+                            When modals become too long for the user’s viewport
+                            or device, they scroll independent of the page
+                            itself. Try the demo below to see what we mean.
+                        </div>
+                        <div class="col">
+                            <button
+                                class="btn btn-primary"
+                                (click)="openModal(scrollableModal)"
+                            >
+                                Launch demo modal
+                            </button>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row gap-y">
+                        <div class="col">
+                            You can also create a scrollable modal that allows
+                            scroll the modal body by adding
+                            <code>.modal-dialog-scrollable</code> to
+                            <code>.modal-dialog</code>.
+                        </div>
+                        <div class="col">
+                            <button
+                                class="btn btn-primary"
+                                (click)="
+                                    openModal(scrollableModal, {
+                                        class: 'modal-dialog-scrollable'
+                                    })
+                                "
+                            >
+                                Launch demo modal
+                            </button>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="With Popups and Popover">
+                <prx-card-body>
+                    <button
+                        class="btn btn-primary"
+                        (click)="
+                            openModal(popupAndOverModal, {
+                                class: 'modal-dialog-centered'
+                            })
+                        "
+                    >
+                        Launch Modal
+                    </button>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Confirm Window">
+                <prx-card-body>
+                    <button
+                        class="btn btn-primary"
+                        (click)="
+                            openModal(confirmModal, {
+                                class: 'modal-sm',
+                                ignoreBackdropClick: true
+                            })
+                        "
+                    >
+                        Launch demo modal
+                    </button>
+                </prx-card-body>
+
+                <prx-card-footer>
+                    <pre><span class="bold">Confirmation Result:</span>  {{confirmMessage}}</pre>
+                </prx-card-footer>
+            </prx-card>
+
+            <prx-card title="Modal Vertically Centered">
+                <prx-card-body>
+                    <button
+                        class="btn btn-primary"
+                        (click)="
+                            openModal(basicModal, {
+                                class: 'modal-dialog-centered'
+                            })
+                        "
+                    >
+                        Launch Modal
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Modal Sizes">
+                <prx-card-body>
+                    <div class="row gap-y">
+                        <div
+                            class="col"
+                            *ngFor="let size of ['sm', 'md', 'lg', 'xl']"
+                        >
+                            <button
+                                class="btn btn-primary"
+                                (click)="
+                                    openModal(basicModal, {
+                                        class: 'modal-' + size
+                                    })
+                                "
+                            >
+                                Modal
+                                <span class="bold text-uppercase">{{
+                                    size
+                                }}</span>
+                            </button>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #basicModal>
+    <div class="modal-header">
+        <h4 class="modal-title">This is a Modal</h4>
+        <button type="button" class="close" (click)="modalRef.hide()">
+            <prx-icon icon="x"></prx-icon>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+        consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit
+        amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
+        quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-outline-gray"
+            (click)="modalRef.hide()"
+        >
+            Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+</ng-template>
+
+<ng-template #scrollableModal>
+    <div class="modal-header">
+        <h4 class="modal-title">Scrollable fixed content</h4>
+        <button type="button" class="close" (click)="modalRef.hide()">
+            <prx-icon icon="x"></prx-icon>
+        </button>
+    </div>
+    <div class="modal-body" perfectScrollbar>
+        <p *ngFor="let item of items">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            delectus enim esse excepturi, impedit, iste magnam officia optio,
+            quam quis quisquam saepe sint unde velit vitae! Animi in iusto ut?
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="modalRef.hide()"
+        >
+            Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+</ng-template>
+
+<ng-template #confirmModal>
+    <div class="modal-body text-center">
+        <div class="text-danger mb-4">
+            <prx-icon icon="help-circle" size="lg"></prx-icon>
+        </div>
+        <p>Do you want to confirm?</p>
+    </div>
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-gray-light"
+            (click)="confirm('Confirmed!!!')"
+        >
+            Yes
+        </button>
+        <button
+            type="button"
+            class="btn btn-primary"
+            (click)="confirm('Declined!!!')"
+        >
+            No
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #popupAndOverModal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Tooltips and Popovers with Modal</h4>
+        <button
+            type="button"
+            class="close pull-right"
+            aria-label="Close"
+            (click)="modalRef.hide()"
+        >
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque
+            delectus enim esse excepturi, impedit, iste magnam officia optio,
+            quam quis quisquam saepe sint unde velit vitae! Animi in iusto ut?
+        </p>
+
+        <div>
+            This
+            <button
+                type="button"
+                class="btn btn-light border"
+                popoverTitle="Popover on top"
+                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus"
+                triggers="hover"
+            >
+                Button
+            </button>
+            will trigger a popover when hovering
+        </div>
+
+        <hr />
+        <div>
+            You can use tooltips as well on
+            <a
+                href="javascript:;"
+                class="dotted"
+                tooltip="I'm a tooltip in a Link"
+                >Links</a
+            >
+            and
+            <button
+                type="button"
+                class="btn btn-light border"
+                tooltip="I'm a tooltip"
+            >
+                Buttons
+            </button>
+        </div>
+    </div>
+</ng-template>

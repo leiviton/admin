@@ -1,0 +1,184 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Tabs"
+    sub="ngx-bootstrap popover components"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Basic Popovers">
+                <prx-card-body>
+                    <p>Click the button bellow to trigger a popover</p>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        [popover]="popTemplate"
+                        [popoverContext]="context"
+                        container="body"
+                    >
+                        Live demo
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Custom Triggers">
+                <prx-card-body>
+                    <div class="row align-items-center gap-y">
+                        <div class="col-md-6">Mouse enter/leave</div>
+                        <div class="col-md-6">
+                            <button
+                                type="button"
+                                class="btn btn-info"
+                                popover="I will hide on blur"
+                                triggers="mouseenter:mouseleave"
+                            >
+                                Hover over me!
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="row align-items-center gap-y">
+                        <div class="col-md-6">Double Click</div>
+                        <div class="col-md-6">
+                            <button
+                                type="button"
+                                class="btn btn-info"
+                                popover="Double click one more time"
+                                triggers="dblclick"
+                            >
+                                Double click me!
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="row align-items-center gap-y">
+                        <div class="col-md-6">Keypress</div>
+                        <div class="col-md-6">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Show popover on input change"
+                                popover="I will hide on blur"
+                                triggers="keypress:focusout"
+                            />
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="row align-items-center gap-y">
+                        <div class="col-md-6">
+                            Manual Trigger <br />
+                            <div class="btn-group">
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-primary"
+                                    (click)="pop.show()"
+                                >
+                                    Show
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-primary"
+                                    (click)="pop.hide()"
+                                >
+                                    Hide
+                                </button>
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-primary"
+                                    (click)="pop.toggle()"
+                                >
+                                    Toggle
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <span
+                                class="dotted"
+                                popover="Hello there! I was triggered manually"
+                                popoverTitle="Manual Triggered"
+                                triggers=""
+                                #pop="bs-popover"
+                            >
+                                This text has attached popover
+                            </span>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Custom Template">
+                <prx-card-body>
+                    <p>
+                        Use a <code>ng-template</code> as the content to display
+                        customize it even more
+                    </p>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        [popover]="popTemplate"
+                        popoverTitle="Popover Title"
+                        [popoverContext]="context"
+                        container="body"
+                    >
+                        Live demo
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Placement">
+                <prx-card-body>
+                    <div class="row gap-y">
+                        <div
+                            class="col"
+                            *ngFor="
+                                let placement of [
+                                    'top',
+                                    'right',
+                                    'bottom',
+                                    'left',
+                                    'auto'
+                                ]
+                            "
+                        >
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                                popoverTitle="Popover on {{ placement }}"
+                                container="body"
+                                [placement]="placement"
+                            >
+                                On {{ placement }}
+                            </button>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Dismiss on next click ">
+                <prx-card-body>
+                    <button
+                        type="button"
+                        class="btn btn-success"
+                        popover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                        popoverTitle="Dismissible popover"
+                        triggers="focus"
+                    >
+                        Dismissible popover
+                    </button>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #popTemplate let-message="message">
+    {{ message }} I'm a content placed inside a
+    <code class="bold">template</code>
+</ng-template>

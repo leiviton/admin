@@ -1,0 +1,120 @@
+<prx-page-header
+    pre="Data Tables"
+    title="Basic "
+    sub="Angular table component for presenting large and complex data."
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Rows Grouping">
+        <prx-card-body>
+            <ng-container
+                *ngIf="
+                    flatCountryUsers && flatCountryUsers.length;
+                    else loading
+                "
+            >
+                <prx-alert [scheme]="ColorScheme.Light">
+                    <p>Try the table or list views options</p>
+
+                    <div class="d-flex align-items-center">
+                        <div class="form-group">
+                            <label class="control-label">Layout</label>
+
+                            <div class="d-flex align-items-center">
+                                <span class="mr-2">List</span>
+                                <prx-toggle
+                                    [(ngModel)]="isTableView"
+                                    [id]="'table-layout'"
+                                ></prx-toggle>
+                                <span class="ml-2">Table</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group ml-5" *ngIf="!isTableView">
+                            <label class="control-label"
+                                >Collapse list rows</label
+                            >
+
+                            <div class="d-flex align-items-center">
+                                <prx-toggle
+                                    [(ngModel)]="isListCollapsed"
+                                    [id]="'collapse-list-rows'"
+                                ></prx-toggle>
+                            </div>
+                        </div>
+                    </div>
+                </prx-alert>
+
+                <!-- When grouping the [limit] applies to the groups not the rows -->
+                <ngx-datatable
+                    class="table-hover"
+                    [ngClass]="{
+                        listview: !isTableView,
+                        table: isTableView,
+                        'collapsed-list': isListCollapsed
+                    }"
+                    [rows]="flatCountryUsers"
+                    [columnMode]="ColumnMode.force"
+                    headerHeight="auto"
+                    rowHeight="false"
+                    footerHeight="auto"
+                    [limit]="2"
+                    groupRowsBy="country"
+                    [groupExpansionDefault]="true"
+                >
+                    <!-- Group Header Template -->
+                    <ngx-datatable-group-header
+                        [rowHeight]="50"
+                        (toggle)="onDetailToggle($event)"
+                    >
+                        <ng-template
+                            let-group="group"
+                            let-expanded="expanded"
+                            ngx-datatable-group-header-template
+                        >
+                            <a
+                                href="javascript:;"
+                                class="d-flex align-items-center"
+                                title="Expand/Collapse Group"
+                                (click)="toggleExpandGroup(group)"
+                            >
+                                <prx-nav-link>
+                                    <prx-dropdown-icon
+                                        [open]="expanded"
+                                    ></prx-dropdown-icon>
+                                </prx-nav-link>
+                                <div class="ml-3">
+                                    <span class="text-capitalize bold">{{
+                                        group.value[0].country
+                                    }}</span>
+                                    <span class="text-muted small d-block"
+                                        >{{ group.value.length }} users</span
+                                    >
+                                </div>
+                            </a>
+                        </ng-template>
+                    </ngx-datatable-group-header>
+
+                    <!-- Column Templates -->
+                    <ngx-datatable-column name="Name"></ngx-datatable-column>
+                    <ngx-datatable-column name="Email"></ngx-datatable-column>
+                    <ngx-datatable-column
+                        name="Country"
+                        prop="location.country"
+                    ></ngx-datatable-column>
+                    <ngx-datatable-column name="Phone"></ngx-datatable-column>
+                    <ngx-datatable-column name="Gender"></ngx-datatable-column>
+                    <ngx-datatable-column name="Age"></ngx-datatable-column>
+                </ngx-datatable>
+            </ng-container>
+
+            <ng-template #loading>
+                <prx-loader
+                    [template]="'table'"
+                    [isLoading]="isLoading"
+                    [count]="2"
+                ></prx-loader>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+</div>

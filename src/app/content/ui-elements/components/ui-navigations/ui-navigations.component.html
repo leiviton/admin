@@ -1,0 +1,131 @@
+<prx-page-header
+    title="UI Elements"
+    pre="Navigations"
+    sub="Useful navigations components"
+>
+</prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Breadcrums">
+                <prx-card-body>
+                    <prx-breadcrum [items]="breadcrum"></prx-breadcrum>
+
+                    <prx-breadcrum
+                        [items]="breadcrum"
+                        separator="chevron-right"
+                    >
+                    </prx-breadcrum>
+
+                    <prx-breadcrum
+                        [items]="breadcrum"
+                        [separator]="icons.chevronRight"
+                    >
+                    </prx-breadcrum>
+
+                    <prx-breadcrum
+                        [items]="breadcrum"
+                        [separator]="icons.circle"
+                    >
+                    </prx-breadcrum>
+
+                    <prx-breadcrum
+                        [items]="breadcrum"
+                        [separator]="icons.arrowRight"
+                    >
+                    </prx-breadcrum>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Context Menu">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        We've created a <code>context-menu</code> component to
+                        make it easy to display context menu options. By default
+                        the component will display a
+                        <code>more-horizontal</code> icon, you can configure the
+                        component to display any icon you like
+                    </prx-alert>
+
+                    <div class="d-flex justify-content-end p-3">
+                        <prx-context-menu class="mr-3">
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+
+                        <prx-context-menu class="mr-3">
+                            <ng-container menu-icon>
+                                <prx-icon icon="more-vertical"></prx-icon>
+                            </ng-container>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+
+                        <prx-context-menu class="mr-3">
+                            <ng-container menu-icon>
+                                <prx-icon icon="menu"></prx-icon>
+                            </ng-container>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+
+                        <prx-context-menu class="mr-3">
+                            <ng-container menu-icon>
+                                <prx-icon icon="chevron-down"></prx-icon>
+                            </ng-container>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

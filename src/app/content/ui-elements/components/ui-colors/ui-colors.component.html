@@ -1,0 +1,55 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Color System"
+    sub="Easy customizable color scheme"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <prx-card>
+                <prx-card-header title="Core Colors"></prx-card-header>
+
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        The Core Colors are meant to define the general scale of
+                        the colors used across the entire application. These
+                        colors include all the values you want to use for the
+                        overall components.
+                    </prx-alert>
+
+                    <prx-ui-color-box
+                        [scheme]="color"
+                        *ngFor="let color of colors"
+                    ></prx-ui-color-box>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card>
+                <prx-card-header title="Gray Scale"></prx-card-header>
+
+                <prx-card-body>
+                    <prx-ui-color-ribbon
+                        [colors]="grayScale.value"
+                    ></prx-ui-color-ribbon>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card>
+                <prx-card-header title="Palette"></prx-card-header>
+
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        The main Bootstrap Palette defines the color for the
+                        Bootstrap framework theme colors. All the colors are
+                        taken from the core colors.
+                    </prx-alert>
+
+                    <prx-ui-color-ribbon
+                        [colors]="palette.value"
+                    ></prx-ui-color-ribbon>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

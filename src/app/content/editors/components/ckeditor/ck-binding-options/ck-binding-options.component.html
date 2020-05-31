@@ -1,0 +1,29 @@
+<prx-page-header pre="Editors" title="CKEditor Editor"></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="CKEditor - Integration with NgModel">
+        <prx-card-body>
+            <ckeditor
+                [(ngModel)]="model.editorData"
+                [editor]="editor"
+            ></ckeditor>
+
+            <span class="small bold">Model</span>:
+            <code>{{ model.editorData }}</code>
+        </prx-card-body>
+    </prx-card>
+
+    <prx-card title="CKEditor - with Reactive Forms">
+        <prx-card-body>
+            <form [formGroup]="form" class="form">
+                <ckeditor
+                    formControlName="content"
+                    [editor]="editor"
+                ></ckeditor>
+            </form>
+
+            <span class="small bold">Form Value</span>:
+            <code>{{ form.value | json }}</code>
+        </prx-card-body>
+    </prx-card>
+</div>

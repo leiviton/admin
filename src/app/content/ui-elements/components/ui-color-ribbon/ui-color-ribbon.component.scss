@@ -1,0 +1,21 @@
+@import "import";
+
+:host {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    color: #fff;
+    flex-wrap: wrap;
+
+    .color {
+        flex: 1;
+        padding: 4rem 1rem 1rem 1rem;
+    }
+}
+
+.color-gray100,
+.color-gray200,
+.color-light,
+.color-contrast {
+    color: $color-dark;
+}

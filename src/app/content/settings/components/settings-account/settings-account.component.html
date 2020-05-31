@@ -1,0 +1,139 @@
+<prx-card class="overflow-hidden">
+    <div class="shapes-wrapper">
+        <div class="static-shape shape-ring shape-ring-1">
+            <div class="animation animation-rotating-clockwise"></div>
+        </div>
+
+        <div class="static-shape shape-main">
+            <img src="assets/img/scenes/social-media.svg" alt="" />
+        </div>
+    </div>
+
+    <prx-card-body class="pb-6 p-md-5">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="text-group">Update your account information</p>
+                <h2 class="mb-4">Account Settings</h2>
+
+                <p>
+                    <span class="semi-bold"
+                        >Use this space to display a detailed description of the
+                        purpose of the page.</span
+                    >
+                    Click the avatar to upload your profile picture, we'll make
+                    a real HTTP request but no data will be processed instead we
+                    create a fake user and return it, so you'll see a random
+                    picture instead of the one you actually picked up.
+                </p>
+
+                <p class="text-muted">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquid praesentium commodi quia corporis eaque, ullam
+                    beatae facilis repellat! Consectetur officia placeat nobis,
+                    provident velit quidem ullam harum minima eos veritatis!
+                </p>
+            </div>
+
+            <div class="col-md-6 col-xl-5 ml-xl-auto">
+                <form novalidate>
+                    <div class="form-group">
+                        <label class="control-label">Avatar</label>
+                        <prx-avatar
+                            [editable]="true"
+                            [avatar]="avatar"
+                            (changed)="onUrlChanged($event)"
+                            size="lg"
+                        ></prx-avatar>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Username</label>
+
+                        <input
+                            type="text"
+                            class="form-control font-bold"
+                            placeholder="Username"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Email</label>
+                        <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Email"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Interface Language</label>
+                        <ng-select
+                            [items]="languages"
+                            bindLabel="name"
+                            bindValue="code"
+                            placeholder="Select language"
+                        >
+                        </ng-select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Layout</label>
+                        <div>
+                            <prx-radio-group>
+                                <prx-radio-card
+                                    inline="true"
+                                    *ngFor="let layout of layouts"
+                                    [value]="layout.name"
+                                    showMark="true"
+                                >
+                                    <div class="text-center">
+                                        <img
+                                            [src]="
+                                                'assets/img/icons/' +
+                                                layout.icon +
+                                                '.png'
+                                            "
+                                            alt=""
+                                        />
+                                        <p class="mb-0 mt-3">
+                                            {{ layout.name }}
+                                        </p>
+                                    </div>
+                                </prx-radio-card>
+                            </prx-radio-group>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary">
+                            Save Information
+                        </button>
+                    </div>
+                </form>
+
+                <hr class="my-4 border-dashed" />
+
+                <prx-card class="bg-light overflow-hidden">
+                    <div class="shapes-wrapper">
+                        <div class="static-shape shape-circle shape-circle-1">
+                            <div></div>
+                        </div>
+                    </div>
+
+                    <prx-card-body>
+                        <h4 class="bold mb-3">Deactivate Account</h4>
+                        <p class="text-muted mb-5">
+                            By pressing the button bellow you agree than all of
+                            your data including photos and videos will be
+                            removed permanently and will not be recoverable.
+                        </p>
+
+                        <button class="btn btn-danger">
+                            Permanently delete my Account
+                        </button>
+                    </prx-card-body>
+                </prx-card>
+            </div>
+        </div>
+    </prx-card-body>
+</prx-card>

@@ -1,0 +1,168 @@
+<prx-page-header title="Manage Invoices" pre="Billing">
+    <nav page-tools>
+        <button class="btn btn-gray-light text-darker">
+            <prx-icon [icon]="views.table"></prx-icon>
+        </button>
+        <button class="btn btn-gray-light text-darker">
+            <prx-icon [icon]="views.list"></prx-icon>
+        </button>
+    </nav>
+</prx-page-header>
+
+<div class="container-fluid">
+    <ng-container *ngIf="invoices && invoices.length; else loading">
+        <prx-card *ngFor="let invoice of invoices" class="mb-2">
+            <prx-card-header>
+                <ng-container card-title>
+                    <div class="row gap-y align-items-center">
+                        <div class="col-md-6">
+                            <h5 class="mb-0">Invoice #{{ invoice.id }}</h5>
+                            <span
+                                class="badge badge-{{
+                                    invoice.statusBadge
+                                }} badge-pill text-capitalize"
+                                >{{ invoice.status }}</span
+                            >
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row gap-y">
+                                <div class="col-md-6 col-xl-5 d-flex flex-wrap">
+                                    <prx-label-info label="Issue date">
+                                        <prx-icon
+                                            [icon]="icons.calendar"
+                                            class="mr-2"
+                                        ></prx-icon>
+                                        <span
+                                            >{{
+                                                invoice.issueDate
+                                                    | date: 'mediumDate'
+                                            }}
+                                        </span>
+                                    </prx-label-info>
+
+                                    <prx-label-info
+                                        label="Due Date"
+                                        class="ml-2 ml-md-5"
+                                    >
+                                        <prx-icon
+                                            [icon]="icons.calendar"
+                                            class="mr-2"
+                                        ></prx-icon>
+                                        <span
+                                            >{{
+                                                invoice.issueDate
+                                                    | date: 'mediumDate'
+                                            }}
+                                        </span>
+                                    </prx-label-info>
+                                </div>
+                                <div class="col-md-6 col-xl-7">
+                                    <prx-label-info class="flex-fill">
+                                        <ng-container title-label>
+                                            <div
+                                                class="d-flex align-items-center justify-content-between"
+                                            >
+                                                Payment Progress
+                                                <span class="payment-percent"
+                                                    ><span class="font-light"
+                                                        >${{
+                                                            invoice.paid
+                                                                | number
+                                                        }}</span
+                                                    >/${{
+                                                        invoice.amount | number
+                                                    }}</span
+                                                >
+                                            </div>
+                                        </ng-container>
+
+                                        <prx-progress-solid
+                                            [value]="
+                                                (invoice.paid /
+                                                    invoice.amount) *
+                                                100
+                                            "
+                                            size="sm"
+                                            class="mt-2 text-success"
+                                            [color]="invoice.statusBadge"
+                                        ></prx-progress-solid>
+                                    </prx-label-info>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <nav class="nav" card-tools>
+                    <prx-vertical-toggler
+                        [toggled]="invoice.expanded"
+                        (click)="invoice.expanded = !invoice.expanded"
+                    ></prx-vertical-toggler>
+
+                    <prx-context-menu>
+                        <ng-container menu-icon>
+                            <prx-icon icon="more-horizontal"></prx-icon>
+                        </ng-container>
+
+                        <a
+                            class="dropdown-item bold"
+                            [routerLink]="['invoice', invoice.id]"
+                        >
+                            <prx-icon
+                                [icon]="icons.eye"
+                                class="context-menu-icon"
+                            ></prx-icon>
+                            View
+                        </a>
+                        <a class="dropdown-item" href="javascript:;">
+                            <prx-icon
+                                [icon]="icons.download"
+                                class="context-menu-icon"
+                            ></prx-icon>
+                            Download
+                        </a>
+                        <a class="dropdown-item" href="javascript:;">
+                            <prx-icon
+                                [icon]="icons.bell"
+                                class="context-menu-icon"
+                            ></prx-icon>
+                            Reminder
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a
+                            class="dropdown-item text-danger"
+                            href="javascript:;"
+                        >
+                            <prx-icon
+                                [icon]="icons.trash"
+                                class="context-menu-icon text-danger"
+                            ></prx-icon>
+                            Delete
+                        </a>
+                    </prx-context-menu>
+                </nav>
+            </prx-card-header>
+
+            <prx-card-body
+                [collapse]="!invoice.expanded"
+                [isAnimated]="true"
+                (expanded)="onShown(invoice)"
+            >
+                <prx-invoice-details [invoice]="invoice"></prx-invoice-details>
+            </prx-card-body>
+        </prx-card>
+    </ng-container>
+
+    <ng-template #loading>
+        <div class="row">
+            <div class="col-md-6">
+                <prx-loader
+                    [template]="'list'"
+                    [isLoading]="isLoading"
+                    [count]="4"
+                ></prx-loader>
+            </div>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,69 @@
+<prx-card title="Projects Overview">
+    <ng-container *ngIf="projects && projects.length; else loading">
+        <prx-fade-content class="full-card">
+            <table
+                class="table table-responsive table-card table-clean table-hover"
+            >
+                <thead class="thead-light">
+                    <tr>
+                        <th>Project</th>
+                        <th>Status</th>
+                        <th>Progress</th>
+                        <th>Team</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let project of projects">
+                        <td data-title="Project">
+                            {{ project.company }}
+                        </td>
+
+                        <td data-title="Status">
+                            <span
+                                class="text-capitalize text-{{
+                                    project.statusClass
+                                }}"
+                            >
+                                <prx-icon
+                                    [icon]="icons.dot"
+                                    size="sm"
+                                ></prx-icon>
+                                {{ project.status }}
+                            </span>
+                        </td>
+
+                        <td data-title="Team">
+                            <prx-avatar-list
+                                [avatars]="teamAvatars(project.asignee)"
+                                size="sm"
+                                [display]="
+                                    project.asignee.length > 3
+                                        ? 3
+                                        : project.asignee.length
+                                "
+                            ></prx-avatar-list>
+                        </td>
+
+                        <td data-title="Progress" class="w-25">
+                            <prx-progress-solid
+                                [value]="60"
+                                suffix="%"
+                                [label]="' '"
+                            ></prx-progress-solid>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </prx-fade-content>
+    </ng-container>
+
+    <ng-template #loading>
+        <prx-card-body>
+            <prx-loader
+                template="table"
+                [isLoading]="isLoading"
+                [count]="3"
+            ></prx-loader>
+        </prx-card-body>
+    </ng-template>
+</prx-card>

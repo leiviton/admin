@@ -1,0 +1,68 @@
+<div class="emails-ws--body" *ngIf="email; else noresult">
+    <nav class="nav d-flex d-md-none py-2">
+        <a
+            href="javascript:;)"
+            class="nav-link nav-item email-list-toggle"
+            (click)="triggerReturnToList()"
+        >
+            <prx-icon [icon]="icons.longArrowAltLeft"></prx-icon>
+        </a>
+    </nav>
+
+    <div class="email-content-wrapper p-4">
+        <div class="email-header">
+            <div
+                class="subject border-bottom py-4 d-flex align-items-center justify-content-between"
+            >
+                <p class="semi-bold lead text-capitalize mb-0">
+                    {{ email.subject }}
+                </p>
+
+                <div class="btn-group btn-group-reply ml-auto">
+                    <button type="button" class="btn btn-link">
+                        <prx-icon [icon]="icons.reply"></prx-icon>
+                    </button>
+                    <button type="button" class="btn btn-link">
+                        <prx-icon [icon]="icons.replyAll"></prx-icon>
+                    </button>
+                    <button type="button" class="btn btn-link">
+                        <prx-icon [icon]="icons.trashAlt"></prx-icon>
+                    </button>
+                </div>
+            </div>
+
+            <prx-avatar-info
+                [name]="user.avatar.name"
+                class="py-4 text-darker"
+                [info]="user.email"
+            >
+                <prx-avatar [avatar]="user.avatar"></prx-avatar>
+            </prx-avatar-info>
+        </div>
+
+        <div class="email-body" [innerHtml]="email.body"></div>
+    </div>
+
+    <div class="email-reply-wrapper p-4">
+        <div class="card start-reply">
+            <div class="card-body">
+                Click <a href="javascript:;">here</a> to reply
+            </div>
+        </div>
+
+        <textarea
+            name="reply"
+            id="reply-email"
+            placeholder="Start typing here to reply"
+            class="d-none"
+            title=""
+        ></textarea>
+    </div>
+</div>
+
+<ng-template #noresult>
+    <div class="no-result center-xy text-center">
+        <prx-icon icon="mail" size="xxl" class="text-gray"></prx-icon>
+        <h1 class="thin font-md">No email has been selected</h1>
+    </div>
+</ng-template>

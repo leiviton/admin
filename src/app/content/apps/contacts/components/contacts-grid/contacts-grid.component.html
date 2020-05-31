@@ -1,0 +1,271 @@
+<prx-page-header pre="Contacts" title="Contact List" [sub]="totalCount">
+    <ng-container page-tools>
+        <ul class="nav">
+            <li class="nav-item mr-2 d-none d-md-inline-flex">
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search contacts..."
+                />
+            </li>
+            <li class="nav-item mr-2">
+                <a href="" class="btn btn-primary nav-link">
+                    <prx-icon [icon]="icons.add"></prx-icon> Add Contact
+                </a>
+            </li>
+
+            <li class="nav-item ml-auto ml-md-0">
+                <prx-context-menu>
+                    <a class="dropdown-item" href="javascript:;">Export</a>
+                    <a class="dropdown-item" href="javascript:;"
+                        >Another action</a
+                    >
+                    <a class="dropdown-item" href="javascript:;"
+                        >Something else here</a
+                    >
+                    <div class="divider dropdown-divider"></div>
+                    <a class="dropdown-item" href="javascript:;"
+                        >Separated link</a
+                    >
+                </prx-context-menu>
+            </li>
+        </ul>
+
+        <input
+            type="text"
+            class="form-control d-md-none mt-2 mt-md-0"
+            placeholder="Search contacts..."
+        />
+    </ng-container>
+</prx-page-header>
+
+<div class="container-fluid">
+    <ng-container *ngIf="contacts && contacts.length; else loading">
+        <div class="row gap-y">
+            <div
+                class="col-md-3"
+                *ngFor="let contact of contacts; let i = index"
+            >
+                <prx-card class="mb-0 h-100">
+                    <prx-card-body>
+                        <div class="d-flex justify-content-between">
+                            <prx-checkbox [checked]="isSelected"></prx-checkbox>
+
+                            <prx-context-menu>
+                                <a
+                                    class="dropdown-item"
+                                    [routerLink]="['../', i, 'details']"
+                                >
+                                    <span class="d-inline-block w-20px"
+                                        ><prx-icon
+                                            [icon]="icons.details"
+                                        ></prx-icon
+                                    ></span>
+                                    <span class="bold">Details</span>
+                                </a>
+
+                                <a class="dropdown-item" href="javascript:;">
+                                    <span class="d-inline-block w-20px"
+                                        ><prx-icon
+                                            [icon]="icons.edit"
+                                        ></prx-icon
+                                    ></span>
+                                    Edit Contact
+                                </a>
+                                <a class="dropdown-item" href="javascript:;">
+                                    <span class="d-inline-block w-20px"
+                                        ><prx-icon
+                                            [icon]="icons.copy"
+                                        ></prx-icon
+                                    ></span>
+                                    Duplicate
+                                </a>
+                                <div class="divider dropdown-divider"></div>
+                                <a
+                                    class="dropdown-item text-danger"
+                                    href="javascript:;"
+                                >
+                                    <span class="d-inline-block w-20px"
+                                        ><prx-icon
+                                            [icon]="icons.delete"
+                                        ></prx-icon
+                                    ></span>
+                                    Remove
+                                </a>
+                            </prx-context-menu>
+                        </div>
+
+                        <a
+                            [routerLink]="['../', i, 'details']"
+                            class="d-flex flex-column align-items-center"
+                        >
+                            <prx-avatar
+                                [avatar]="getAvatarFromContact(contact)"
+                                size="xl"
+                            ></prx-avatar>
+                            <h4 class="mt-4 mb-0">{{ contact.name }}</h4>
+                            <p class="text-muted">{{ contact.email }}</p>
+                        </a>
+
+                        <tabset type="tabs tabs-clean tabs-justify-center">
+                            <tab>
+                                <ng-template tabHeading>
+                                    <prx-icon
+                                        class="icon"
+                                        [icon]="icons.location"
+                                        size="2x"
+                                    ></prx-icon>
+                                </ng-template>
+
+                                <div class="text-center">
+                                    <prx-flag
+                                        [flag]="contact.nat"
+                                        size="md"
+                                        class="mr-2"
+                                    ></prx-flag>
+                                    <div class="media-body bold">
+                                        {{ contact.location.country }}
+                                    </div>
+
+                                    <p class="text-muted my-0">
+                                        {{ contact.location.city }},
+                                        {{ contact.location.state }}
+                                    </p>
+                                </div>
+                            </tab>
+                            <tab>
+                                <ng-template tabHeading>
+                                    <prx-icon
+                                        class="icon"
+                                        [icon]="icons.contact"
+                                        size="2x"
+                                    ></prx-icon>
+                                </ng-template>
+
+                                <dl class="mb-0 fill">
+                                    <dt>
+                                        <prx-icon
+                                            [icon]="icons.company"
+                                        ></prx-icon>
+                                        Company:
+                                    </dt>
+                                    <dl>{{ contact.company }}</dl>
+
+                                    <dt>
+                                        <prx-icon
+                                            [icon]="icons.phone"
+                                        ></prx-icon>
+                                        Phone:
+                                    </dt>
+                                    <dl>{{ contact.phone }}</dl>
+
+                                    <dt>
+                                        <prx-icon
+                                            [icon]="icons.mobile"
+                                        ></prx-icon>
+                                        Mobile:
+                                    </dt>
+                                    <dl class="mb-0">{{ contact.cell }}</dl>
+                                </dl>
+                            </tab>
+                            <tab>
+                                <ng-template tabHeading>
+                                    <prx-icon
+                                        class="icon"
+                                        [icon]="icons.notes"
+                                        size="2x"
+                                    ></prx-icon>
+                                </ng-template>
+
+                                <div class="form-group">
+                                    <quill-editor
+                                        [styles]="{ height: '100px' }"
+                                        theme="bubble"
+                                        placeholder="Add a note here"
+                                    >
+                                        <div quill-editor-toolbar>
+                                            <span class="ql-formats">
+                                                <button
+                                                    type="button"
+                                                    class="ql-bold"
+                                                    [title]="'Bold'"
+                                                ></button>
+                                                <button
+                                                    type="button"
+                                                    class="ql-italic"
+                                                    [title]="'Italic'"
+                                                ></button>
+                                                <button
+                                                    type="button"
+                                                    class="ql-underline"
+                                                    [title]="'Underline'"
+                                                ></button>
+                                                <button
+                                                    type="button"
+                                                    class="ql-link"
+                                                    [title]="'Strike'"
+                                                ></button>
+                                            </span>
+
+                                            <span class="ql-formats">
+                                                <button
+                                                    type="button"
+                                                    class="ql-header"
+                                                    value="1"
+                                                    [title]="'Header 1'"
+                                                ></button>
+                                                <button
+                                                    type="button"
+                                                    class="ql-header"
+                                                    value="2"
+                                                    [title]="'Header 2'"
+                                                ></button>
+                                            </span>
+                                        </div>
+                                    </quill-editor>
+                                </div>
+
+                                <button
+                                    class="btn btn-block btn-{{
+                                        contact.statusClass
+                                    }}"
+                                >
+                                    Add notes
+                                </button>
+                            </tab>
+                        </tabset>
+                    </prx-card-body>
+
+                    <prx-card-footer class="d-flex">
+                        <div *ngIf="contact.tags && contact.tags.length">
+                            <span
+                                class="badge badge-light border rounded-pill text-truncate mr-1 mt-1"
+                                *ngFor="let tag of contact.tags"
+                            >
+                                {{ tag }}
+                            </span>
+                        </div>
+
+                        <span
+                            class="text-capitalize ml-auto text-{{
+                                contact.statusClass
+                            }}"
+                            [class.align-self-end]="!contact.tags"
+                        >
+                            <prx-icon [icon]="icons.dot" size="sm"></prx-icon>
+                            {{ contact.status }}
+                        </span>
+                    </prx-card-footer>
+                </prx-card>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-template #loading>
+        <prx-loader
+            [template]="'table'"
+            [isLoading]="isLoading"
+            [count]="3"
+        ></prx-loader>
+    </ng-template>
+</div>

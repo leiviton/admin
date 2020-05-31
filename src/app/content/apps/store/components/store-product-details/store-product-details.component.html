@@ -1,0 +1,405 @@
+<prx-breadcrum class="no-margin" [items]="breadcrum"></prx-breadcrum>
+
+<ng-container *ngIf="product; else loading">
+    <div class="product-details-main">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 d-flex flex-column">
+                    <img
+                        [src]="selectedImage"
+                        [alt]="product.name"
+                        class="mb-4 mx-auto"
+                    />
+
+                    <div class="mx-5">
+                        <swiper [config]="sliderConfig">
+                            <div
+                                class="swiper-slide"
+                                *ngFor="
+                                    let image of product.details.availability
+                                        .images;
+                                    let i = index
+                                "
+                            >
+                                <prx-card
+                                    class="bw-2"
+                                    [class.border-primary]="
+                                        image === selectedImage
+                                    "
+                                >
+                                    <prx-card-body>
+                                        <a
+                                            class="center-flex flex-column"
+                                            href="javascript:;"
+                                            (click)="updateImage(image)"
+                                        >
+                                            <img
+                                                [src]="image"
+                                                [alt]="product.name"
+                                                class="icon img-responsive"
+                                            />
+                                        </a>
+                                    </prx-card-body>
+                                </prx-card>
+                            </div>
+                        </swiper>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="product-name mb-4">
+                        <h1 class="product-title">{{ product.name }}</h1>
+                        <a
+                            class="product-category text-muted"
+                            href="javascript:;"
+                            >{{ product.category }}</a
+                        >
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="reviews">
+                            <rating
+                                [(ngModel)]="product.rating"
+                                [max]="5"
+                                [readonly]="true"
+                                class="text-warning"
+                            ></rating>
+                            <p class="text-muted mt-0">5 reviews</p>
+                        </div>
+
+                        <div class="stock ml-auto">
+                            <span
+                                class="badge badge-success rounded-pill px-4 py-2"
+                                >In Stock</span
+                            >
+                        </div>
+                    </div>
+
+                    <div class="product-price mb-4">
+                        <del
+                            class="text-muted light strike-through d-block"
+                            *ngIf="product.price.banned"
+                        >
+                            <span>${{ product.price.banned }}.</span>
+                            <sup>00</sup>
+                        </del>
+
+                        <div class="text-primary semi-bold font-lg">
+                            <span>${{ product.price.current }}.</span>
+                            <sup>00</sup>
+                        </div>
+                    </div>
+
+                    <p
+                        class="product-description mb-5"
+                        [innerHTML]="product.details.description"
+                    ></p>
+
+                    <div class="color-selection">
+                        <a
+                            href="javascript:;"
+                            class="color-option"
+                            *ngFor="
+                                let color of product.details.availability.colors
+                            "
+                            [ngStyle]="{
+                                borderColor:
+                                    selectedColor === color
+                                        ? '#' + color
+                                        : 'transparent'
+                            }"
+                            (click)="updateColor(color)"
+                        >
+                            <div
+                                class="color-item"
+                                [style.backgroundColor]="'#' + color"
+                            ></div>
+                        </a>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="actions mb-5">
+                        <button
+                            class="btn btn-primary btn-lg btn-rounded px-4 mr-3"
+                        >
+                            <prx-icon
+                                icon="shopping-cart"
+                                class="mr-2"
+                            ></prx-icon>
+                            Add to Cart
+                        </button>
+                        <a href="javascript:;">
+                            <prx-icon icon="heart" class="mr-2"></prx-icon>
+                            Wishlist
+                        </a>
+                    </div>
+
+                    <div class="share d-flex">
+                        <nav class="nav align-items-center">
+                            <span class="bold text-uppercase mr-4">Share</span>
+                            <a
+                                href="javascript:;"
+                                class="nav-link nav-item text-muted"
+                                *ngFor="let net of networks"
+                            >
+                                <prx-icon [icon]="net.icon"></prx-icon>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-details-tabs">
+        <tabset
+            type="tabs tabs-bordered tabs-justify-center tab-content-contrast"
+        >
+            <tab heading="Overview">
+                <div class="section">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 ml-md-auto order-md-last">
+                                <img
+                                    src="https://5studios.net/assets/proxima/images/products/computerconnection.png"
+                                    class="img-responsive"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-4">
+                                    <h3>
+                                        Repellendus error recusandae architecto
+                                    </h3>
+                                    <p>
+                                        Eius vel eveniet quis corrupti illo
+                                        inventore id tempore dolorum praesentium
+                                        omnis odit fugiat, adipisci maiores quas
+                                        amet aliquam? Illo, eos aliquam.
+                                    </p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h3>
+                                        Voluptates atque sint optio sit placeat
+                                    </h3>
+                                    <p>
+                                        Facilis error voluptates suscipit odio
+                                        doloribus id deleniti tenetur illum.
+                                        Nisi delectus commodi quisquam beatae.
+                                        Atque autem nobis ipsum minima
+                                        architecto tempora!
+                                    </p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h3>
+                                        Ex impedit vel quam aut autem suscipit
+                                    </h3>
+                                    <p>
+                                        Repellendus rem facere necessitatibus
+                                        saepe! Debitis accusantium quaerat iure,
+                                        perferendis assumenda repellendus soluta
+                                        quis aperiam commodi perspiciatis
+                                        dolores id atque esse deleniti.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 mr-md-auto">
+                                <img
+                                    src="https://5studios.net/assets/proxima/images/products/computerconnection.png"
+                                    class="img-responsive"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <h3>
+                                    Perferendis aliquam, quidem similique porro
+                                    saepe molestias
+                                </h3>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur
+                                    adipisicing elit. Dicta, tempora. Voluptate
+                                    et aperiam earum nisi ipsam? Necessitatibus
+                                    dolor commodi nostrum impedit repellat
+                                    veniam voluptate soluta sunt aliquid
+                                    reprehenderit, perspiciatis rem.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 ml-md-auto order-md-last">
+                                <img
+                                    src="https://5studios.net/assets/proxima/images/products/computerconnection.png"
+                                    class="img-responsive"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="col-md-6">
+                                <h3>
+                                    Qui facere numquam quo odit corporis beatae
+                                </h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Quo adipisci cupiditate
+                                    veniam corporis nulla doloremque ipsam
+                                    blanditiis dolor quos rerum, perferendis
+                                    velit facilis sunt repellat soluta quisquam
+                                    labore accusamus porro!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+
+            <tab heading="Technical Specs">
+                <div class="container">
+                    <div class="section-heading text-center mb-5">
+                        <h2>Technical Specifications</h2>
+                    </div>
+
+                    <div
+                        class="row"
+                        *ngFor="
+                            let group of product.details.specifications;
+                            let i = index
+                        "
+                        [class.mb-5]="
+                            i < product.details.specifications.length - 1
+                        "
+                    >
+                        <div class="col-md-6 text-center text-md-right">
+                            <h5>{{ group.name }}</h5>
+                        </div>
+
+                        <div class="col-md-6">
+                            <dl
+                                class="text-center text-md-left"
+                                *ngIf="group.items; else groupDescription"
+                            >
+                                <ng-container *ngFor="let spec of group.items">
+                                    <dt class="text-capitalize">
+                                        {{ spec.name }}:
+                                    </dt>
+                                    <dd>{{ spec.description }}</dd>
+                                </ng-container>
+                            </dl>
+
+                            <ng-template #groupDescription>
+                                <div [innerHTML]="group.description"></div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+
+            <tab heading="Reviews">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-xl-8 mr-xl-auto">
+                            <h3>All Reviews</h3>
+                            <hr class="my-4" />
+
+                            <ng-container
+                                *ngFor="let review of product.details.reviews"
+                            >
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-5 col-xl-4">
+                                        <prx-avatar-info
+                                            [name]="review.user.name"
+                                        >
+                                            <prx-avatar
+                                                [avatar]="review.user"
+                                            ></prx-avatar>
+                                            <rating
+                                                [ngModel]="review.rate"
+                                                [readonly]="true"
+                                                class="text-warning"
+                                                avatar-info
+                                            ></rating>
+                                        </prx-avatar-info>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-7 col-xl-8">
+                                        <div
+                                            [innerHTML]="review.description"
+                                        ></div>
+                                        <div class="d-flex align-items-center">
+                                            <div class="thumbs">
+                                                <prx-icon
+                                                    [icon]="icons.thumbs.up"
+                                                ></prx-icon>
+                                                <span class="mr-2">
+                                                    {{ review.thumbs.up }}</span
+                                                >
+
+                                                <prx-icon
+                                                    [icon]="icons.thumbs.down"
+                                                ></prx-icon>
+                                                <span class="mr-2">
+                                                    {{
+                                                        review.thumbs.down
+                                                    }}</span
+                                                >
+                                            </div>
+
+                                            <span
+                                                class="text-muted font-sm ml-md-auto"
+                                            >
+                                                {{ review.date | date }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-4 border-dashed" />
+                            </ng-container>
+                        </div>
+
+                        <div class="col-md-4 col-xl-3">
+                            <h3>Reviews Summary</h3>
+                            <hr class="my-4" />
+
+                            <div
+                                class="row"
+                                *ngFor="let rate of reviewsSummary"
+                            >
+                                <div class="col-md-8">
+                                    <rating
+                                        [ngModel]="rate.rate"
+                                        [readonly]="true"
+                                        class="text-warning"
+                                    ></rating>
+                                    {{ rate.percent }} %
+                                </div>
+
+                                <div class="col-md-4">
+                                    {{ rate.count }} reviews
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </tab>
+        </tabset>
+    </div>
+
+    <div class="recently-viewed pt-5 border-top">
+        <div class="container-fluid">
+            <prx-store-recently-viewed></prx-store-recently-viewed>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #loading>
+    Loading product details...
+</ng-template>

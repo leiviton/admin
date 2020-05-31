@@ -1,0 +1,27 @@
+<div class="row gap-y">
+    <div class="col-lg-8">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="small">Audience growth metric</th>
+                    <th class="small">Totals</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let metric of fbAudienceGrowth">
+                    <td>{{ metric.key }}</td>
+                    <td>{{ metric.value }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-lg-4 text-center">
+        <p class="accent bold">Number of net Likes</p>
+        <p class="color-2 alpha-5">Increased by</p>
+        <p class="font-lg bold">
+            <prx-icon [icon]="icons.angleUp"></prx-icon> 3.61
+        </p>
+        <p class="small text-info">Since last month</p>
+    </div>
+</div>

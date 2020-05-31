@@ -1,0 +1,26 @@
+<prx-card>
+    <prx-card-header [border]="false">
+        <h5>Montly Subscribers</h5>
+
+        <ng-container card-tools>
+            <prx-context-menu>
+                <a
+                    class="dropdown-item"
+                    href="javascript:;"
+                    *ngFor="let subscriptionOption of subscriptionOptions"
+                    (click)="changeSubscriptionOption(subscriptionOption)"
+                >
+                    {{ subscriptionOption }}
+                </a>
+            </prx-context-menu>
+        </ng-container>
+    </prx-card-header>
+
+    <prx-card-body>
+        <div class="chart subscribers-chart">
+            <canvas #mainChart></canvas>
+        </div>
+
+        <prx-loader template="spinner" *ngIf="isLoading"></prx-loader>
+    </prx-card-body>
+</prx-card>

@@ -1,0 +1,116 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Tooltips"
+    sub="ngx-bootstrap tooltips component"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Basic Tooltip">
+                <prx-card-body>
+                    <button
+                        type="button"
+                        class="btn btn-primary"
+                        tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                    >
+                        Simple demo
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Custom content template">
+                <prx-card-body>
+                    <p>
+                        Use a <code>ng-template</code> as the content to display
+                        customize it even more
+                    </p>
+
+                    <button
+                        type="button"
+                        class="btn btn-warning"
+                        [tooltip]="tipTemplate"
+                    >
+                        TemplateRef binding
+                    </button>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Tooltip Placement">
+                <prx-card-body>
+                    <div class="row gap-y">
+                        <div
+                            class="col"
+                            *ngFor="
+                                let placement of [
+                                    'top',
+                                    'right',
+                                    'bottom',
+                                    'left',
+                                    'auto'
+                                ]
+                            "
+                        >
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+                                [placement]="placement"
+                            >
+                                On {{ placement }}
+                            </button>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Custom triggers">
+                <prx-card-body>
+                    <div class="row gap-y">
+                        <div class="col">
+                            <span class="bold">Mouse enter</span>, it won't work
+                            on mobiles
+                        </div>
+
+                        <div class="col">
+                            <button
+                                type="button"
+                                class="btn btn-info"
+                                tooltip="I will hide on click"
+                                triggers="mouseenter:click"
+                            >
+                                Hover over me!
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="row gap-y">
+                        <div class="col">
+                            <span class="bold">Click</span>, it will work on
+                            both: mobile and desktop
+                        </div>
+
+                        <div class="col">
+                            <button
+                                type="button"
+                                class="btn btn-info"
+                                tooltip="I will hide on click"
+                                triggers="click"
+                            >
+                                Click on me!
+                            </button>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>
+
+<ng-template #tipTemplate let-message="message">
+    {{ message }} I'm a content placed inside a
+    <code class="bold">template</code>
+</ng-template>

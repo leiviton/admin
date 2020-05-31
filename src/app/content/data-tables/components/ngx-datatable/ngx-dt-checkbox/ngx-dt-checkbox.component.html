@@ -1,0 +1,94 @@
+<prx-page-header pre="Data Tables" title="Checkbox Selection"></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 col-xl-9">
+            <prx-card title="Basic">
+                <prx-card-body>
+                    <ng-container *ngIf="users && users.length; else loading">
+                        <ngx-datatable
+                            class="table"
+                            [rows]="users"
+                            [columns]="columns"
+                            [columnMode]="ColumnMode.force"
+                            headerHeight="auto"
+                            [rowHeight]="false"
+                            footerHeight="auto"
+                            [limit]="5"
+                            [selected]="selected"
+                            [selectionType]="SelectionType.checkbox"
+                            [selectAllRowsOnPage]="false"
+                            (select)="onSelect($event)"
+                        >
+                            <ngx-datatable-column
+                                [width]="30"
+                                [sortable]="false"
+                                [canAutoResize]="false"
+                                [draggable]="false"
+                                [resizeable]="false"
+                            >
+                                <ng-template
+                                    ngx-datatable-header-template
+                                    let-value="value"
+                                    let-allRowsSelected="allRowsSelected"
+                                    let-selectFn="selectFn"
+                                >
+                                    <prx-checkbox
+                                        [checked]="allRowsSelected"
+                                        (onChanged)="selectFn(!allRowsSelected)"
+                                    ></prx-checkbox>
+                                </ng-template>
+                                <ng-template
+                                    ngx-datatable-cell-template
+                                    let-value="value"
+                                    let-isSelected="isSelected"
+                                    let-onCheckboxChangeFn="onCheckboxChangeFn"
+                                >
+                                    <prx-checkbox
+                                        [checked]="isSelected"
+                                        (onChanged)="onCheckboxChangeFn($event)"
+                                    ></prx-checkbox>
+                                </ng-template>
+                            </ngx-datatable-column>
+                            <ngx-datatable-column
+                                name="Name"
+                            ></ngx-datatable-column>
+                            <ngx-datatable-column
+                                name="Email"
+                            ></ngx-datatable-column>
+                            <ngx-datatable-column
+                                name="Country"
+                                prop="location.country"
+                            ></ngx-datatable-column>
+                            <ngx-datatable-column
+                                name="Phone"
+                            ></ngx-datatable-column>
+                            <ngx-datatable-column
+                                name="Gender"
+                            ></ngx-datatable-column>
+                            <ngx-datatable-column
+                                name="Age"
+                            ></ngx-datatable-column>
+                        </ngx-datatable>
+                    </ng-container>
+
+                    <ng-template #loading>
+                        <prx-loader
+                            [template]="'table'"
+                            [isLoading]="isLoading"
+                            [count]="2"
+                        ></prx-loader>
+                    </ng-template>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-4 col-xl-3">
+            <prx-card title="Selections">
+                <prx-card-body>
+                    <prx-selected-rows [rows]="selected"></prx-selected-rows>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

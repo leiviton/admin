@@ -1,0 +1,22 @@
+<prx-card>
+    <prx-card-header [border]="false" title="Today's tasks"></prx-card-header>
+
+    <prx-progress-solid
+        [value]="completedPercent"
+        [color]="progressStyle"
+        suffix="%"
+        size="xs"
+        label="{{ completed }} task completed out of {{ totalTasks }}"
+        labelClass="px-4"
+    ></prx-progress-solid>
+
+    <prx-card-body>
+        <prx-fade-content>
+            <prx-vertical-timeline-basic
+                [items]="items"
+                [editable]="true"
+                (taskChanged)="onTaskDone($event)"
+            ></prx-vertical-timeline-basic>
+        </prx-fade-content>
+    </prx-card-body>
+</prx-card>

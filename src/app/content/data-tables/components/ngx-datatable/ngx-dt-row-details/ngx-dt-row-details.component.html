@@ -1,0 +1,79 @@
+<prx-page-header pre="Data Tables" title="Row Details"></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Basic">
+        <prx-card-body>
+            <ng-container *ngIf="users && users.length; else loading">
+                <!-- Needs table-with-details css class -->
+                <!-- At this time detailed rows don't work with virtualization (scrollbarV or scrollbarH) -->
+                <ngx-datatable
+                    class="table table-with-details"
+                    [rows]="users"
+                    [columnMode]="ColumnMode.force"
+                    headerHeight="auto"
+                    [rowHeight]="false"
+                    footerHeight="auto"
+                    [limit]="5"
+                >
+                    <!-- Row Detail Template -->
+                    <ngx-datatable-row-detail
+                        rowHeight="auto"
+                        (toggle)="onDetailToggle($event)"
+                    >
+                        <ng-template
+                            let-user="row"
+                            let-expanded="expanded"
+                            ngx-datatable-row-detail-template
+                        >
+                            <prx-user-details [user]="user"></prx-user-details>
+                        </ng-template>
+                    </ngx-datatable-row-detail>
+
+                    <!-- Column Templates -->
+                    <!-- First column is arrow toggle -->
+                    <ngx-datatable-column
+                        [width]="50"
+                        [resizeable]="false"
+                        [sortable]="false"
+                        [draggable]="false"
+                        [canAutoResize]="false"
+                    >
+                        <ng-template
+                            let-user="row"
+                            let-expanded="expanded"
+                            ngx-datatable-cell-template
+                        >
+                            <a
+                                href="javascript:void(0)"
+                                [class.datatable-icon-right]="!expanded"
+                                [class.datatable-icon-down]="expanded"
+                                title="Expand/Collapse Row"
+                                (click)="toggleExpandRow(user)"
+                            >
+                            </a>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <!-- Rest of the columns -->
+                    <ngx-datatable-column name="Name"></ngx-datatable-column>
+                    <ngx-datatable-column name="Email"></ngx-datatable-column>
+                    <ngx-datatable-column
+                        name="Country"
+                        prop="location.country"
+                    ></ngx-datatable-column>
+                    <ngx-datatable-column name="Phone"></ngx-datatable-column>
+                    <ngx-datatable-column name="Gender"></ngx-datatable-column>
+                    <ngx-datatable-column name="Age"></ngx-datatable-column>
+                </ngx-datatable>
+            </ng-container>
+
+            <ng-template #loading>
+                <prx-loader
+                    [template]="'table'"
+                    [isLoading]="isLoading"
+                    [count]="2"
+                ></prx-loader>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+</div>

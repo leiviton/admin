@@ -1,0 +1,33 @@
+@import "import";
+
+.promos-banner-box {
+    overflow: hidden;
+}
+
+.img-banner {
+    display: block;
+    //max-height: 230px;
+
+    //
+    position: absolute;
+    max-width: 50%;
+    bottom: 0;
+    right: 0;
+    transform: translate3d(0, 35%, 0);
+}
+
+.container-fluid {
+    padding-right: 0;
+}
+
+.col-content {
+    padding: $card-spacer-x;
+}
+
+.swiper-pagination {
+    bottom: 0;
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+        bottom: 10px;
+    }
+}

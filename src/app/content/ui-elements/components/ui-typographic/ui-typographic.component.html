@@ -1,0 +1,346 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Typography"
+    sub="Typography used accros the template"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <prx-card title="Headings">
+                <prx-card-body>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;h1&gt;&lt;/h1&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="h1">h1. Bootstrap heading</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;h2&gt;&lt;/h2&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="h2">h2. Bootstrap heading</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;h3&gt;&lt;/h3&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="h3">h3. Bootstrap heading</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;h4&gt;&lt;/h4&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="h4">h4. Bootstrap heading</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;h5&gt;&lt;/h5&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="h5">h5. Bootstrap heading</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;h6&gt;&lt;/h6&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="h6">h6. Bootstrap heading</span>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Paragraphs">
+                <prx-card-body>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">Lead</div>
+                        <div class="col-sm-9">
+                            <p class="lead">
+                                Vivamus sagittis lacus vel augue laoreet rutrum
+                                faucibus dolor auctor. Duis mollis, est non
+                                commodo luctus.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">Default</div>
+                        <div class="col-sm-9">
+                            <p>
+                                Vivamus sagittis lacus vel augue laoreet rutrum
+                                faucibus dolor auctor. Duis mollis, est non
+                                commodo luctus.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">Small</div>
+                        <div class="col-sm-9">
+                            <p class="small">
+                                Vivamus sagittis lacus vel augue laoreet rutrum
+                                faucibus dolor auctor. Duis mollis, est non
+                                commodo luctus.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row py-5">
+                        <div class="col-12">
+                            <h5 class="pb-2 border-bottom">Colors</h5>
+                        </div>
+                    </div>
+
+                    <div
+                        class="row py-3 align-items-center"
+                        *ngFor="let color of colors"
+                    >
+                        <div class="col-sm-3">{{ color.name }}</div>
+                        <div class="col-sm-9">
+                            <p className="text-{{ color.value }}">
+                                Vivamus sagittis lacus vel augue laoreet rutrum
+                                faucibus dolor auctor. Duis mollis, est non
+                                commodo luctus.
+                            </p>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Sizing">
+                <prx-card-body>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-xs</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-xs">Text size variation.</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-sm</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-sm">Text size variation.</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-regular</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-regular"
+                                >Text size variation.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-l</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-l">Text size variation.</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-md</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-md">Text size variation.</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-lg</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-lg">Text size variation.</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-xl</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-xl">Text size variation.</span>
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3"><code>.font-xxl</code></div>
+                        <div class="col-sm-9">
+                            <span class="font-xxl">Text size variation.</span>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Display">
+                <prx-card-body>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">.display-1</div>
+                        <div class="col-sm-9">
+                            <h1 class="display-1">Display 1</h1>
+                        </div>
+                    </div>
+
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">.display-2</div>
+                        <div class="col-sm-9">
+                            <h1 class="display-2">Display 2</h1>
+                        </div>
+                    </div>
+
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">.display-3</div>
+                        <div class="col-sm-9">
+                            <h1 class="display-3">Display 3</h1>
+                        </div>
+                    </div>
+
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">.display-4</div>
+                        <div class="col-sm-9">
+                            <h1 class="display-4">Display 4</h1>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Inline Elements">
+                <prx-card-body>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;mark&gt;&lt;/mark&gt;</code> or
+                            <code>.mark</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <mark class="mark"
+                                >You can use the mark tag to
+                                <mark>highlight</mark> text.</mark
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;del&gt;&lt;/del&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <del
+                                >This line of text is meant to be treated as
+                                deleted text.</del
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;s&gt;&lt;/s&gt;</code> or
+                            <code>.strike-through</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <s class="strike-through"
+                                >This line of text is meant to be treated as no
+                                longer accurate.</s
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;ins&gt;&lt;/ins&gt;</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <ins
+                                >This line of text is meant to be treated as an
+                                addition to the document.</ins
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;u&gt;&lt;/u&gt;</code> or
+                            <code>.underline</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <u class="underline"
+                                >This line of text will render as underlined.</u
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;small&gt;&lt;/small&gt;</code> or
+                            <code>.small</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <small class="small"
+                                >This line of text is meant to be treated as
+                                fine print.</small
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;em&gt;&lt;/em&gt;</code> or
+                            <code>.italic</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <em class="italic"
+                                >This line rendered as italicized text.</em
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;span&gt;&lt;/span&gt;</code> or
+                            <code>.extra-bold</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="extra-bold"
+                                >This line rendered as extra-bold text.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;span&gt;&lt;/span&gt;</code> or
+                            <code>.bold</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="bold"
+                                >This line rendered as bold text.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;span&gt;&lt;/span&gt;</code> or
+                            <code>.regular</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="regular"
+                                >This line rendered as regular text.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;span&gt;&lt;/span&gt;</code> or
+                            <code>.light</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="light"
+                                >This line rendered as light text.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="row py-3 align-items-center">
+                        <div class="col-sm-3">
+                            <code>&lt;span&gt;&lt;/span&gt;</code> or
+                            <code>.thin</code>
+                        </div>
+                        <div class="col-sm-9">
+                            <span class="thin"
+                                >This line rendered as thin text.</span
+                            >
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<prx-card>
+    <prx-card-body class="pb-6 p-md-5">
+        <div class="row gap-y">
+            <div class="col-md-3" *ngFor="let app of apps">
+                <prx-card class="shadow-hover h-100">
+                    <prx-card-body class="text-center">
+                        <figure class="mockup mb-5">
+                            <img
+                                [src]="'assets/img/logos/' + app.logo + '.svg'"
+                                [alt]="app.name"
+                                class="w-100px"
+                            />
+                        </figure>
+
+                        <h5 class="bold">{{ app.name }}</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Eveniet magnam voluptates fugiat nesciunt
+                            harum modi deleniti possimus libero
+                        </p>
+                    </prx-card-body>
+
+                    <prx-card-footer class="text-right">
+                        <button class="btn btn-outline-primary">Connect</button>
+                    </prx-card-footer>
+                </prx-card>
+            </div>
+
+            <div class="col-md-3">
+                <prx-card class="bg-primary overflow-hidden h-100">
+                    <div class="shapes-wrapper">
+                        <div class="static-shape shape-circle shape-circle-1">
+                            <div></div>
+                        </div>
+
+                        <div class="static-shape shape-ring shape-ring-1">
+                            <div
+                                class="animation animation-rotating-clockwise"
+                            ></div>
+                        </div>
+
+                        <div class="static-shape shape-main">
+                            <img
+                                src="assets/img/scenes/working-remotely.svg"
+                                alt=""
+                            />
+                        </div>
+                    </div>
+
+                    <prx-card-body class="text-contrast">
+                        <h3 class="bold text-contrast">
+                            Go Premium to enable all integrations
+                        </h3>
+                        <p>
+                            By going premiun you'll unlock all app integrations
+                        </p>
+
+                        <a href="javascript:;" class="btn btn-contrast mt-4"
+                            >Go Premium</a
+                        >
+                    </prx-card-body>
+                </prx-card>
+            </div>
+        </div>
+    </prx-card-body>
+</prx-card>

@@ -1,0 +1,112 @@
+<prx-store-header
+    title="Shop by Categories"
+    subtitle="Found thousands of products out of the following categories"
+    [breadcrum]="breadcrum"
+>
+</prx-store-header>
+
+<div class="container-fluid mt-md-n6">
+    <div class="row">
+        <aside class="col-lg-3 pt-4 pt-lg-0">
+            <div class="sticky-md">
+                <prx-card>
+                    <prx-card-header [border]="false" title="Categories">
+                        <ng-container card-tools>
+                            <nav class="nav d-flex d-md-none">
+                                <a
+                                    class="btn btn-gray-light cat-button-prev mr-2"
+                                    href="javascript:;"
+                                >
+                                    <prx-icon
+                                        [icon]="icons.chevLeft"
+                                    ></prx-icon>
+                                </a>
+
+                                <a
+                                    class="btn btn-gray-light cat-button-next"
+                                    href="javascript:;"
+                                >
+                                    <prx-icon
+                                        [icon]="icons.chevRight"
+                                    ></prx-icon>
+                                </a>
+                            </nav>
+                        </ng-container>
+                    </prx-card-header>
+
+                    <prx-card-body>
+                        <div class="d-block d-md-none">
+                            <swiper [config]="categoriesConfig">
+                                <div
+                                    class="swiper-slide"
+                                    *ngFor="let category of categories"
+                                >
+                                    <a
+                                        class="nav-link text-center"
+                                        href="javascript:;"
+                                        (click)="scrollTo(category.slug)"
+                                    >
+                                        <img
+                                            [src]="category.logo"
+                                            class="icon mr-3"
+                                        />
+                                        <p class="small mb-0">
+                                            {{ category.name }}
+                                        </p>
+                                    </a>
+                                </div>
+                            </swiper>
+                        </div>
+
+                        <nav class="nav flex-column d-none d-md-flex">
+                            <a
+                                class="nav-link"
+                                href="javascript:;"
+                                (click)="scrollTo(category.slug)"
+                                *ngFor="let category of categories"
+                            >
+                                <div class="media align-items-center">
+                                    <img
+                                        [src]="category.logo"
+                                        class="icon mr-3"
+                                    />
+                                    <div class="media-body">
+                                        {{ category.name }}
+                                    </div>
+                                </div>
+                            </a>
+                        </nav>
+                    </prx-card-body>
+                </prx-card>
+            </div>
+        </aside>
+
+        <div class="col-lg-9 pt-md-8">
+            <prx-store-featured-brands></prx-store-featured-brands>
+
+            <prx-accordion
+                class="accordion-collapsed accordion-clean"
+                [closeOthers]="false"
+                id="categories-container"
+            >
+                <prx-accordion-group
+                    [heading]="category.name"
+                    [isOpen]="true"
+                    [id]="category.slug"
+                    *ngFor="let category of categories"
+                >
+                    <div class="row">
+                        <div
+                            class="col-md-3"
+                            *ngFor="let item of category.items"
+                        >
+                            <a href="javascript:;" class="btn btn-link">{{
+                                item
+                            }}</a>
+                        </div>
+                    </div>
+                </prx-accordion-group>
+            </prx-accordion>
+        </div>
+    </div>
+</div>

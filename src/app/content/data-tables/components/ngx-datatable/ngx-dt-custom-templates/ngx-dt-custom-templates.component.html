@@ -1,0 +1,119 @@
+<prx-page-header
+    pre="Data Tables"
+    title="Custom Inline Templates"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Custom Inline Templates">
+        <prx-card-body>
+            <ng-container *ngIf="users && users.length; else loading">
+                <ngx-datatable
+                    class="listview"
+                    [rows]="users"
+                    [columnMode]="ColumnMode.force"
+                    headerHeight="auto"
+                    [rowHeight]="false"
+                    footerHeight="auto"
+                    [limit]="10"
+                >
+                    <!-- Column Definitions -->
+                    <ngx-datatable-column name="Name">
+                        <ng-template
+                            let-user="row"
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <prx-avatar-info
+                                [name]="value"
+                                [info]="user.email"
+                                size="md"
+                            >
+                                <prx-avatar
+                                    [avatar]="getAvatarFromUser(user)"
+                                    size="md"
+                                ></prx-avatar>
+                            </prx-avatar-info>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Phone"></ngx-datatable-column>
+
+                    <ngx-datatable-column name="Registered">
+                        <ng-template
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            {{ value.date | date }}
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Country">
+                        <ng-template
+                            let-user="row"
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <div class="media">
+                                <prx-flag
+                                    [flag]="user.nat"
+                                    class="mr-2"
+                                ></prx-flag>
+                                <div class="media-body bold">
+                                    {{ user.location.country }}
+                                </div>
+                            </div>
+                            <p class="text-muted small my-0">
+                                {{ user.location.city }},
+                                {{ user.location.state }}
+                            </p>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Gender" [width]="50">
+                        <ng-template
+                            let-column="column"
+                            let-sort="sortFn"
+                            ngx-datatable-header-template
+                        >
+                            <span (click)="sort()">
+                                <prx-icon [icon]="icons.male"></prx-icon
+                                >/<prx-icon [icon]="icons.female"></prx-icon>
+                            </span>
+                        </ng-template>
+
+                        <ng-template
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <prx-icon
+                                [icon]="icons[value]"
+                                size="2x"
+                            ></prx-icon>
+                        </ng-template>
+                    </ngx-datatable-column>
+
+                    <ngx-datatable-column name="Age" [width]="100">
+                        <ng-template
+                            let-value="value"
+                            ngx-datatable-cell-template
+                        >
+                            <prx-progress-solid
+                                [value]="value"
+                                label="Years"
+                                [color]="ColorScheme.Info"
+                            ></prx-progress-solid>
+                        </ng-template>
+                    </ngx-datatable-column>
+                </ngx-datatable>
+            </ng-container>
+
+            <ng-template #loading>
+                <prx-loader
+                    [template]="'table'"
+                    [isLoading]="isLoading"
+                    [count]="2"
+                ></prx-loader>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+</div>

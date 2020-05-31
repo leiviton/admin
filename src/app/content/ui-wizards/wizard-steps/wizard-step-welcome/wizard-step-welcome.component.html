@@ -1,0 +1,43 @@
+<figure class="mockup">
+    <img src="/assets/img/home/start/start-2.svg" alt="" />
+</figure>
+
+<h2>Welcome, let's create your account</h2>
+<p class="text-muted mb-5">
+    Please fill in the following information to get started
+</p>
+
+<form class="form cozy" [formGroup]="form">
+    <div class="form-group">
+        <label class="control-label">User name</label>
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your desired username"
+            formControlName="username"
+        />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Email</label>
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your personal email address"
+            formControlName="email"
+        />
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Password</label>
+        <input
+            type="password"
+            class="form-control"
+            placeholder="Secure password"
+            formControlName="password"
+        />
+        <password-strength-meter
+            [password]="password"
+        ></password-strength-meter>
+    </div>
+</form>

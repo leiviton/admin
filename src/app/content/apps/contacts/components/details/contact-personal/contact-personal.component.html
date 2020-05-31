@@ -1,0 +1,131 @@
+<div class="row">
+    <div class="col-md-3">
+        <prx-card>
+            <prx-card-body>
+                <dl class="row bordered">
+                    <dt class="col-md-4">Full Name</dt>
+                    <dd class="col-md-8">{{ contact.name }}</dd>
+
+                    <dt class="col-md-4">Email</dt>
+                    <dd class="col-md-8">{{ contact.email }}</dd>
+
+                    <dt class="col-md-4">Phone</dt>
+                    <dd class="col-md-8">{{ contact.phone }}</dd>
+
+                    <dt class="col-md-4">Mobile</dt>
+                    <dd class="col-md-8">{{ contact.cell }}</dd>
+
+                    <dt class="col-md-4">Works at</dt>
+                    <dd class="col-md-8">{{ contact.company }}</dd>
+                </dl>
+            </prx-card-body>
+        </prx-card>
+
+        <prx-card>
+            <prx-card-body>
+                <h5>Address</h5>
+                <prx-address [email]="contact.email" [phone]="contact.phone">
+                    {{ contact.location.street.name }} #{{
+                        contact.location.street.number
+                    }},<br />
+                    {{ contact.location.city }}, {{ contact.location.state }},
+                    {{ contact.location.country }}
+                </prx-address>
+            </prx-card-body>
+        </prx-card>
+    </div>
+
+    <div class="col-md-6">
+        <prx-card>
+            <prx-card-body>
+                <h3>About</h3>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime, ex aspernatur quas atque numquam optio? Inventore
+                    quo id nisi! Fuga consequatur earum blanditiis reiciendis
+                    quae libero incidunt sapiente ab culpa! Lorem, ipsum dolor
+                    sit amet consectetur adipisicing elit. Voluptatibus alias
+                    eligendi ratione! Quo autem sequi quod totam facere,
+                    laboriosam sunt quisquam perspiciatis, reprehenderit,
+                    voluptate animi ea error debitis inventore ab!
+                </p>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Illo, tenetur facere cum expedita ea, sint enim deleniti
+                    dolorum nulla voluptatum provident pariatur consectetur a
+                    mollitia, maiores fugit nisi! Dolore, hic.
+                </p>
+
+                <div *ngIf="contact.tags && contact.tags.length">
+                    <hr class="my-4" />
+
+                    <h3>Tags</h3>
+
+                    <div class="tags">
+                        <span
+                            class="badge badge-light py-2 px-3 border rounded-pill text-truncate mr-1 mt-1"
+                            *ngFor="let tag of contact.tags"
+                        >
+                            {{ tag }}
+                        </span>
+                    </div>
+                </div>
+            </prx-card-body>
+        </prx-card>
+
+        <prx-card>
+            <prx-card-body>
+                <h5>Jan 2020</h5>
+                <prx-vertical-timeline-basic
+                    [items]="items"
+                ></prx-vertical-timeline-basic>
+            </prx-card-body>
+        </prx-card>
+    </div>
+
+    <div class="col-md-3">
+        <prx-card>
+            <prx-card-body class="d-flex flex-column align-items-center">
+                <figure class="mockup">
+                    <img
+                        src="assets/img/logos/dropbox.svg"
+                        alt="Dropbox"
+                        class="w-100px"
+                    />
+                </figure>
+
+                <h5>Integrate DropBox</h5>
+
+                <p class="text-muted">Get the most of Proxima</p>
+
+                <button class="btn btn-primary">I want it</button>
+
+                <a href="javascript:;" class="btn btn-link">Learn more...</a>
+            </prx-card-body>
+        </prx-card>
+
+        <ng-container *ngIf="similarProfiles; else loadingProfiles">
+            <h5>Similar Profiles</h5>
+            <hr class="my-3" />
+
+            <prx-avatar-info
+                class="mb-3"
+                [name]="profile.name"
+                [info]="profile.email"
+                *ngFor="let profile of similarProfiles"
+            >
+                <prx-avatar [avatar]="getAvatar(profile)"></prx-avatar>
+            </prx-avatar-info>
+        </ng-container>
+
+        <ng-template #loadingProfiles>
+            <prx-loader
+                template="user-messages"
+                [isLoading]="isLoading"
+                [count]="3"
+            ></prx-loader>
+        </ng-template>
+    </div>
+</div>

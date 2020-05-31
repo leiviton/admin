@@ -1,0 +1,27 @@
+<ul class="nav nav-tabs tabs-clean">
+    <li class="nav-item" *ngFor="let category of categories">
+        <a
+            class="nav-link"
+            [class.active]="category.slug === activeCategory.slug"
+            href="javascript:;"
+            (click)="switchCategory(category)"
+        >
+            <div class="d-flex align-items-center">
+                <img [src]="category.logo" class="icon mr-2" />
+
+                <span class="d-none d-xl-inline-block tab-title font-sm">
+                    {{ category.name }}
+                </span>
+            </div>
+        </a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade show active">
+        <prx-store-products
+            [filter]="categoryFilter"
+            xl="6"
+        ></prx-store-products>
+    </div>
+</div>

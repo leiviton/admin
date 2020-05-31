@@ -1,0 +1,18 @@
+@import "import";
+
+.btn {
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+.sizing {
+    p {
+        margin-top: 2rem;
+    }
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+        .btn {
+            margin-top: 0;
+        }
+    }
+}

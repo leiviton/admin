@@ -1,0 +1,13 @@
+.avatar {
+    width: 100px;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    transform: translate3d(0, -15px, 0);
+}
+
+.card-note {
+    padding-right: 60px;
+}

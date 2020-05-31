@@ -1,0 +1,189 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Buttons"
+    sub="Button Components"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Default Buttons">
+                <prx-card-body>
+                    <button
+                        class="btn btn-{{ color.value }}"
+                        *ngFor="let color of colors"
+                    >
+                        {{ color.name }}
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Rounded Buttons">
+                <prx-card-body>
+                    <button
+                        class="btn btn-rounded btn-{{ color.value }}"
+                        *ngFor="let color of colors"
+                    >
+                        {{ color.name }}
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Circled Buttons">
+                <prx-card-body>
+                    <button
+                        class="btn btn-circle btn-{{ color.value }}"
+                        *ngFor="let color of colors"
+                    >
+                        <prx-icon [icon]="icons.comment"></prx-icon>
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Buttons Size">
+                <prx-card-body>
+                    <div class="sizing">
+                        <p class="bold small text-uppercase text-primary">
+                            Solid
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-primary btn-{{ size }}"
+                            *ngFor="let size of sizes"
+                        >
+                            btn-{{ size }}
+                        </button>
+
+                        <p class="bold small text-uppercase text-primary">
+                            Rounded
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-rounded btn-primary btn-{{ size }}"
+                            *ngFor="let size of sizes"
+                        >
+                            btn-{{ size }}
+                        </button>
+
+                        <p class="bold small text-uppercase text-primary">
+                            Circled
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-circle btn-primary btn-{{ size }}"
+                            *ngFor="let size of sizes"
+                        >
+                            <prx-icon [icon]="icons.comment"></prx-icon>
+                        </button>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Buttons Brands">
+                <prx-card-body>
+                    <button
+                        type="button"
+                        class="btn brand-{{ brand.name }}"
+                        *ngFor="let brand of brands"
+                    >
+                        <prx-icon [icon]="brand.icon"></prx-icon>
+                        {{ brand.name }}
+                    </button>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Outlined Styles">
+                <prx-card-body>
+                    <button
+                        type="button"
+                        class="btn btn-outline-{{ color.value }}"
+                        *ngFor="let color of colors"
+                    >
+                        {{ color.name }}
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Outlined Rounded Styles">
+                <prx-card-body>
+                    <button
+                        type="button"
+                        class="btn btn-rounded btn-outline-{{ color.value }}"
+                        *ngFor="let color of colors"
+                    >
+                        {{ color.name }}
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Outlined Circled Buttons">
+                <prx-card-body>
+                    <button
+                        class="btn btn-circle btn-outline-{{ color.value }}"
+                        *ngFor="let color of colors"
+                    >
+                        <prx-icon [icon]="icons.thumbsUp"></prx-icon>
+                    </button>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Outlined Buttons Size">
+                <prx-card-body>
+                    <div class="sizing">
+                        <p class="bold small text-uppercase text-primary">
+                            Outlined
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-outline-primary btn-{{ size }}"
+                            *ngFor="let size of sizes"
+                        >
+                            btn-{{ size }}
+                        </button>
+
+                        <p class="bold small text-uppercase text-primary">
+                            Rounded
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-rounded btn-outline-primary btn-{{
+                                size
+                            }}"
+                            *ngFor="let size of sizes"
+                        >
+                            btn-{{ size }}
+                        </button>
+
+                        <p class="bold small text-uppercase text-primary">
+                            Circled
+                        </p>
+                        <button
+                            type="button"
+                            class="btn btn-circle btn-outline-primary btn-{{
+                                size
+                            }}"
+                            *ngFor="let size of sizes"
+                        >
+                            <prx-icon [icon]="icons.comment"></prx-icon>
+                        </button>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Outlined Buttons Brands">
+                <prx-card-body>
+                    <button
+                        type="button"
+                        class="btn brand-outline-{{ brand.name }}"
+                        *ngFor="let brand of brands"
+                    >
+                        <prx-icon [icon]="brand.icon"></prx-icon>
+                        {{ brand.name }}
+                    </button>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

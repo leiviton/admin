@@ -1,0 +1,31 @@
+<prx-page-header pre="Data Tables" title="Fixed Header"></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Basic">
+        <prx-card-body>
+            <ng-container *ngIf="users && users.length; else loading">
+                <ngx-datatable
+                    class="table table-striped"
+                    [rows]="users"
+                    [columns]="columns"
+                    [columnMode]="ColumnMode.force"
+                    [scrollbarV]="true"
+                    headerHeight="53"
+                    [rowHeight]="60"
+                    footerHeight="60"
+                    [limit]="5"
+                    (onPage)="onPage($event)"
+                >
+                </ngx-datatable>
+            </ng-container>
+
+            <ng-template #loading>
+                <prx-loader
+                    [template]="'table'"
+                    [isLoading]="isLoading"
+                    [count]="2"
+                ></prx-loader>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+</div>

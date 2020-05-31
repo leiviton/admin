@@ -1,0 +1,80 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Progress"
+    sub="Progressbar Components"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Color Options">
+                <prx-card-body>
+                    <ng-container *ngFor="let color of colors">
+                        <p class="mt-3 mb-1 text-uppercase small bold">
+                            {{ color.name }}
+                        </p>
+                        <prx-progress-solid
+                            [value]="50"
+                            [color]="color.value"
+                        ></prx-progress-solid>
+                    </ng-container>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Sizing Options">
+                <prx-card-body>
+                    <ng-container
+                        *ngFor="
+                            let size of ['xs', 'sm', 'md', 'xl', 'xxl'];
+                            let i = index
+                        "
+                    >
+                        <p class="mt-3 mb-1 text-uppercase small bold">
+                            {{ size }}
+                        </p>
+                        <prx-progress-solid
+                            [value]="(i + 1) * 14"
+                            [size]="size"
+                            [color]="ColorScheme.Primary"
+                        ></prx-progress-solid>
+                    </ng-container>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="With Labels and Suffix">
+                <prx-card-body>
+                    <p class="mt-3 mb-1 text-uppercase small bold">
+                        Labeled progress bar
+                    </p>
+                    <prx-progress-solid
+                        [value]="75"
+                        label="My label"
+                        [color]="ColorScheme.Success"
+                    ></prx-progress-solid>
+
+                    <p class="mt-3 mb-1 text-uppercase small bold">
+                        Labeled progress bar with % suffix
+                    </p>
+                    <prx-progress-solid
+                        [value]="25"
+                        label="Today's advance"
+                        suffix="%"
+                        [color]="ColorScheme.Warning"
+                    ></prx-progress-solid>
+
+                    <p class="mt-3 mb-1 text-uppercase small bold">
+                        Labeled progress bar with $ suffix
+                    </p>
+                    <prx-progress-solid
+                        [value]="85"
+                        label="Total earnings"
+                        suffix="$"
+                        [color]="ColorScheme.Info"
+                    ></prx-progress-solid>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

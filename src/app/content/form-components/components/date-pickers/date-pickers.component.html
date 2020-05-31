@@ -1,0 +1,349 @@
+<prx-page-header
+    pre="Form Controls"
+    title="Date & Time Pickers"
+    sub="Datepicker is a highly configurable component that adds datepicker functionality to your pages. It works with Angular Forms and ReactiveForms."
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Base Datepickers">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label">Date Picker</label>
+                            <input
+                                type="text"
+                                placeholder="Date Picker"
+                                class="form-control"
+                                bsDatepicker
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Date Range Picker</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="Date Range Picker"
+                                class="form-control"
+                                bsDaterangepicker
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Initial value</label>
+                            <input
+                                type="text"
+                                placeholder="Initial value"
+                                class="form-control"
+                                bsDatepicker
+                                [bsValue]="maxDate"
+                            />
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Custom Date Format">
+                <prx-card-body>
+                    <form [formGroup]="customDateFormatForm" class="cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Date - YYYY-MM-DD</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="YYYY-MM-DD"
+                                class="form-control"
+                                bsDatepicker
+                                formControlName="dateYMD"
+                                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Date - MM/DD/YYYY</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="MM/DD/YYYY"
+                                class="form-control"
+                                bsDatepicker
+                                formControlName="dateMDY"
+                                [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Date - MMMM Do YYYY, h:mm:ss a</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="MMMM Do YYYY, h:mm:ss a"
+                                class="form-control"
+                                bsDatepicker
+                                formControlName="dateFull"
+                                [bsConfig]="{
+                                    dateInputFormat: 'MMMM Do YYYY, h:mm:ss a'
+                                }"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Range Input - MMM Do, YYYY</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="MMM Do, YYYY"
+                                class="form-control"
+                                formControlName="dateRange"
+                                bsDaterangepicker
+                                [bsConfig]="{
+                                    rangeInputFormat: 'MMM Do, YYYY'
+                                }"
+                            />
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Input Groups">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label">Input Group</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <prx-icon
+                                            [icon]="icons.calendar"
+                                        ></prx-icon>
+                                    </span>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    placeholder="Date Picker"
+                                    class="form-control"
+                                    bsDatepicker
+                                />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Input Group</label>
+                            <div class="input-group">
+                                <input
+                                    type="text"
+                                    placeholder="Date Picker"
+                                    class="form-control"
+                                    bsDatepicker
+                                />
+
+                                <span class="input-group-append">
+                                    <span class="input-group-text">
+                                        <prx-icon
+                                            [icon]="icons.calendar"
+                                        ></prx-icon>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Button Trigger</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <button
+                                        class="btn border"
+                                        type="button"
+                                        (click)="
+                                            inputGroupButtonTrigger.toggle()
+                                        "
+                                    >
+                                        <prx-icon
+                                            [icon]="icons.calendar"
+                                        ></prx-icon>
+                                    </button>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    placeholder="Date Picker"
+                                    class="form-control"
+                                    #inputGroupButtonTrigger="bsDatepicker"
+                                    bsDatepicker
+                                />
+                            </div>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Theming">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Simpe Date Picker</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="Date Picker"
+                                class="form-control"
+                                bsDatepicker
+                                #themedDp="bsDatepicker"
+                                [bsConfig]="bsConfig"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Rnage Date Picker</label
+                            >
+                            <input
+                                type="text"
+                                placeholder="Range Date Picker"
+                                class="form-control"
+                                bsDaterangepicker
+                                [bsConfig]="bsConfig"
+                            />
+                        </div>
+                    </form>
+
+                    <div class="bg-light border rounded p-4 form-group">
+                        <p class="mt-0">
+                            <span class="bold">Try it!!!</span>
+                            Datepicker comes with some default color schemes.
+                            You can change it by manipulating containerClass
+                            property in bsConfig object
+                        </p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <prx-theme-color-picker
+                                    dropup="true"
+                                    (change)="applyTheme($event, themedDp)"
+                                ></prx-theme-color-picker>
+                            </div>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Inline Datepickers">
+                <prx-card-body>
+                    <form class="form cozy">
+                        <div class="form-group d-flex flex-column">
+                            <label class="control-label">Date Picker</label>
+                            <bs-datepicker-inline
+                                [bsValue]="today"
+                            ></bs-datepicker-inline>
+                        </div>
+
+                        <div class="form-group d-flex flex-column">
+                            <label class="control-label"
+                                >Date Range Picker</label
+                            >
+                            <bs-daterangepicker-inline
+                                [bsValue]="inlineRangeValue"
+                                class="d-block"
+                            ></bs-daterangepicker-inline>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Min-Max Validation">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label">Min & Max Set</label>
+                            <input
+                                class="form-control"
+                                placeholder="Datepicker"
+                                bsDatepicker
+                                [minDate]="today"
+                                [maxDate]="maxDate"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Only Min Set</label>
+                            <input
+                                class="form-control"
+                                placeholder="Datepicker"
+                                bsDatepicker
+                                [minDate]="today"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Only Max Set</label>
+                            <input
+                                class="form-control"
+                                placeholder="Datepicker"
+                                bsDatepicker
+                                [maxDate]="maxDate"
+                            />
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Date Custom Classes">
+                <prx-card-body>
+                    <div class="bg-light border rounded p-4 form-group">
+                        <p class="mb-0">
+                            Style specific dates with custom classes
+                        </p>
+                    </div>
+
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Single Date Picker</label
+                            >
+                            <input
+                                class="form-control"
+                                placeholder="Specific dates styles"
+                                bsDatepicker
+                                [dateCustomClasses]="dateCustomClasses"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Disabled Dates</label>
+                            <input
+                                class="form-control"
+                                placeholder="Specific dates styles"
+                                bsDatepicker
+                                [dateCustomClasses]="dateCustomClasses"
+                                [datesDisabled]="disabledDates"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Range Date Picker</label
+                            >
+                            <input
+                                class="form-control"
+                                placeholder="Specific dates styles"
+                                bsDaterangepicker
+                                [dateCustomClasses]="dateCustomClasses"
+                            />
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

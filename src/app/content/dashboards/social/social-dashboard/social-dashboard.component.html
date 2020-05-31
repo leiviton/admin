@@ -1,0 +1,41 @@
+<prx-page-header title="Social Dashboard" pre="Dashboard"></prx-page-header>
+
+<div class="container-fluid">
+    <prx-social-metrics></prx-social-metrics>
+    <prx-social-audience-region></prx-social-audience-region>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <prx-social-monthly-subscribers></prx-social-monthly-subscribers>
+        </div>
+
+        <div class="col-lg-4">
+            <prx-social-traffic-sources></prx-social-traffic-sources>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <prx-accordion class="accordion-collapsed accordion-clean">
+                <prx-accordion-group
+                    heading="Recently Subscribers"
+                    isOpen="true"
+                >
+                    <prx-social-recently-subscribers></prx-social-recently-subscribers>
+                </prx-accordion-group>
+
+                <prx-accordion-group heading="Most Viewed Youtube Videos">
+                    <prx-social-ytb-videos></prx-social-ytb-videos>
+                </prx-accordion-group>
+
+                <prx-accordion-group heading="Facebook Audience Growth">
+                    <prx-social-fb-growth></prx-social-fb-growth>
+                </prx-accordion-group>
+            </prx-accordion>
+        </div>
+
+        <div class="col-lg-4">
+            <prx-social-engaging-post></prx-social-engaging-post>
+        </div>
+    </div>
+</div>

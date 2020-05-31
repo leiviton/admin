@@ -1,0 +1,59 @@
+<prx-card class="promos-banner-box">
+    <prx-card-body class="p-0">
+        <div class="swiper-container swiper-nav-slide" [swiper]="swiperConfig">
+            <div class="swiper-wrapper">
+                <div
+                    class="swiper-slide"
+                    *ngFor="let promo of promos"
+                    [style.backgroundColor]="promo.bg.color"
+                >
+                    <div class="container-fluid">
+                        <img
+                            [src]="'assets/img/store/' + promo.bg.img + '.jpg'"
+                            class="img-banner ml-md-auto"
+                            alt=""
+                        />
+
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-content">
+                                <div
+                                    class="text-center text-lg-left text-lg-nowrap"
+                                >
+                                    <h6 class="text-dark bold">
+                                        {{ promo.badge }}
+                                    </h6>
+                                    <h2 class="text-contrast bold">
+                                        {{ promo.title }}
+                                    </h2>
+                                    <p class="semi-bold text-light">
+                                        {{ promo.description }}
+                                    </p>
+
+                                    <a
+                                        class="btn btn-primary mt-5"
+                                        href="javascript:;"
+                                    >
+                                        Shop Now
+                                        <prx-icon
+                                            [icon]="icons.chevRight"
+                                            class="ml-2"
+                                        ></prx-icon>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="swiper-pagination highlight-active"></div>
+
+            <div
+                class="swiper-button rounded-circle swiper-button-prev bg-contrast text-dark"
+            ></div>
+            <div
+                class="swiper-button rounded-circle swiper-button-next bg-contrast text-dark"
+            ></div>
+        </div>
+    </prx-card-body>
+</prx-card>

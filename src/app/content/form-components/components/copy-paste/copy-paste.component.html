@@ -1,0 +1,180 @@
+<prx-page-header pre="Form Controls" title="Copy & Paste"></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Copy/Paste Samples">
+        <prx-card-body>
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="form-group row">
+                        <label
+                            class="col-form-label control-label text-lg-right col-lg-3"
+                            >Input demo</label
+                        >
+
+                        <div class="input-group col-lg-9">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Type in any value to test"
+                                [(ngModel)]="text"
+                                ngxCopyPaste
+                                #input="copy"
+                            />
+
+                            <span class="input-group-append">
+                                <button
+                                    class="btn btn-light border"
+                                    type="button"
+                                    (click)="input.copy()"
+                                >
+                                    <prx-icon [icon]="icons.copy"></prx-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <hr class="my-5" />
+                    <div class="form-group row">
+                        <label
+                            class="col-form-label control-label text-lg-right col-lg-3"
+                            >Dropdown demo</label
+                        >
+
+                        <div class="input-group col-lg-9">
+                            <input
+                                type="text"
+                                class="form-control"
+                                [(ngModel)]="text"
+                                ngxCopyPaste
+                                #inputDd="copy"
+                                placeholder="Type any text to test"
+                            />
+
+                            <div
+                                class="input-group-append"
+                                dropdown
+                                [placement]="'bottom-right'"
+                            >
+                                <button
+                                    class="btn border dropdown-toggle"
+                                    type="button"
+                                    dropdownToggle
+                                >
+                                    <prx-icon [icon]="icons.more"></prx-icon>
+                                </button>
+
+                                <div
+                                    class="dropdown-menu dropdown-menu-right"
+                                    *dropdownMenu
+                                >
+                                    <a
+                                        class="dropdown-item"
+                                        href="javascript:;"
+                                        (click)="inputDd.copy()"
+                                        ><prx-icon
+                                            [icon]="icons.copy"
+                                        ></prx-icon>
+                                        <span class="bold">Copy</span></a
+                                    >
+                                    <a class="dropdown-item" href="javascript:;"
+                                        >Another action</a
+                                    >
+                                    <a class="dropdown-item" href="javascript:;"
+                                        >Something else here</a
+                                    >
+                                    <div
+                                        role="separator"
+                                        class="dropdown-divider"
+                                    ></div>
+                                    <a
+                                        class="dropdown-item pt-0"
+                                        href="javascript:;"
+                                        >Separated link</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-5" />
+                    <div class="form-group row">
+                        <label
+                            class="col-form-label control-label text-lg-right col-lg-3"
+                            >Textarea demo</label
+                        >
+
+                        <div class="col-lg-9">
+                            <textarea
+                                ngxCopyPaste
+                                #textarea="copy"
+                                cols="30"
+                                rows="5"
+                                class="form-control"
+                            >
+This is a sample text, you might edit this field to test with your own value</textarea
+                            >
+                            <button
+                                (click)="textarea.copy()"
+                                class="btn btn-light border mt-2"
+                            >
+                                <prx-icon [icon]="icons.copy"></prx-icon> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr class="my-5" />
+                    <div class="form-group row">
+                        <label
+                            class="col-form-label control-label text-lg-right col-lg-3"
+                            >From element</label
+                        >
+
+                        <div class="col-lg-9">
+                            <p ngxCopyPaste #pElement="copy">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit.
+                            </p>
+
+                            <button
+                                (click)="pElement.copy()"
+                                class="btn btn-light border mt-2"
+                            >
+                                <prx-icon [icon]="icons.copy"></prx-icon> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <hr class="my-5" />
+                    <div class="form-group row">
+                        <label
+                            class="col-form-label control-label text-lg-right col-lg-3"
+                            >Element with nested elements</label
+                        >
+
+                        <div class="col-lg-9">
+                            <div ngxCopyPaste #fullElement="copy">
+                                <h4>Lorem ipsum</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Nullam rutrum augue at ante
+                                    sollicitudin posuere. Pellentesque congue
+                                    consequat enim quis luctus.
+                                </p>
+                                <div>
+                                    <h6>Lorem ipsum</h6>
+                                </div>
+                            </div>
+
+                            <button
+                                (click)="fullElement.copy()"
+                                class="btn btn-light border mt-2"
+                            >
+                                <prx-icon [icon]="icons.copy"></prx-icon> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </prx-card-body>
+    </prx-card>
+</div>

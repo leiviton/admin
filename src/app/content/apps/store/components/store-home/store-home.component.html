@@ -1,0 +1,49 @@
+<prx-page-header pre="Welcome to our store" title="Store"> </prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            <prx-store-promos-banner></prx-store-promos-banner>
+        </div>
+
+        <div class="col-lg-4">
+            <prx-card class="free-delivery-box overflow-hidden">
+                <div class="shapes-wrapper">
+                    <div class="static-shape shape-circle shape-circle-1">
+                        <div></div>
+                    </div>
+
+                    <div class="static-shape shape-main">
+                        <prx-img image="scenes/delivery.svg"></prx-img>
+                    </div>
+                </div>
+
+                <prx-card-body class="text-dark">
+                    <h6>
+                        <prx-icon [icon]="icons.truck"></prx-icon>
+                    </h6>
+
+                    <h2 class="bold text-danger">Free Shipping</h2>
+                    <p class="semi-bold">Available on orders over $50</p>
+
+                    <a
+                        href="javascript:;"
+                        class="btn btn-alternate text-contrast mt-5"
+                        >Learn more</a
+                    >
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6"></div>
+
+        <div class="col-md-6"></div>
+
+        <div class="col-md-12">
+            <prx-store-main-products></prx-store-main-products>
+            <prx-store-recently-viewed></prx-store-recently-viewed>
+        </div>
+    </div>
+</div>

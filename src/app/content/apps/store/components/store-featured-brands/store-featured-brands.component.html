@@ -1,0 +1,25 @@
+<prx-card>
+    <prx-card-header title="Featured Brands">
+        <ng-container card-tools>
+            <a href="javascript:;">View All</a>
+        </ng-container>
+    </prx-card-header>
+
+    <prx-card-body>
+        <div
+            class="d-flex flex-wrap align-items-center justify-content-between"
+            *ngIf="brands"
+        >
+            <div
+                class="icon p-3 shadow center-flex mt-3 mt-md-0"
+                *ngFor="let brand of brands"
+            >
+                <img
+                    [src]="brand.logo"
+                    [alt]="brand.slug"
+                    class="img-responsive"
+                />
+            </div>
+        </div>
+    </prx-card-body>
+</prx-card>

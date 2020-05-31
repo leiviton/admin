@@ -1,0 +1,77 @@
+<prx-page-header
+    pre="Form Controls"
+    title="File Uploaders"
+    sub="DropZone.js file uploader demo"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Single File Upload">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div
+                            [dropzone]="singleConfig"
+                            class="dropzone dropzone-container"
+                            message="Click or drag images here to upload"
+                            (init)="onUploadInit($event)"
+                            (error)="onUploadError($event)"
+                            (success)="onUploadSuccess($event)"
+                        >
+                            <div class="dz-message needsclick">
+                                <prx-icon
+                                    icon="upload-cloud"
+                                    size="xl"
+                                ></prx-icon>
+
+                                <h3 class="dropzone-msg-title mt-4">
+                                    Drop files here or Click to upload.
+                                </h3>
+
+                                <p class="dropzone-msg-desc">
+                                    This is just a demo dropzone. Selected files
+                                    are <strong>not</strong> actually uploaded.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Multiple Files Upload">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div
+                            [dropzone]="multipleConfig"
+                            class="dropzone dropzone-container"
+                            message="Click or drag images here to upload"
+                            (init)="onUploadInit($event)"
+                            (error)="onUploadError($event)"
+                            (success)="onUploadSuccess($event)"
+                        >
+                            <div class="dz-message needsclick">
+                                <prx-icon
+                                    icon="upload-cloud"
+                                    size="xl"
+                                ></prx-icon>
+
+                                <h3 class="dropzone-msg-title mt-4">
+                                    Drop files here or Click to upload.
+                                </h3>
+
+                                <p class="dropzone-msg-desc">
+                                    This is just a demo dropzone. Selected files
+                                    are <strong>not</strong> actually uploaded.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+
+    <div class="row"></div>
+</div>

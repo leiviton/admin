@@ -1,0 +1,35 @@
+<prx-page-header
+    pre="Data Tables"
+    title="Responsive Template"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card title="Responsive Template - List View">
+        <prx-card-body>
+            <ng-container *ngIf="users && users.length; else loadingList">
+                <ngx-datatable
+                    class="listview responsive"
+                    [rows]="users"
+                    [columns]="columns"
+                    [columnMode]="ColumnMode.force"
+                    headerHeight="auto"
+                    [rowHeight]="false"
+                >
+                </ngx-datatable>
+            </ng-container>
+
+            <ng-template #loadingList>
+                <prx-loader
+                    template="list"
+                    [isLoading]="isLoading"
+                    [count]="2"
+                ></prx-loader>
+            </ng-template>
+        </prx-card-body>
+    </prx-card>
+
+    <ng-template #cellTmpl let-row="row" let-value="value" let-column="column">
+        <small class="text-muted d-block d-md-none">{{ column.name }}</small>
+        <span [innerHTML]="value"> </span>
+    </ng-template>
+</div>

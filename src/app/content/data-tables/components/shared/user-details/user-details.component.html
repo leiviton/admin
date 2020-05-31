@@ -1,0 +1,100 @@
+<prx-alert [scheme]="ColorScheme.Info" class="flex-fill">
+    <p class="my-0">
+        This is just a demonstration to show how you can place any
+        content/component you like within the row details
+    </p>
+</prx-alert>
+
+<form (ngSubmit)="submit(form)" [formGroup]="form" class="form cozy" novalidate>
+    <div class="d-flex mb-4">
+        <prx-avatar-info
+            [name]="avatar.name"
+            [info]="user.email"
+            size="md"
+            class="mr-4"
+        >
+            <prx-avatar [avatar]="avatar" size="md"></prx-avatar>
+        </prx-avatar-info>
+    </div>
+
+    <div class="row gap-y">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Full Name</label>
+                <input
+                    type="text"
+                    class="form-control bg-light"
+                    placeholder="User name"
+                    formControlName="name"
+                />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Gender</label>
+                <div>
+                    <prx-radio-group formControlName="gender">
+                        <prx-radio-card
+                            inline="true"
+                            *ngFor="let gender of genders"
+                            [value]="gender.code"
+                        >
+                            <div class="text-center">
+                                <prx-icon
+                                    [icon]="gender.icon"
+                                    size="2x"
+                                ></prx-icon>
+                                <p class="mb-0 mt-3">{{ gender.name }}</p>
+                            </div>
+                        </prx-radio-card>
+                    </prx-radio-group>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Email</label>
+                <input
+                    type="text"
+                    class="form-control bg-light"
+                    placeholder="Email"
+                    formControlName="email"
+                />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Age</label>
+                <input
+                    type="text"
+                    class="form-control bg-light"
+                    placeholder="Age"
+                    formControlName="age"
+                />
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Country</label>
+                <input
+                    type="text"
+                    class="form-control bg-light"
+                    placeholder="Country"
+                    formControlName="country"
+                />
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Full Name</label>
+                <input
+                    type="text"
+                    class="form-control bg-light"
+                    placeholder="Phone"
+                    formControlName="phone"
+                />
+            </div>
+        </div>
+    </div>
+</form>

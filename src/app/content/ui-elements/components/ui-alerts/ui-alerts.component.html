@@ -1,0 +1,202 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Alerts"
+    sub="Basic Alerts Components"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Basic Alerts">
+                <prx-card-body>
+                    <prx-alert
+                        [scheme]="scheme.value"
+                        *ngFor="let scheme of colors"
+                    >
+                        A simple {{ scheme.name }} alert—check it out!
+                    </prx-alert>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Thin Styles">
+                <prx-card-body>
+                    <prx-alert
+                        [scheme]="scheme.value"
+                        [style]="AlertStyle.Thin"
+                        *ngFor="let scheme of colors"
+                    >
+                        A simple thin {{ scheme.name }} alert—check it out!
+                    </prx-alert>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Outlined Styles">
+                <prx-card-body>
+                    <prx-alert
+                        [scheme]="scheme.value"
+                        [style]="AlertStyle.Outline"
+                        *ngFor="let scheme of colors"
+                    >
+                        A simple outlined {{ scheme.name }} alert—check it out!
+                    </prx-alert>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="With Icon Alerts">
+                <prx-card-body>
+                    <p class="mt-0">
+                        When chosing
+                        <code>
+                            <span class="bold">alert-style</span> = Icon</code
+                        >
+                        it will display default icons according to the alert
+                        color scheme
+                    </p>
+
+                    <prx-alert
+                        [scheme]="scheme.value"
+                        [withIcon]="true"
+                        *ngFor="let scheme of colors"
+                    >
+                        A simple Icon {{ scheme.name }} alert—check it out!
+                    </prx-alert>
+
+                    <hr class="my-4" />
+                    <p>
+                        Or you can place your custom icon instead of the default
+                        ones
+                    </p>
+                    <prx-alert [scheme]="ColorScheme.Primary">
+                        <ng-container alert-icon>
+                            <prx-icon
+                                icon="award"
+                                size="lg"
+                                class="mr-3"
+                            ></prx-icon>
+                        </ng-container>
+                        A simple primary alert with custom icon alert—check it
+                        out!
+                    </prx-alert>
+
+                    <prx-alert [scheme]="ColorScheme.Info">
+                        <ng-container alert-icon>
+                            <prx-icon
+                                icon="settings"
+                                size="lg"
+                                class="mr-3"
+                            ></prx-icon>
+                        </ng-container>
+                        A simple primary alert with custom icon alert—check it
+                        out!
+                    </prx-alert>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="With Icon Alerts">
+                <prx-card-body>
+                    <p class="small bold text-uppercase text-primary">
+                        Thin Style
+                    </p>
+
+                    <prx-alert
+                        [scheme]="scheme"
+                        [style]="AlertStyle.Thin"
+                        [withIcon]="true"
+                        *ngFor="
+                            let scheme of [
+                                ColorScheme.Primary,
+                                ColorScheme.Warning,
+                                ColorScheme.Success
+                            ]
+                        "
+                    >
+                        A simple Icon {{ scheme.name }} alert—check it out!
+                    </prx-alert>
+
+                    <hr class="my-4" />
+                    <p class="small bold text-uppercase text-primary">
+                        Outlined Style
+                    </p>
+
+                    <prx-alert
+                        [scheme]="scheme"
+                        [style]="AlertStyle.Outline"
+                        [withIcon]="true"
+                        *ngFor="
+                            let scheme of [
+                                ColorScheme.Primary,
+                                ColorScheme.Warning,
+                                ColorScheme.Success
+                            ]
+                        "
+                    >
+                        A simple Icon {{ scheme.name }} alert—check it out!
+                    </prx-alert>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Additional Content Alerts">
+                <prx-card-body>
+                    <prx-alert
+                        [scheme]="scheme"
+                        *ngFor="
+                            let scheme of [
+                                ColorScheme.Primary,
+                                ColorScheme.Success
+                            ]
+                        "
+                    >
+                        <h4 class="alert-heading">Well done!</h4>
+                        <p>
+                            Aww yeah, you successfully read this important alert
+                            message. This example text is going to run a bit
+                            longer so that you can see how spacing within an
+                            alert works with this kind of content.
+                        </p>
+                        <p class="mb-0">
+                            Whenever you need to, be sure to use margin
+                            utilities to keep things nice and tidy.
+                        </p>
+                    </prx-alert>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Dismissible Alerts">
+                <prx-card-body>
+                    <prx-alert
+                        [scheme]="ColorScheme.Primary"
+                        [dismissible]="true"
+                    >
+                        You successfully read this important alert message
+                    </prx-alert>
+
+                    <prx-alert
+                        [scheme]="ColorScheme.Success"
+                        [style]="AlertStyle.Thin"
+                        [dismissible]="true"
+                    >
+                        You successfully read this important alert message
+                    </prx-alert>
+
+                    <prx-alert
+                        [scheme]="ColorScheme.Info"
+                        [style]="AlertStyle.Outline"
+                        [dismissible]="true"
+                    >
+                        You successfully read this important alert message
+                    </prx-alert>
+
+                    <prx-alert
+                        [scheme]="ColorScheme.Danger"
+                        [withIcon]="true"
+                        [dismissible]="true"
+                    >
+                        You successfully read this important alert message
+                    </prx-alert>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

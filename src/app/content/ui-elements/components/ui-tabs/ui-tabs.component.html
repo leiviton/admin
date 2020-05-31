@@ -1,0 +1,322 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Tabs"
+    sub="ngx-bootstrap tabs component"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Basic Tabs">
+                <prx-card-body>
+                    <tabset type="tabs">
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Clean Tabs">
+                <prx-card-body>
+                    <tabset type="tabs tabs-clean">
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Custom Titles">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        <p class="mt-0">
+                            You can customize the title for each individual tab
+                            pane according to your needs, this will work with
+                            any of the tab variation styles.
+                        </p>
+                        <p class="semi-bold">
+                            Give it a try, change the tab style and see how the
+                            custom title looks like
+                        </p>
+
+                        <div
+                            class="btn-group btn-group-toggle"
+                            btnRadioGroup
+                            [(ngModel)]="customStyle"
+                        >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio="-clean"
+                                role="button"
+                                >Clean</label
+                            >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio="-bordered"
+                                role="button"
+                                >Bordered</label
+                            >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio=""
+                                role="button"
+                                >Default</label
+                            >
+                        </div>
+                    </prx-alert>
+
+                    <tabset type="tabs tabs{{ customStyle }}">
+                        <tab>
+                            <ng-template tabHeading>
+                                <prx-icon
+                                    class="icon"
+                                    [icon]="icons.bell"
+                                ></prx-icon>
+                                First
+                            </ng-template>
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab>
+                            <ng-template tabHeading>
+                                <prx-icon
+                                    class="icon"
+                                    [icon]="icons.dizzy"
+                                ></prx-icon>
+                                <span class="bold">Bold text</span>
+                            </ng-template>
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab>
+                            <ng-template tabHeading>
+                                <prx-icon
+                                    class="icon"
+                                    [icon]="icons.star"
+                                ></prx-icon>
+                                Third
+                            </ng-template>
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Pills">
+                <prx-card-body>
+                    <tabset type="pills">
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Bordered Tabs">
+                <prx-card-body>
+                    <tabset type="tabs tabs-bordered">
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Unseletable Tab">
+                <prx-card-body>
+                    <tabset>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Unselectable tab" disabled="true">
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Justification">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        <p class="mt-0">
+                            Change the aligment of the tabs by choosing one of
+                            the options bellow. this will work with any of the
+                            tab variation styles.
+                        </p>
+                        <p class="semi-bold">
+                            This example uses custom styles since ngx-bootstrap
+                            doesn't support this feature by default
+                        </p>
+
+                        <div
+                            class="btn-group btn-group-toggle"
+                            btnRadioGroup
+                            [(ngModel)]="currentJustify"
+                        >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio="start"
+                                role="button"
+                                >Start</label
+                            >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio="center"
+                                role="button"
+                                >Center</label
+                            >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio="end"
+                                role="button"
+                                >End</label
+                            >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio="fill"
+                                role="button"
+                                >Fill</label
+                            >
+                            <label
+                                class="btn btn-outline-primary"
+                                btnRadio="justified"
+                                role="button"
+                                >Justified</label
+                            >
+                        </div>
+                    </prx-alert>
+
+                    <tabset
+                        type="tabs tabs{{ customStyle }} tabs-justify-{{
+                            currentJustify
+                        }}"
+                    >
+                        <tab>
+                            <ng-template tabHeading>
+                                <prx-icon
+                                    class="icon"
+                                    [icon]="icons.bell"
+                                ></prx-icon>
+                                First
+                            </ng-template>
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab>
+                            <ng-template tabHeading>
+                                <prx-icon
+                                    class="icon"
+                                    [icon]="icons.dizzy"
+                                ></prx-icon>
+                                Second
+                            </ng-template>
+
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab>
+                            <ng-template tabHeading>
+                                <prx-icon
+                                    class="icon"
+                                    [icon]="icons.star"
+                                ></prx-icon>
+                                Third
+                            </ng-template>
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Transitioned">
+                <prx-card-body>
+                    <tabset type="tabs tabs-clean slide-left">
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="1"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="2"
+                            ></prx-ui-tab-content>
+                        </tab>
+                        <tab heading="Simple">
+                            <prx-ui-tab-content
+                                [content]="3"
+                            ></prx-ui-tab-content>
+                        </tab>
+                    </tabset>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

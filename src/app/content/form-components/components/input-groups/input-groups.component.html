@@ -1,0 +1,927 @@
+<prx-page-header
+    pre="Form Controls"
+    title="Input groups"
+    sub="Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Text Addons">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Left text addon</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text">@</span>
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Left addon"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Left addon multiple</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                        <span class="input-group-text"
+                                            >0.00</span
+                                        >
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Multiple left addon"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Right text addon</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Right addon"
+                                    />
+
+                                    <span class="input-group-append">
+                                        <span class="input-group-text"
+                                            >@example.com</span
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Right addon multiple</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Multiple right addon"
+                                    />
+
+                                    <span class="input-group-append">
+                                        <span class="input-group-text">$</span>
+                                        <span class="input-group-text"
+                                            >0.00</span
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Left and Right addons</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <span class="input-group-prepend">
+                                        <span class="input-group-text">$</span>
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Multiple right addon"
+                                    />
+
+                                    <span class="input-group-append">
+                                        <span class="input-group-text"
+                                            >0.00</span
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >With textarea</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                            >Comments</span
+                                        >
+                                    </div>
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Icons Addon">
+                <prx-card-body>
+                    <form action=";">
+                        <fieldset class="mb-3">
+                            <legend class="small bold text-uppercase">
+                                Static Icons
+                            </legend>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left icon addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <prx-icon
+                                                    [icon]="icons.user"
+                                                ></prx-icon>
+                                            </span>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Left icon addon"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left icon + text</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <span class="input-group-text"
+                                                >Options</span
+                                            >
+                                            <span class="input-group-text">
+                                                <prx-icon
+                                                    [icon]="icons.cog"
+                                                ></prx-icon>
+                                            </span>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Multiple left icon addon"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Right icon addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Right addon"
+                                        />
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">
+                                                <prx-icon
+                                                    [icon]="icons.calendar"
+                                                ></prx-icon>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Right icon + text</label
+                                >
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Multiple right icon addon"
+                                        />
+
+                                        <span class="input-group-append">
+                                            <span class="input-group-text"
+                                                >Options</span
+                                            >
+                                            <span class="input-group-text">
+                                                <prx-icon
+                                                    [icon]="icons.cog"
+                                                ></prx-icon>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left and Right addons</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <prx-icon
+                                                    [icon]="icons.user"
+                                                ></prx-icon>
+                                            </span>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Multiple right icon addon"
+                                        />
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">
+                                                <prx-icon
+                                                    [icon]="icons.cog"
+                                                ></prx-icon>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="mb-3">
+                            <legend class="small bold text-uppercase">
+                                Animated Icons
+                            </legend>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left icon addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <fa-icon
+                                                    [icon]="icons.sync"
+                                                    [spin]="true"
+                                                ></fa-icon>
+                                            </span>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Left icon addon"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Right icon addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Right addon"
+                                        />
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">
+                                                <fa-icon
+                                                    [icon]="icons.spinner"
+                                                    [spin]="true"
+                                                ></fa-icon>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left and Right addons</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <fa-icon
+                                                    [icon]="icons.sync"
+                                                    [spin]="true"
+                                                ></fa-icon>
+                                            </span>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Multiple right icon addon"
+                                        />
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">
+                                                <fa-icon
+                                                    [icon]="icons.cog"
+                                                    [spin]="true"
+                                                ></fa-icon>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Dropdown Addons">
+                <prx-card-body>
+                    <form action=";">
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Left dropdown addon</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group clean-group">
+                                    <div class="input-group-prepend" dropdown>
+                                        <button
+                                            class="btn border dropdown-toggle"
+                                            type="button"
+                                            dropdownToggle
+                                        >
+                                            Action
+                                            <prx-icon
+                                                [icon]="icons.arrowDown"
+                                            ></prx-icon>
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu"
+                                            *dropdownMenu
+                                        >
+                                            <a class="dropdown-item" href="#"
+                                                >Action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Another action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Something else here</a
+                                            >
+                                            <div
+                                                role="separator"
+                                                class="dropdown-divider"
+                                            ></div>
+                                            <a class="dropdown-item" href="#"
+                                                >Separated link</a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Left addon"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Right dropdown addon</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group clean-group">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Right addon"
+                                    />
+
+                                    <div
+                                        class="input-group-append"
+                                        dropdown
+                                        [placement]="'bottom-right'"
+                                    >
+                                        <button
+                                            class="btn border dropdown-toggle"
+                                            type="button"
+                                            dropdownToggle
+                                        >
+                                            Action
+                                            <prx-icon
+                                                [icon]="icons.arrowDown"
+                                            ></prx-icon>
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu dropdown-menu-right"
+                                            *dropdownMenu
+                                        >
+                                            <a class="dropdown-item" href="#"
+                                                >Action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Another action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Something else here</a
+                                            >
+                                            <div
+                                                role="separator"
+                                                class="dropdown-divider"
+                                            ></div>
+                                            <a class="dropdown-item" href="#"
+                                                >Separated link</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3"
+                                >Left and right dropdown addon</label
+                            >
+
+                            <div class="col-lg-9">
+                                <div class="input-group clean-group">
+                                    <div class="input-group-prepend" dropdown>
+                                        <button
+                                            class="btn border dropdown-toggle"
+                                            type="button"
+                                            dropdownToggle
+                                        >
+                                            Action
+                                            <prx-icon
+                                                [icon]="icons.arrowDown"
+                                            ></prx-icon>
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu"
+                                            *dropdownMenu
+                                        >
+                                            <a class="dropdown-item" href="#"
+                                                >Action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Another action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Something else here</a
+                                            >
+                                            <div
+                                                role="separator"
+                                                class="dropdown-divider"
+                                            ></div>
+                                            <a class="dropdown-item" href="#"
+                                                >Separated link</a
+                                            >
+                                        </div>
+                                    </div>
+
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Left and right addon"
+                                    />
+
+                                    <div
+                                        class="input-group-append"
+                                        dropdown
+                                        [placement]="'bottom-right'"
+                                    >
+                                        <button
+                                            class="btn border dropdown-toggle"
+                                            type="button"
+                                            dropdownToggle
+                                        >
+                                            Action
+                                        </button>
+
+                                        <div
+                                            class="dropdown-menu dropdown-menu-right"
+                                            *dropdownMenu
+                                        >
+                                            <a class="dropdown-item" href="#"
+                                                >Action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Another action</a
+                                            >
+                                            <a class="dropdown-item" href="#"
+                                                >Something else here</a
+                                            >
+                                            <div
+                                                role="separator"
+                                                class="dropdown-divider"
+                                            ></div>
+                                            <a class="dropdown-item" href="#"
+                                                >Separated link</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Button Addons">
+                <prx-card-body>
+                    <form>
+                        <fieldset class="mb-3">
+                            <legend class="small bold text-uppercase">
+                                Clean group
+                            </legend>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left text addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group clean-group">
+                                        <span class="input-group-prepend">
+                                            <button
+                                                class="btn border"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Left addon"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Right text addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group clean-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Right addon"
+                                        />
+                                        <span class="input-group-append">
+                                            <button
+                                                class="btn border"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left and Right addons</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group clean-group">
+                                        <span class="input-group-prepend">
+                                            <button
+                                                class="btn border"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Multiple right addon"
+                                        />
+                                        <span class="input-group-append">
+                                            <button
+                                                class="btn border"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="small bold text-uppercase">
+                                Colored buttons
+                            </legend>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left text addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <button
+                                                class="btn btn-primary"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Left addon"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Right text addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Right addon"
+                                        />
+                                        <span class="input-group-append">
+                                            <button
+                                                class="btn btn-warning"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left and Right addons</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <button
+                                                class="btn btn-primary"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Multiple right addon"
+                                        />
+
+                                        <span class="input-group-append">
+                                            <button
+                                                class="btn btn-danger"
+                                                type="button"
+                                            >
+                                                Button
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="With checkboxes">
+                <prx-card-body>
+                    <form>
+                        <fieldset>
+                            <legend class="small bold text-uppercase">
+                                Left & Right Checkboxes
+                            </legend>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <prx-checkbox
+                                                    [id]="'inputGroupCheckbox1'"
+                                                ></prx-checkbox>
+                                            </span>
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Left addon"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Left addon multiple</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <span class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <prx-checkbox
+                                                    [id]="'inputGroupCheckbox2'"
+                                                ></prx-checkbox>
+                                            </span>
+                                            <span class="input-group-text"
+                                                >$</span
+                                            >
+                                        </span>
+
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Multiple left addon"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-lg-3"
+                                    >Right addon</label
+                                >
+
+                                <div class="col-lg-9">
+                                    <div class="input-group">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Right addon"
+                                        />
+
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">
+                                                <prx-checkbox
+                                                    [id]="'inputGroupCheckbox3'"
+                                                ></prx-checkbox>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="With Radios">
+                <prx-card-body>
+                    <legend class="small bold text-uppercase">
+                        Using Radios
+                    </legend>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3"
+                            >How you feeling today</label
+                        >
+
+                        <div class="col-lg-9">
+                            <div class="input-group" *ngFor="let face of faces">
+                                <span class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <prx-radio
+                                            [id]="
+                                                'inputGroupRadioFace' +
+                                                face.name
+                                            "
+                                            [value]="face.name"
+                                            name="inputGroupRadioFace"
+                                        ></prx-radio>
+                                    </span>
+                                    <span class="input-group-text">
+                                        <fa-icon [icon]="face.icon"></fa-icon>
+                                    </span>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    [placeholder]="face.name"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3"
+                            >Grouping radios</label
+                        >
+
+                        <div class="col-lg-9">
+                            <div class="input-group">
+                                <span class="input-group-prepend">
+                                    <span
+                                        class="input-group-text"
+                                        *ngFor="
+                                            let color of colors | slice: 0:4
+                                        "
+                                    >
+                                        <prx-radio
+                                            [id]="
+                                                'inputGroupingRadio' +
+                                                color.value
+                                            "
+                                            class="bw-2 radio-outlined radio-{{
+                                                color.value
+                                            }}"
+                                            [value]="color.value"
+                                            name="inputRadioGrouping"
+                                        ></prx-radio>
+                                    </span>
+                                </span>
+
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Pick a color"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

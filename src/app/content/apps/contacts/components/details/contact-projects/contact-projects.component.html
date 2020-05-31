@@ -1,0 +1,67 @@
+<ng-container *ngIf="projects && projects.length; else loading">
+    <div class="row gap-y">
+        <div class="col-md-4" *ngFor="let project of projects">
+            <prx-card class="mb-0 h-100">
+                <prx-card-body class="d-flex flex-column">
+                    <div class="project-header">
+                        <span class="badge badge-success">{{
+                            project.department
+                        }}</span>
+                        <h5 class="text-capitalize mt-2">{{ project.name }}</h5>
+                        <p
+                            class="text-muted"
+                            [innerHTML]="project.description"
+                        ></p>
+                    </div>
+
+                    <div class="project-bottom mt-auto">
+                        <ng-container
+                            *ngIf="project.team && project.team.length"
+                        >
+                            <p class="semi-bold mb-1">Project Members</p>
+                            <prx-avatar-list
+                                [avatars]="team(project)"
+                                size="sm"
+                                [display]="
+                                    project.team.length > 4
+                                        ? 4
+                                        : project.team.length
+                                "
+                            ></prx-avatar-list>
+                        </ng-container>
+
+                        <prx-progress-solid
+                            [value]="project.progress"
+                            label="Task Progress"
+                            suffix="%"
+                            class="mt-4"
+                        ></prx-progress-solid>
+                    </div>
+                </prx-card-body>
+
+                <prx-card-footer>
+                    <span class="text-muted">
+                        <prx-icon
+                            [icon]="icons.calendar"
+                            class="mr-1"
+                        ></prx-icon>
+                        Deadline:
+                    </span>
+                    {{ project.dates.end | date }}
+                </prx-card-footer>
+            </prx-card>
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #loading>
+    <div class="row gap-y">
+        <div class="col-md-4" *ngFor="let card of [1, 2, 3]">
+            <prx-loader
+                template="list"
+                [isLoading]="isLoading"
+                [count]="1"
+            ></prx-loader>
+        </div>
+    </div>
+</ng-template>

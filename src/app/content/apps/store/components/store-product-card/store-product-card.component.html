@@ -1,0 +1,25 @@
+<prx-card class="shadow-hover">
+    <a
+        class="card-img-top d-block overflow-hidden"
+        [routerLink]="['/store/products', product.slug]"
+    >
+        <img [src]="product.img" class="img-responsive mx-auto" alt="" />
+    </a>
+
+    <prx-card-body>
+        <prx-product-title [product]="product"></prx-product-title>
+    </prx-card-body>
+
+    <prx-card-footer>
+        <nav class="nav">
+            <a href="javascript:;" class="nav-link nav-item">
+                <prx-icon [icon]="icons.heart"></prx-icon>
+            </a>
+
+            <button class="btn btn-primary ml-auto" (click)="addToCart()">
+                <prx-icon [icon]="icons.cart" class="mr-2"></prx-icon>
+                Add
+            </button>
+        </nav>
+    </prx-card-footer>
+</prx-card>

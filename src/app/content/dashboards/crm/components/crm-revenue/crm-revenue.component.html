@@ -1,0 +1,11 @@
+<prx-card>
+    <prx-card-header [border]="false" title="Montly Revenue"></prx-card-header>
+
+    <prx-card-body>
+        <div class="chart">
+            <canvas #revenueChart></canvas>
+        </div>
+
+        <prx-loader template="spinner" *ngIf="isLoading"></prx-loader>
+    </prx-card-body>
+</prx-card>

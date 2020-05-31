@@ -1,0 +1,68 @@
+<prx-page-header
+    pre="Editors"
+    title="Quill Editor"
+    sub="Using Reactive Forms to set and patch the editor content"
+></prx-page-header>
+
+<div class="container-fluid">
+    <prx-card>
+        <prx-card-header title="Quill - Reactive Form">
+            <ng-container card-tools>
+                <div class="btn-group">
+                    <button class="btn btn-primary" (click)="patchValue()">
+                        Patch Value
+                    </button>
+                    <button class="btn btn-primary" (click)="setControl()">
+                        Set Control
+                    </button>
+                </div>
+
+                <div class="btn-group">
+                    <button
+                        class="btn btn-primary"
+                        btnCheckbox
+                        [(ngModel)]="formIsEnabled"
+                        (click)="enableDisableForm()"
+                    >
+                        <span *ngIf="formIsEnabled">Disable</span>
+                        <span *ngIf="!formIsEnabled">Enable</span> Form
+                    </button>
+                </div>
+            </ng-container>
+        </prx-card-header>
+
+        <prx-card-body>
+            <form [formGroup]="form">
+                <quill-editor
+                    [styles]="{ height: '400px' }"
+                    formControlName="editor"
+                >
+                    <div quill-editor-toolbar>
+                        <span class="ql-formats">
+                            <button
+                                type="button"
+                                class="ql-bold"
+                                [title]="'Bold'"
+                            ></button>
+                            <button
+                                type="button"
+                                class="ql-italic"
+                                [title]="'Italic'"
+                            ></button>
+                            <button
+                                type="button"
+                                class="ql-underline"
+                                [title]="'Underline'"
+                            ></button>
+                            <button
+                                type="button"
+                                class="ql-strike"
+                                [title]="'Strike'"
+                            ></button>
+                        </span>
+                    </div>
+                </quill-editor>
+            </form>
+        </prx-card-body>
+    </prx-card>
+</div>

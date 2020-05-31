@@ -1,0 +1,173 @@
+<prx-card class="overflow-hidden">
+    <div class="shapes-wrapper">
+        <div class="static-shape shape-circle shape-circle-1"><div></div></div>
+
+        <div class="static-shape shape-ring shape-ring-1">
+            <div class="animation animation-rotating-clockwise"></div>
+        </div>
+
+        <div class="static-shape shape-main">
+            <img src="assets/img/scenes/working-remotely.svg" alt="" />
+        </div>
+    </div>
+
+    <prx-card-body class="pb-6 p-md-5">
+        <div class="row gap-y">
+            <div class="col-md-8">
+                <div class="row gap-y">
+                    <div class="col-md-4 order-md-last">
+                        <prx-alert [scheme]="ColorScheme.Light">
+                            <p class="bold text-dark">
+                                Please make sure your password:
+                            </p>
+                            <ul>
+                                <li>Is longer than 8 characters</li>
+                                <li>Does not contain your username</li>
+                                <li>Avoid password that are easy to guess</li>
+                            </ul>
+
+                            <p class="bold text-dark">
+                                Your password must meet the following
+                                requirements:
+                            </p>
+                            <ul>
+                                <li>
+                                    At least
+                                    <span class="text-dark">8 characters</span>
+                                </li>
+                                <li>
+                                    <span class="text-dark"
+                                        >Upper and lowercase</span
+                                    >
+                                    letters
+                                </li>
+                                <li>
+                                    At least
+                                    <span class="text-dark">one number</span>
+                                </li>
+                                <li>
+                                    At least
+                                    <span class="text-dark"
+                                        >one special character</span
+                                    >
+                                </li>
+                            </ul>
+                        </prx-alert>
+                    </div>
+
+                    <div class="col-md-6">
+                        <prx-alert
+                            [scheme]="ColorScheme.Warning"
+                            withIcon="true"
+                            dismissible="true"
+                        >
+                            <span class="semi-bold"
+                                >Changing your password will sign you out of all
+                                your devices</span
+                            >, including your mobile ones. You'll have to sign
+                            in on all of them again
+                        </prx-alert>
+
+                        <form [formGroup]="form" novalidate>
+                            <div class="form-group">
+                                <div
+                                    class="d-flex align-items-center justify-content-between flex-wrap"
+                                >
+                                    <label class="control-label"
+                                        >Current Password</label
+                                    >
+                                    <a
+                                        href="javascript:;"
+                                        class="text-muted form-text"
+                                        >Forgot password ?</a
+                                    >
+                                </div>
+
+                                <input
+                                    formControlName="oldPassword"
+                                    type="password"
+                                    class="form-control"
+                                    placeholder="Current password"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >New Password</label
+                                >
+                                <input
+                                    formControlName="password"
+                                    type="password"
+                                    class="form-control"
+                                    placeholder="New password"
+                                />
+                                <password-strength-meter
+                                    [password]="password"
+                                ></password-strength-meter>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Verify Password</label
+                                >
+                                <input
+                                    formControlName="confirmation"
+                                    type="password"
+                                    class="form-control"
+                                    placeholder="Verify password"
+                                />
+                            </div>
+
+                            <div class="form-group mt-5">
+                                <button type="submit" class="btn btn-danger">
+                                    Update Password
+                                </button>
+                            </div>
+                        </form>
+
+                        <hr class="my-5 border-dashed" />
+
+                        <prx-card class="bg-light overflow-hidden">
+                            <prx-card-body>
+                                <h5>2 Steps Authentication</h5>
+                                <p>
+                                    Each time you sign in to your
+                                    <a href="https://5studios.net">5studios</a>
+                                    account you'll be asked for a verification
+                                    code
+                                </p>
+
+                                <a href="javascript:;" class="btn btn-primary"
+                                    >Get Started</a
+                                >
+                            </prx-card-body>
+                        </prx-card>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <p class="text-group">Security that matters</p>
+                <h2 class="mb-4">We care about your security</h2>
+
+                <p>
+                    <span class="text-dark semi-bold"
+                        >Choose a strong password and don't reuse it for other
+                        accounts.</span
+                    >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Magni ipsa at saepe a, provident minus, eaque earum
+                    architecto similique, aut rerum quo accusantium vitae libero
+                    neque quibusdam mollitia temporibus quam!
+                </p>
+
+                <p class="text-muted">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquid praesentium commodi quia corporis eaque, ullam
+                    beatae facilis repellat! Consectetur officia placeat nobis,
+                    provident velit quidem ullam harum minima eos veritatis!
+                </p>
+            </div>
+        </div>
+    </prx-card-body>
+</prx-card>

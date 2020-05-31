@@ -1,0 +1,222 @@
+<prx-card>
+    <prx-card-body>
+        <ng-container *ngIf="metrics && metrics.length">
+            <h5 class="bold mb-0">Cases by Country</h5>
+            <p class="text-muted">
+                A total of {{ metrics.length }} countries have confirmed cases
+            </p>
+        </ng-container>
+
+        <!-- Countries list + Map -->
+        <div class="row">
+            <div class="col-md-3">
+                <ng-container *ngIf="metrics && metrics.length; else loading">
+                    <form class="form">
+                        <div class="form-group has-icon icon-left mb-0">
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Search country"
+                                [(ngModel)]="countryModel"
+                                name="search-country"
+                            />
+                            <prx-icon
+                                [icon]="icons.search"
+                                class="icon"
+                            ></prx-icon>
+                        </div>
+                    </form>
+
+                    <div
+                        class="list-group list-group-flush countries-list-total"
+                    >
+                        <a
+                            class="list-group-item list-group-item-action px-0"
+                            href="javascript:;"
+                            (click)="selectCountry(world)"
+                        >
+                            <div class="row no-gutters">
+                                <div class="col-md-8">
+                                    <div class="media align-items-center">
+                                        <prx-flag
+                                            [flag]="world.code"
+                                            class="mr-2"
+                                        ></prx-flag>
+
+                                        <div class="media-body">
+                                            <p class="my-0 bold">
+                                                {{ world.name }}
+                                            </p>
+                                            <p class="font-sm mb-0 text-muted">
+                                                Yesterday:
+                                                {{
+                                                    world.confirmed.yesterday
+                                                        | number
+                                                }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 text-right">
+                                    <h6 class="bold lead mb-0">
+                                        {{ world.confirmed.today | number }}
+                                    </h6>
+                                    <p class="font-sm mb-0 text-muted">
+                                        {{
+                                            getVariation(world.confirmed) > 0
+                                                ? '+'
+                                                : '-'
+                                        }}{{
+                                            getVariation(world.confirmed)
+                                                | number
+                                        }}
+                                        <prx-icon
+                                            [icon]="
+                                                getVariationIcon(
+                                                    world.confirmed
+                                                )
+                                            "
+                                        ></prx-icon>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <prx-fade-content height="393">
+                            <a
+                                class="list-group-item list-group-item-action px-0"
+                                href="javascript:;"
+                                *ngFor="
+                                    let country of metrics
+                                        | searchCountry: countryModel
+                                "
+                                (click)="selectCountry(country)"
+                            >
+                                <div class="row no-gutters">
+                                    <div class="col-md-8 text-truncate">
+                                        <div class="media align-items-center">
+                                            <prx-flag
+                                                [flag]="
+                                                    country.code
+                                                        ? country.code.toLowerCase()
+                                                        : 'unkn'
+                                                "
+                                                class="mr-2"
+                                            ></prx-flag>
+
+                                            <div class="media-body">
+                                                <p
+                                                    class="my-0 bold text-truncate"
+                                                >
+                                                    {{ country.name }}
+                                                </p>
+                                                <p
+                                                    class="font-sm mb-0 text-muted"
+                                                >
+                                                    Yesterday:
+                                                    {{
+                                                        country.confirmed
+                                                            .yesterday | number
+                                                    }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 text-right">
+                                        <h6 class="bold lead mb-0">
+                                            {{
+                                                country.confirmed.today | number
+                                            }}
+                                        </h6>
+                                        <p class="font-sm mb-0 text-muted">
+                                            {{
+                                                getVariation(
+                                                    country.confirmed
+                                                ) > 0
+                                                    ? '+'
+                                                    : '-'
+                                            }}{{
+                                                getVariation(country.confirmed)
+                                                    | number
+                                            }}
+                                            <prx-icon
+                                                [icon]="
+                                                    getVariationIcon(
+                                                        country.confirmed
+                                                    )
+                                                "
+                                            ></prx-icon>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </prx-fade-content>
+                    </div>
+                </ng-container>
+            </div>
+
+            <div class="col-md-9">
+                <ng-container *ngIf="metrics && metrics.length; else spinner">
+                    <prx-covid19-world-map
+                        [countries]="metrics"
+                        [selectedCountry]="selectedCountry"
+                    ></prx-covid19-world-map>
+                </ng-container>
+            </div>
+        </div>
+    </prx-card-body>
+</prx-card>
+
+<prx-card>
+    <prx-card-body>
+        <prx-covid19-history-world></prx-covid19-history-world>
+    </prx-card-body>
+</prx-card>
+
+<!-- Countries Distribution -->
+<div class="row">
+    <div class="col-lg-8 col-xl-6">
+        <prx-card>
+            <prx-card-body>
+                <ng-container *ngIf="metrics && metrics.length; else loading">
+                    <prx-covid19-countries-distribution
+                        [countries]="metrics"
+                        [world]="world"
+                    ></prx-covid19-countries-distribution>
+                </ng-container>
+            </prx-card-body>
+        </prx-card>
+    </div>
+
+    <div class="col-lg-4 col-xl-6">
+        <prx-card>
+            <prx-card-body>
+                <ng-container *ngIf="metrics && metrics.length; else loading">
+                    <prx-covid19-countries-bars
+                        [countries]="metrics"
+                        [world]="world"
+                        [top]="20"
+                    ></prx-covid19-countries-bars>
+                </ng-container>
+            </prx-card-body>
+        </prx-card>
+    </div>
+</div>
+
+<ng-template #loading>
+    <prx-loader
+        template="table"
+        [isLoading]="isLoading"
+        [count]="3"
+    ></prx-loader>
+</ng-template>
+
+<ng-template #spinner>
+    <prx-loader
+        template="table"
+        [isLoading]="isLoading"
+        [count]="3"
+    ></prx-loader>
+</ng-template>

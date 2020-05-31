@@ -1,0 +1,436 @@
+<prx-page-header pre="Form Controls" title="Masked Inputs"></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Common Cases">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Date mask
+                                <small class="form-text text-muted"
+                                    >Mask: 00/00/0000</small
+                                >
+                            </label>
+                            <input
+                                class="form-control"
+                                placeholder="Format mm/dd/yyyy"
+                                mask="00/00/0000"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Date and time
+                                <small class="form-text text-muted"
+                                    >Mask: 00/00/00 00:00:00</small
+                                >
+                            </label>
+                            <input
+                                class="form-control"
+                                placeholder="Format mm/dd/yyyy hh:mm:ss"
+                                mask="00/00/00 00:00:00"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Time
+                                <small class="form-text text-muted"
+                                    >Mask: 00:00:00</small
+                                >
+                            </label>
+                            <input
+                                class="form-control"
+                                placeholder="Format hh:mm:ss"
+                                mask="00:00:00"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Valid 24 hour format
+                                <small class="form-text text-muted"
+                                    >Mask: Hh:m0:s0</small
+                                >
+                            </label>
+                            <input
+                                class="form-control"
+                                placeholder="Valid 24 hour format"
+                                mask="Hh:m0:s0"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Mixed types
+                                <small class="form-text text-muted"
+                                    >Mask: AAA 000-S0S</small
+                                >
+                            </label>
+                            <input
+                                class="form-control"
+                                placeholder="Mixed types"
+                                mask="AAA 000-S0S"
+                            />
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Special Cases">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Secure input
+                                <small class="form-text text-muted"
+                                    >You can hide symbols in input field and get
+                                    the actual value in formcontrol
+                                </small></label
+                            >
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Credit Card Number"
+                                name="ccNumber"
+                                [(ngModel)]="secureModel"
+                                [hiddenInput]="true"
+                                mask="XXXX XXXX XXXX 0000"
+                            />
+
+                            <small
+                                >Model value:
+                                {{ secureModel ? secureModel : 'Empty' }}</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Special Characters
+                                <small class="form-text text-muted"
+                                    >Allow special chars to be included as part
+                                    of the value</small
+                                ></label
+                            >
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Special characters allowed"
+                                name="specialChars"
+                                [(ngModel)]="specialCharsModel"
+                                [specialCharacters]="['[', ']', '\\']"
+                                [dropSpecialCharacters]="false"
+                                mask="[00][000]"
+                            />
+                            <small
+                                >Model value:
+                                {{
+                                    specialCharsModel
+                                        ? specialCharsModel
+                                        : 'Empty'
+                                }}</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Custom pattern
+                                <small class="form-text text-muted"
+                                    >You may want to use a custom pattern that
+                                    also includes special characters that are
+                                    allowed to be typed and deleted. The example
+                                    below is for a 'Surname' field where you
+                                    want to allow a-z, hyphen, spaces and
+                                    apostrophes.</small
+                                ></label
+                            >
+                            <!-- In this case you should set the specialCharacters to an empty array. -->
+                            <input
+                                placeholder="Surname"
+                                class="form-control"
+                                mask="N*"
+                                [specialCharacters]="[]"
+                                [patterns]="surnamePattern"
+                                name="surnamePattern"
+                                [(ngModel)]="customPatternModel"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Percent valid mask</label
+                            >
+                            <input
+                                class="form-control"
+                                placeholder="Percent valid mask"
+                                mask="percent.5"
+                                suffix="%"
+                                name="percentModel"
+                                [(ngModel)]="percentValidModel"
+                            />
+                            <small
+                                >Model value:
+                                {{
+                                    percentValidModel
+                                        ? percentValidModel
+                                        : 'Empty'
+                                }}</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Repeat mask
+                                <small class="form-text text-muted">
+                                    You can pass into mask pattern with brackets
+                                </small>
+                            </label>
+                            <input
+                                class="form-control"
+                                placeholder="Repeat mask"
+                                name="repeatMask"
+                                mask="A{5}"
+                                [(ngModel)]="repeatFormModel"
+                            />
+                            <small
+                                >Model value:
+                                {{
+                                    repeatFormModel ? repeatFormModel : 'Empty'
+                                }}</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Custom Mask placeholder
+                                <small class="form-text text-muted">
+                                    You can add 'placeHolderCharacter' property
+                                    to changed the placeholder character used
+                                    when displaying the mask
+                                </small>
+                            </label>
+                            <input
+                                class="form-control"
+                                name="customMaslPlaceholder"
+                                placeholder="Custom Mask placeholder"
+                                mask="(000) 000-0000"
+                                prefix="+5 "
+                                [(ngModel)]="showMaskModel"
+                                [showMaskTyped]="true"
+                                placeHolderCharacter="#"
+                            />
+                            <small
+                                >Model value:
+                                {{
+                                    showMaskModel ? showMaskModel : 'Empty'
+                                }}</small
+                            >
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Options">
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Prefix string
+                                <small class="form-text text-muted"
+                                    >Mask: (00) 000 000</small
+                                >
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter your phone number"
+                                prefix="+7 "
+                                mask="(000) 000 00 00"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Suffix string
+                                <small class="form-text text-muted"
+                                    >Mask: 0000</small
+                                >
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Your desired income"
+                                suffix=" $"
+                                mask="0000"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Show mask typed
+                                <small class="form-text text-muted"
+                                    >Mask: (000) 000-0000</small
+                                >
+                            </label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter your phone number"
+                                prefix="+7 "
+                                [showMaskTyped]="true"
+                                mask="(000) 000-0000"
+                            />
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Separators">
+                <prx-card-body>
+                    <div class="bg-light p-3 border rounded mb-4">
+                        <p>
+                            You can configure the thousand separator and the
+                            precision you want to limit too on the input.
+                        </p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label
+                                    for="thousandSeparator"
+                                    class="control-label"
+                                    >Thousand Separator</label
+                                >
+
+                                <select
+                                    name="thousandSeparator"
+                                    id="thousandSeparator"
+                                    class="form-control"
+                                    [(ngModel)]="thousandSeparator"
+                                >
+                                    <option value=".">.</option>
+                                    <option value=",">,</option>
+                                    <option value=" ">Blank</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="cozy">
+                        <fieldset>
+                            <legend class="bold font-sm text-uppercase">
+                                Thousand Separator
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label">
+                                    <small class="form-text text-muted"
+                                        >No limits on decimal places</small
+                                    >
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter a big number"
+                                    mask="separator"
+                                    [thousandSeparator]="thousandSeparator"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">
+                                    <small class="form-text text-muted"
+                                        >No decimals allowed</small
+                                    >
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter a big number"
+                                    [thousandSeparator]="thousandSeparator"
+                                    mask="separator.0"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">
+                                    <small class="form-text text-muted"
+                                        >Limit decimals to two places</small
+                                    >
+                                </label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Limit decimals numbers to two"
+                                    [thousandSeparator]="thousandSeparator"
+                                    mask="separator.2"
+                                />
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Custom Pattern and mask in pipe">
+                <prx-card-body>
+                    <div class="bg-light p-3 border rounded mb-4">
+                        <p>
+                            Also you can use mask pipe to format your not input
+                            value bindings.
+                        </p>
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <label class="control-label">Test value</label>
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    [(ngModel)]="phone"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="control-label"
+                            >Phone Mask
+                            <small class="form-text text-muted"
+                                >Mask: (000) 000-0000</small
+                            >
+                        </span>
+                        <span class="dotted">{{
+                            phone ? (phone | mask: phoneMask) : 'Empty'
+                        }}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="control-label"
+                            >Custom Mask
+                            <small class="form-text text-muted"
+                                >Mask: 000.000-0000</small
+                            >
+                        </span>
+                        <span class="dotted">{{
+                            phone ? (phone | mask: customMask) : 'Empty'
+                        }}</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="control-label"
+                            >Separator Mask
+                            <small class="form-text text-muted"
+                                >Mask: thousand separator</small
+                            >
+                        </span>
+                        <span class="dotted">{{
+                            phone ? (phone | mask: 'separator':',') : 'Empty'
+                        }}</span>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

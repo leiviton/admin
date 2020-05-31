@@ -1,0 +1,121 @@
+<prx-page-header pre="Form Controls" title="Radios Card"></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Cards with Radio">
+                <prx-card-body>
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                        <prx-radio-group
+                            name="shippingAddress"
+                            formControlName="shippingAddress"
+                            (valueChanged)="addressChanged($event)"
+                        >
+                            <prx-card
+                                *ngFor="let address of addresses"
+                                class="bw-2"
+                                [class.border-primary]="
+                                    selectedAddress &&
+                                    address.name === selectedAddress.name
+                                "
+                            >
+                                <prx-card-body>
+                                    <div class="media align-items-center">
+                                        <prx-radio
+                                            class="mr-3 bw-2"
+                                            [value]="address"
+                                            [id]="address.name + '-address'"
+                                        ></prx-radio>
+
+                                        <div class="media-body">
+                                            <p class="bold my-0">
+                                                {{ address.name }}
+                                            </p>
+                                            <p class="text-muted mb-0">
+                                                {{ address.address }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </prx-card-body>
+                            </prx-card>
+                        </prx-radio-group>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Radio Cards: NgModel">
+                <prx-card-body>
+                    <prx-radio-group
+                        name="paymentType"
+                        [(ngModel)]="paymentTypeModel"
+                    >
+                        <div class="row">
+                            <prx-radio-card
+                                *ngFor="let method of paymentMethods"
+                                [id]="'template-driven-' + method.id"
+                                [value]="method"
+                                class="col-md-3"
+                                [theme]="ColorScheme.Primary"
+                            >
+                                <div class="text-center">
+                                    <prx-icon
+                                        [icon]="method.icon"
+                                        size="3x"
+                                    ></prx-icon>
+                                    <p class="mb-0 mt-3">{{ method.name }}</p>
+                                </div>
+                            </prx-radio-card>
+                        </div>
+                    </prx-radio-group>
+                    <p>
+                        Selected Value:
+                        {{ paymentTypeModel ? paymentTypeModel.name : 'Empty' }}
+                    </p>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Show check mark: ReactiveForms">
+                <prx-card-body>
+                    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+                        <prx-radio-group
+                            name="paymentType"
+                            formControlName="paymentType"
+                        >
+                            <div class="row">
+                                <prx-radio-card
+                                    *ngFor="let method of paymentMethods"
+                                    [id]="'reactive-form-' + method.id"
+                                    [value]="method"
+                                    showMark="true"
+                                    class="col-md-3"
+                                    [theme]="ColorScheme.Success"
+                                >
+                                    <div class="text-center">
+                                        <prx-icon
+                                            [icon]="method.icon"
+                                            size="3x"
+                                        ></prx-icon>
+                                        <p class="mb-0 mt-3">
+                                            {{ method.name }}
+                                        </p>
+                                    </div>
+                                </prx-radio-card>
+                            </div>
+                        </prx-radio-group>
+                        <p>
+                            Selected Value:
+                            {{
+                                paymentForm.value &&
+                                paymentForm.value.paymentType
+                                    ? paymentForm.value.paymentType.name
+                                    : 'Empty'
+                            }}
+                        </p>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

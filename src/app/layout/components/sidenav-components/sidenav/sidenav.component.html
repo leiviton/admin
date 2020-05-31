@@ -1,0 +1,29 @@
+<div class="sidenav-logo">
+    <a class="sidenav-brand" href="javascript:;">
+        <span class="header-title text-white logo-sirius"> SIRIUS</span>
+    </a>
+
+    <prx-menu-toggler
+        class="sidenav-toggler"
+        dark="true"
+        (click)="toggleSidenav()"
+    ></prx-menu-toggler>
+</div>
+
+<div perfectScrollbar class="sidenav-content">
+    <nav class="nav flex-column">
+        <!-- ALL NAVIGATION OPTIONS -->
+        <ng-container *ngFor="let group of navGroups">
+            <div class="nav-header">
+                <span>{{ group.title }}</span>
+            </div>
+
+            <prx-sidenav-item
+                *ngFor="let option of group.items"
+                [option]="option"
+                [collapsed]="collapsed"
+                [hover]="hover"
+            ></prx-sidenav-item>
+        </ng-container>
+    </nav>
+</div>

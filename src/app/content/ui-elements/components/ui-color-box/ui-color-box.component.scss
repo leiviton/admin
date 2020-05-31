@@ -1,0 +1,23 @@
+@import "import";
+
+:host {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+    color: #fff;
+}
+
+.color-base {
+    width: 25%;
+    height: auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.color-variations {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}

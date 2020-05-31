@@ -1,0 +1,8 @@
+<div
+    class="color color-{{ color.name.toLowerCase() }}"
+    *ngFor="let color of colors"
+    [style.backgroundColor]="color.value"
+>
+    <span class="semi-bold d-block">{{ color.name }}</span>
+    {{ color.value }}
+</div>

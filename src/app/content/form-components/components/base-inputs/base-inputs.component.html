@@ -1,0 +1,870 @@
+<prx-page-header
+    pre="Form Controls"
+    title="Base Inputs"
+    sub="Basic form inputs example"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Basic Inputs -->
+            <prx-card>
+                <prx-card-header
+                    title="Bootstrap Base Inputs"
+                ></prx-card-header>
+
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Email address
+                                <small class="form-text text-muted"
+                                    >We'll never share your email with anyone
+                                    else.</small
+                                ></label
+                            >
+
+                            <input
+                                type="email"
+                                class="form-control"
+                                aria-describedby="emailHelp"
+                                placeholder="Enter email"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                placeholder="Password"
+                            />
+                        </div>
+
+                        <div class="form-group form-check">
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                id="exampleCheck1"
+                            />
+                            <label
+                                class="form-check-label control-label"
+                                for="exampleCheck1"
+                                >Check me out</label
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Example select</label>
+                            <select class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Example multiple select</label
+                            >
+                            <select multiple class="form-control">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Example textarea</label
+                            >
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- Rounded Inputs -->
+            <prx-card>
+                <prx-card-header title="Rounded inputs"></prx-card-header>
+
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Email address
+                                <small class="form-text text-muted"
+                                    >We'll never share your email with anyone
+                                    else.</small
+                                >
+                            </label>
+
+                            <input
+                                type="email"
+                                class="form-control form-control-rounded"
+                                aria-describedby="emailHelp"
+                                placeholder="Enter email"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input
+                                type="password"
+                                class="form-control form-control-rounded"
+                                placeholder="Password"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Example select</label>
+                            <select class="form-control form-control-rounded">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Example multiple select</label
+                            >
+                            <select
+                                multiple
+                                class="form-control form-control-rounded"
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Example textarea</label
+                            >
+                            <textarea
+                                class="form-control form-control-rounded"
+                                rows="3"
+                            ></textarea>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- Inputs with Icons -->
+            <prx-card>
+                <prx-card-header title="Inputs with icons"></prx-card-header>
+
+                <prx-card-body>
+                    <form class="cozy">
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Default inputs
+                            </legend>
+
+                            <div class="form-group has-icon">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Right icon"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+
+                            <div class="form-group has-icon icon-left">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Left icon"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Rounded inputs
+                            </legend>
+
+                            <div class="form-group has-icon">
+                                <input
+                                    type="text"
+                                    class="form-control form-control-rounded"
+                                    placeholder="Right icon"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+
+                            <div class="form-group has-icon icon-left">
+                                <input
+                                    type="text"
+                                    class="form-control form-control-rounded"
+                                    placeholder="Left icon"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Sizing inputs
+                            </legend>
+
+                            <div class="form-group has-icon">
+                                <input
+                                    type="text"
+                                    class="form-control form-control-lg"
+                                    placeholder="Right icon - input large"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+
+                            <div class="form-group has-icon icon-left">
+                                <input
+                                    type="text"
+                                    class="form-control form-control-sm"
+                                    placeholder="Left icon - input small"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Animation icons
+                            </legend>
+
+                            <div class="form-group has-icon icon-left">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Left icon - fa-sync fa-spin"
+                                />
+                                <fa-icon
+                                    [icon]="icons.sync"
+                                    [spin]="true"
+                                    class="icon"
+                                ></fa-icon>
+                            </div>
+
+                            <div class="form-group has-icon icon-left">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Left icon - fa-spinner fa-pulse"
+                                />
+                                <fa-icon
+                                    [icon]="icons.spinner"
+                                    [pulse]="true"
+                                    class="icon"
+                                ></fa-icon>
+                            </div>
+
+                            <div class="form-group has-icon">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Right icon - fa-sync fa-spin"
+                                />
+                                <fa-icon
+                                    [icon]="icons.sync"
+                                    [spin]="true"
+                                    class="icon"
+                                ></fa-icon>
+                            </div>
+
+                            <div class="form-group has-icon">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Right icon - fa-spinner fa-pulse"
+                                />
+                                <fa-icon
+                                    [icon]="icons.spinner"
+                                    [pulse]="true"
+                                    class="icon"
+                                ></fa-icon>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- Color Options -->
+            <prx-card>
+                <prx-card-header title="Color Options"></prx-card-header>
+
+                <prx-card-body>
+                    <div class="bg-light border rounded p-4 form-group">
+                        <p class="mt-0">
+                            <span class="bold">Try it!!!</span>
+                            You can change both the text color and the
+                            background color
+                        </p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="control-label">Text Color</label>
+                                <prx-theme-color-picker
+                                    (change)="applyColor($event)"
+                                ></prx-theme-color-picker>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="control-label">Background</label>
+                                <prx-theme-color-picker
+                                    [current]="current.background"
+                                    (change)="applyBackgroundColor($event)"
+                                ></prx-theme-color-picker>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="cozy">
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Input elements
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Custom text color</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    [ngClass]="setFormControlStyle()"
+                                    placeholder="Custom text color"
+                                    value="Custom text color"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Example textarea</label
+                                >
+                                <textarea
+                                    class="form-control"
+                                    [ngClass]="setFormControlStyle()"
+                                    rows="3"
+                                >
+      Textarea custom color example</textarea
+                                >
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Checkboxes and Radios
+                            </legend>
+
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <div class="form-check-list">
+                                        <prx-checkbox
+                                            [id]="'checkbox-demo-1'"
+                                            label="Check me out"
+                                            [class]="setCheckStyle(true)"
+                                        >
+                                        </prx-checkbox>
+
+                                        <prx-checkbox
+                                            [id]="'checkbox-demo-2'"
+                                            label="Check me out"
+                                            [class]="setCheckStyle(true)"
+                                        >
+                                        </prx-checkbox>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-check-list">
+                                        <prx-checkbox
+                                            type="radio"
+                                            name="exampleRadioCustomColor"
+                                            [id]="'radio-demo-1'"
+                                            label="Check me out"
+                                            [class]="setCheckStyle(false)"
+                                        >
+                                        </prx-checkbox>
+
+                                        <prx-checkbox
+                                            type="radio"
+                                            name="exampleRadioCustomColor"
+                                            [id]="'radio-demo-2'"
+                                            label="Check me out"
+                                            [class]="setCheckStyle(false)"
+                                        >
+                                        </prx-checkbox>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Select elements
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Example select</label
+                                >
+                                <select
+                                    class="form-control"
+                                    [ngClass]="setFormControlStyle()"
+                                >
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Example multiple select</label
+                                >
+                                <select
+                                    multiple
+                                    class="form-control"
+                                    [ngClass]="setFormControlStyle()"
+                                >
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <!-- Text Options -->
+            <prx-card>
+                <prx-card-header title="Text options"></prx-card-header>
+
+                <prx-card-body>
+                    <form class="form cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with thin font</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control thin"
+                                placeholder="Input with thin font"
+                                value="Input with thin font"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with light font</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control light"
+                                placeholder="Input with light font"
+                                value="Input with light font"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with regular font</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control regular"
+                                placeholder="Input with regular font"
+                                value="Input with regular font"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with bold font</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control bold"
+                                placeholder="Input with bold font"
+                                value="Input with bold font"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with bold font</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control extra-bold"
+                                placeholder="Input with extra-bold font"
+                                value="Input with extra-bold font"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with bold font</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control text-capitalize"
+                                placeholder="Input with capitalized text"
+                                value="Input with capitalized text"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with upper case</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control text-uppercase"
+                                placeholder="Input with upper case"
+                                value="Input with upper case text"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with centered text</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control text-center"
+                                placeholder="Input with centered text"
+                                value="Input with centered text"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Input with right aligned text</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control text-right"
+                                placeholder="Input with right aligned text"
+                                value="Input with right aligned text"
+                            />
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- Validation States -->
+            <prx-card>
+                <prx-card-header title="Validation states"></prx-card-header>
+
+                <prx-card-body>
+                    <form class="cozy">
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Default inputs
+                            </legend>
+
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    class="form-control is-valid"
+                                    placeholder="Valid state"
+                                />
+                                <small class="form-text text-success"
+                                    >Valid state helper</small
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    class="form-control is-invalid"
+                                    placeholder="Invalid state"
+                                />
+                                <small class="form-text text-danger"
+                                    >Invalid state helper</small
+                                >
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Rounded inputs
+                            </legend>
+
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    class="form-control form-control-rounded is-valid"
+                                    placeholder="Valid state"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    class="form-control form-control-rounded is-invalid"
+                                    placeholder="Invalid state"
+                                />
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Inputs with icon
+                            </legend>
+
+                            <div class="form-group has-icon icon-left">
+                                <input
+                                    type="text"
+                                    class="form-control is-valid"
+                                    placeholder="Valid state"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+
+                            <div class="form-group has-icon icon-left">
+                                <input
+                                    type="text"
+                                    class="form-control is-invalid"
+                                    placeholder="Invalid state"
+                                />
+                                <prx-icon
+                                    [icon]="icons.user"
+                                    class="icon"
+                                ></prx-icon>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- Sizing Options -->
+            <prx-card>
+                <prx-card-header title="Sizing options"></prx-card-header>
+
+                <prx-card-body>
+                    <form class="form cozy">
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Input elements
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label">Large input</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-lg"
+                                    placeholder="Large input"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Default input</label
+                                >
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Default input"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Small input</label>
+                                <input
+                                    type="text"
+                                    class="form-control form-control-sm"
+                                    placeholder="Default input"
+                                />
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="bold small text-uppercase">
+                                Select inputs
+                            </legend>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Large select</label
+                                >
+                                <select
+                                    type="text"
+                                    class="form-control form-control-lg"
+                                >
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Default select</label
+                                >
+                                <select
+                                    type="text"
+                                    class="form-control form-control-sm"
+                                >
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label"
+                                    >Small select</label
+                                >
+                                <select
+                                    type="text"
+                                    class="form-control form-control-sm"
+                                >
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+
+            <!-- shadoweded Inputs -->
+            <prx-card>
+                <prx-card-header title="Shadowed inputs"></prx-card-header>
+
+                <prx-card-body>
+                    <form class="cozy">
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Email address
+                                <small class="form-text text-muted"
+                                    >We'll never share your email with anyone
+                                    else.</small
+                                ></label
+                            >
+
+                            <input
+                                type="email"
+                                class="form-control shadowed"
+                                aria-describedby="emailHelp"
+                                placeholder="Enter email"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Password</label>
+                            <input
+                                type="password"
+                                class="form-control shadowed"
+                                placeholder="Password"
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <prx-checkbox
+                                [id]="'check-shadowed-1'"
+                                label="Check me out"
+                                shadow="true"
+                            ></prx-checkbox>
+                        </div>
+
+                        <div class="form-group">
+                            <prx-checkbox
+                                [id]="'radio-shadowed-1'"
+                                type="radio"
+                                name="exampleRadioShadowed"
+                                label="Check me out"
+                                class="mb-3"
+                            >
+                            </prx-checkbox>
+
+                            <prx-checkbox
+                                [id]="'radio-shadowed-2'"
+                                type="radio"
+                                name="exampleRadioShadowed"
+                                label="Check me out"
+                            >
+                            </prx-checkbox>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Example select</label>
+                            <select class="form-control shadowed">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Example multiple select</label
+                            >
+                            <select multiple class="form-control shadowed">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label"
+                                >Example textarea</label
+                            >
+                            <textarea
+                                class="form-control shadowed"
+                                rows="3"
+                            ></textarea>
+                        </div>
+                    </form>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

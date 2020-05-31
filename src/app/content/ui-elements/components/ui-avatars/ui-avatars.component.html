@@ -1,0 +1,199 @@
+<prx-page-header pre="UI Elements" title="Avatars"></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row" *ngIf="avatars && avatars.length; else loading">
+        <!-- Default Size with Picture -->
+        <div class="col-md-6">
+            <prx-card title="Default Avatars">
+                <prx-card-body>
+                    <p class="text-group">Default Avatars</p>
+                    <div class="d-flex">
+                        <prx-avatar
+                            [avatar]="item.avatar"
+                            *ngFor="let item of getForDemo(Demo.clean)"
+                        ></prx-avatar>
+                    </div>
+
+                    <p class="text-group mt-5">With State</p>
+                    <div class="d-flex">
+                        <prx-avatar
+                            [avatar]="item.avatar"
+                            *ngFor="let item of getForDemo(Demo.stateFull)"
+                        ></prx-avatar>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <!-- Default Size with Placeholder -->
+        <div class="col-md-6">
+            <prx-card title="Placeholder Avatars">
+                <prx-card-body>
+                    <p class="text-group">Default Avatars</p>
+                    <div class="d-flex">
+                        <prx-avatar
+                            [avatar]="item.avatar"
+                            [placeholderBgColor]="item.placeholderBgColor"
+                            *ngFor="
+                                let item of getForDemo(Demo.cleanPlaceholder)
+                            "
+                        ></prx-avatar>
+                    </div>
+
+                    <p class="text-group mt-5">With State</p>
+                    <div class="d-flex">
+                        <prx-avatar
+                            [avatar]="item.avatar"
+                            [placeholderBgColor]="item.placeholderBgColor"
+                            *ngFor="
+                                let item of getForDemo(
+                                    Demo.stateFullPlaceholder
+                                )
+                            "
+                        ></prx-avatar>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <!-- Size demo with Picture -->
+        <div class="col-md-6">
+            <prx-card title="Avatar Size">
+                <prx-card-body>
+                    <ng-container *ngFor="let size of ['sm', 'md', 'lg']">
+                        <p class="text-group">Size: {{ size }}</p>
+                        <div class="d-flex mb-5">
+                            <prx-avatar
+                                [size]="size"
+                                [avatar]="item.avatar"
+                                [placeholderBgColor]="item.placeholderBgColor"
+                                *ngFor="
+                                    let item of getForDemo(Demo.clean)
+                                        | slice: 0:3
+                                "
+                            ></prx-avatar>
+                        </div>
+                    </ng-container>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <!-- Size demo with Placeholder -->
+        <div class="col-md-6">
+            <prx-card title="Avatar Size">
+                <prx-card-body>
+                    <ng-container *ngFor="let size of ['sm', 'md', 'lg']">
+                        <p class="text-group">Size: {{ size }}</p>
+                        <div class="d-flex mb-5">
+                            <prx-avatar
+                                [size]="size"
+                                [avatar]="item.avatar"
+                                [placeholderBgColor]="item.placeholderBgColor"
+                                *ngFor="
+                                    let item of getForDemo(
+                                        Demo.cleanPlaceholder
+                                    ) | slice: 0:3
+                                "
+                            ></prx-avatar>
+                        </div>
+                    </ng-container>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <!-- With Info + Picture -->
+        <div class="col-md-6">
+            <prx-card title="Default Information">
+                <prx-card-body class="d-flex">
+                    <div class="row gap-y">
+                        <div
+                            class="col-md-4"
+                            *ngFor="let item of getForDemo(Demo.withInfo)"
+                        >
+                            <prx-avatar-info
+                                [name]="item.avatar.name"
+                                [info]="item.info"
+                            >
+                                <prx-avatar [avatar]="item.avatar"></prx-avatar>
+                            </prx-avatar-info>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <!-- With Info + Placeholder -->
+        <div class="col-md-6">
+            <prx-card title="Default Information">
+                <prx-card-body class="d-flex">
+                    <div class="row gap-y">
+                        <div
+                            class="col-md-4"
+                            *ngFor="
+                                let item of getForDemo(Demo.withInfoPlaceholder)
+                            "
+                        >
+                            <prx-avatar-info
+                                [name]="item.avatar.name"
+                                [info]="item.info"
+                            >
+                                <prx-avatar
+                                    [avatar]="item.avatar"
+                                    [placeholderBgColor]="
+                                        item.placeholderBgColor
+                                    "
+                                ></prx-avatar>
+                            </prx-avatar-info>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <!-- Avatar List Size + Picture -->
+        <div class="col-md-6">
+            <prx-card title="Avatar List">
+                <prx-card-body>
+                    <ng-container *ngFor="let size of ['sm', 'md', 'lg']">
+                        <p class="text-group">Size: {{ size }}</p>
+                        <div class="d-flex mb-5">
+                            <prx-avatar-list
+                                [display]="3"
+                                [avatars]="getForDemo(Demo.clean)"
+                                [size]="size"
+                            ></prx-avatar-list>
+                        </div>
+                    </ng-container>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <!-- Avatar List Size + Placeholder -->
+        <div class="col-md-6">
+            <prx-card title="Avatar List with Placeholder">
+                <prx-card-body>
+                    <ng-container *ngFor="let size of ['sm', 'md', 'lg']">
+                        <p class="text-group">Size: {{ size }}</p>
+                        <div class="d-flex mb-5">
+                            <prx-avatar-list
+                                [display]="3"
+                                [avatars]="getForDemo(Demo.cleanPlaceholder)"
+                                [size]="size"
+                            ></prx-avatar-list>
+                        </div>
+                    </ng-container>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+
+    <ng-template #loading>
+        <div class="p-4">
+            <prx-loader
+                template="list"
+                [isLoading]="!avatars"
+                [count]="5"
+            ></prx-loader>
+        </div>
+    </ng-template>
+</div>

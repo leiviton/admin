@@ -1,0 +1,389 @@
+<prx-page-header
+    pre="UI Elements"
+    title="Dropdowns"
+    sub="ngx-bootstrap dropdowns component"
+></prx-page-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <prx-card title="Button Dropdowns">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        Any <code>&lt;button&gt;</code> can became a dropdown
+                        toggle with few markup changes. Here’s how dropdown
+                        works with single button
+                    </prx-alert>
+
+                    <div class="row">
+                        <div
+                            class="col"
+                            *ngFor="
+                                let style of [
+                                    'gray-light',
+                                    'primary',
+                                    'success'
+                                ]
+                            "
+                        >
+                            <div class="btn-group" dropdown>
+                                <button
+                                    dropdownToggle
+                                    type="button"
+                                    class="btn btn-{{ style }} dropdown-toggle"
+                                >
+                                    Button dropdown
+                                    <prx-dropdown-icon></prx-dropdown-icon>
+                                </button>
+
+                                <ul *dropdownMenu class="dropdown-menu">
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Action</a
+                                        >
+                                    </li>
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Another action</a
+                                        >
+                                    </li>
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Something else here</a
+                                        >
+                                    </li>
+                                    <li class="divider dropdown-divider"></li>
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Separated link</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Context Menu">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        We've created a <code>context-menu</code> component to
+                        make it easy to display context menu options. By default
+                        the component will display a
+                        <code>more-horizontal</code> icon, you can configure the
+                        component to display any icon you like
+                    </prx-alert>
+
+                    <div class="d-flex justify-content-end p-3">
+                        <prx-context-menu class="mr-3">
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+
+                        <prx-context-menu class="mr-3">
+                            <ng-container menu-icon>
+                                <prx-icon icon="more-vertical"></prx-icon>
+                            </ng-container>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+
+                        <prx-context-menu class="mr-3">
+                            <ng-container menu-icon>
+                                <prx-icon icon="menu"></prx-icon>
+                            </ng-container>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+
+                        <prx-context-menu class="mr-3">
+                            <ng-container menu-icon>
+                                <prx-icon icon="chevron-down"></prx-icon>
+                            </ng-container>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Another action</a
+                            >
+                            <a class="dropdown-item" href="javascript:;"
+                                >Something else here</a
+                            >
+                            <div class="divider dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:;"
+                                >Separated link</a
+                            >
+                        </prx-context-menu>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Custom Content">
+                <prx-card-body>
+                    <div class="row">
+                        <div class="col">
+                            <p class="small bold text-primary text-uppercase">
+                                Custom Inline Content
+                            </p>
+
+                            <div
+                                class="btn-group"
+                                dropdown
+                                [dropup]="true"
+                                [autoClose]="false"
+                            >
+                                <button
+                                    dropdownToggle
+                                    type="button"
+                                    class="btn btn-info dropdown-toggle"
+                                >
+                                    Button dropdown
+                                    <prx-dropdown-icon></prx-dropdown-icon>
+                                </button>
+
+                                <div *dropdownMenu class="dropdown-menu p-3">
+                                    <p>Some custom content</p>
+                                    <div class="form-group">
+                                        <label class="control-label"
+                                            >Email</label
+                                        >
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Email"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <p class="small bold text-primary text-uppercase">
+                                Place Any Component
+                            </p>
+
+                            <div
+                                class="btn-group"
+                                dropdown
+                                [dropup]="true"
+                                [autoClose]="false"
+                            >
+                                <button
+                                    dropdownToggle
+                                    type="button"
+                                    class="btn btn-info dropdown-toggle"
+                                >
+                                    Button dropdown
+                                    <prx-dropdown-icon></prx-dropdown-icon>
+                                </button>
+
+                                <div *dropdownMenu class="dropdown-menu p-3">
+                                    <prx-ui-dropdown-component-demo></prx-ui-dropdown-component-demo>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+
+        <div class="col-md-6">
+            <prx-card title="Split Buttons">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        Similarly, create split button dropdowns with virtually
+                        the same markup as single button dropdowns, but with the
+                        addition of <code>.dropdown-toggle-split</code> for
+                        proper spacing around the dropdown caret.
+                    </prx-alert>
+
+                    <div class="row">
+                        <div
+                            class="col"
+                            *ngFor="let style of ['primary', 'info', 'danger']"
+                        >
+                            <div class="btn-group" dropdown>
+                                <button
+                                    type="button"
+                                    class="btn btn-{{ style }}"
+                                >
+                                    <span class="text-capitalize">{{
+                                        style
+                                    }}</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    dropdownToggle
+                                    class="btn btn-{{
+                                        style
+                                    }} dropdown-toggle dropdown-toggle-split"
+                                >
+                                    <prx-dropdown-icon></prx-dropdown-icon>
+                                </button>
+
+                                <ul *dropdownMenu class="dropdown-menu">
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Action</a
+                                        >
+                                    </li>
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Another action</a
+                                        >
+                                    </li>
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Something else here</a
+                                        >
+                                    </li>
+                                    <li class="divider dropdown-divider"></li>
+                                    <li role="menuitem">
+                                        <a
+                                            class="dropdown-item"
+                                            href="javascript:;"
+                                            >Separated link</a
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Menu alignment">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        By default, a dropdown menu is automatically positioned
+                        100% from the top and along the left side of its parent.
+                        Add class .dropdown-menu-right to a dropdownMenu to
+                        right align the dropdown menu.
+                    </prx-alert>
+
+                    <div class="btn-group" dropdown placement="bottom right">
+                        <button
+                            dropdownToggle
+                            type="button"
+                            class="btn btn-primary dropdown-toggle"
+                        >
+                            This dropdown's menu is right-aligned
+                            <prx-dropdown-icon></prx-dropdown-icon>
+                        </button>
+                        <ul
+                            *dropdownMenu
+                            class="dropdown-menu dropdown-menu-right"
+                        >
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#">Action</a>
+                            </li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#"
+                                    >Another action</a
+                                >
+                            </li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#"
+                                    >Something else here</a
+                                >
+                            </li>
+                            <li class="divider dropdown-divider"></li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#"
+                                    >Separated link</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+
+            <prx-card title="Dropup variation">
+                <prx-card-body>
+                    <prx-alert [scheme]="ColorScheme.Light">
+                        To make dropdown's menu appear above toggle element set
+                        <code>dropup</code> property as <code>true</code>
+                    </prx-alert>
+
+                    <div class="btn-group" dropdown [dropup]="true">
+                        <button
+                            dropdownToggle
+                            type="button"
+                            class="btn btn-primary dropdown-toggle"
+                        >
+                            Dropup <prx-dropdown-icon></prx-dropdown-icon>
+                        </button>
+                        <ul *dropdownMenu class="dropdown-menu">
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#">Action</a>
+                            </li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#"
+                                    >Another action</a
+                                >
+                            </li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#"
+                                    >Something else here</a
+                                >
+                            </li>
+                            <li class="divider dropdown-divider"></li>
+                            <li role="menuitem">
+                                <a class="dropdown-item" href="#"
+                                    >Separated link</a
+                                >
+                            </li>
+                        </ul>
+                    </div>
+                </prx-card-body>
+            </prx-card>
+        </div>
+    </div>
+</div>

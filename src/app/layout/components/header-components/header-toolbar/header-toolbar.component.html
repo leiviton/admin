@@ -1,0 +1,38 @@
+<nav class="navbar" [ngClass]="{ 'navbar-dark bg-dark': dark }">
+    <div class="container-fluid">
+        <a class="toolbar-brand" href="javascript:;" *ngIf="branded">
+            <img
+                src="assets/img/logo.svg"
+                alt="Proxima"
+                class="logo"
+                *ngIf="!dark"
+            />
+            <img
+                src="assets/img/logo-light.svg"
+                alt="Proxima"
+                class="logo"
+                *ngIf="dark"
+            />
+        </a>
+
+        <nav class="navbar-nav nav ml-md-auto">
+            <prx-menu-toggler
+                [dark]="dark"
+                class="sidenav-toggler d-md-none mr-auto"
+                (click)="toggleSidenav()"
+            ></prx-menu-toggler>
+
+            <!-- NOTIFICATIONS DROPDOWN -->
+            <prx-header-menu-notifications
+                [dark]="dark"
+                class="mr-3"
+            ></prx-header-menu-notifications>
+
+            <!-- ACCOUNT DROPDOWN -->
+            <prx-header-user-account
+                [dark]="dark"
+                class="mr-3"
+            ></prx-header-user-account>
+        </nav>
+    </div>
+</nav>
